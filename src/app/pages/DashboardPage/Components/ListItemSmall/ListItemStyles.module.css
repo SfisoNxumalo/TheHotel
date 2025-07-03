@@ -1,0 +1,38 @@
+.holder{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+    height: 15%;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.holder:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+
+.holder h5, .holder p{
+    margin: 0;
+}
+
+.itemDetails{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: 100%;
+}
+
+.itemImage{
+    height: auto;
+}
+
+.itemImage img{
+    height:  100%;
+    width: auto;
+}
+
+.holder p{
+    font-size: 14px;
+}

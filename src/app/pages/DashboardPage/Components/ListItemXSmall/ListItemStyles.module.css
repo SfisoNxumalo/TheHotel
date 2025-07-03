@@ -1,0 +1,47 @@
+.holder{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+    height: auto;
+    padding: 5px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.holder:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+
+.holder h6, .holder p{
+    margin: 0;
+}
+
+.itemDetails{
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    width: auto;
+}
+
+.itemImage{
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.itemImage img{
+    height:  auto;
+    width: 100%;
+}
+
+.holder p{
+    font-size: 14px;
+}

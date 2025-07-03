@@ -1,0 +1,40 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    height: auto;
+  }
+
+  .img{
+    height: 100%;
+    width: 100%;
+    min-width: 95%;
+    object-fit: cover;
+    flex-grow: 1;
+    scroll-snap-align: center;
+  }
+
+ .img:nth-child(1){
+    border-radius: 10px 0 0 10px;
+ }
+
+ .cardHolder .img:last-child{
+    border-radius: 0px 10px 10px 0px;
+ }
+
+  .cardHolder{
+    height: 100px;
+    /* background-color: blue; */
+    display: flex;
+    gap: 5px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    flex-direction: row;
+    /* width: 500px; */
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scroll-snap-type: x mandatory;
+  }

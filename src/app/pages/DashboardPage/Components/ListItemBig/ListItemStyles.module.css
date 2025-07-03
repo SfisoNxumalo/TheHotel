@@ -1,0 +1,95 @@
+.holder{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; 
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 5px;
+    padding-bottom: 0;
+}
+
+.holder:hover{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+}
+
+.holder h5, .holder p{
+    margin: 0;
+}
+
+.itemDetails{
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+.holder p{
+    font-size: 14px;
+}
+
+.Top{
+    width: 100%;
+}
+
+.Middle{
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    width: 100%;
+}
+
+.itemImage{
+    height: 100%;
+}
+
+.Middle .itemImage img{
+    height:  95px;
+    max-height: 100%;
+    width: auto;
+}
+
+.Bottom{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    height: 100%;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.Checks{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.Checks .lblChecks{
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.CheckDivider{
+    background-color: gray;
+    height: 100%;
+    width: 1px;
+    border-radius: 50%;
+}
+
+.lblChecksTime, .lblChecksDate{
+    font-size: 12px;
+    /* font-weight: 500; */
+}
+
+.Checks:nth-child(3){
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    text-align: right;
+}
