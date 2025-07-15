@@ -5,6 +5,7 @@ import LoadingComponent from './components/LoadingComponent/LoadingComponent'
 import SplashPage from './app/pages/SplashPage/SplashPage';
 import RoomService from './app/pages/RoomServicePage/RoomService';
 import Dashboard from './app/pages/DashboardPage/Dashboard';
+import Chats from './app/pages/ChatPage/ChatsPage';
 
 const queryClient = new QueryClient()
 
@@ -17,9 +18,10 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<Navbar />}> */}
           <Route index element={<Dashboard/>} />
-          {/* <Route path="Dashboard" element={<Dashboard />} /> */}
-           {/*<Route path="contact" element={<Contact />} /> */}
-          <Route path="*" element={<RoomService/>} />
+          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="room-service" element={<RoomService />} />
+           <Route path="Chats" element={<Chats />} />
+          <Route path="*" element={<Dashboard/>} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>

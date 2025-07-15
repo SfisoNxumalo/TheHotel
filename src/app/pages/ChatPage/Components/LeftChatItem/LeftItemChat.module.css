@@ -1,0 +1,27 @@
+.holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.holder div{
+     background-color: rgb(196, 196, 196);
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border-radius: 0px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+label{
+    font-size: x-small;
+    text-align: right;
+}

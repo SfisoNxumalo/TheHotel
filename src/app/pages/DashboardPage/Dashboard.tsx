@@ -21,6 +21,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import { Link } from 'react-router-dom';
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -124,14 +125,13 @@ export default function Dashboard(props: Props){
                     <div className={styles.mainContainerBottom}>
                       <h4>Booking</h4>
                         <ListItemBig/>
+                        <h4>Room Service</h4>
                         <ListItemSmall/>
-
-
                         <h4>Support</h4>
                         <div className={styles.SmallList}>
-                          <ListItemXSmall label={"Chat"} Img={messageImg}/>
-                          <ListItemXSmall label={"Rate"} Img={rateImg}/>
-                          <ListItemXSmall label={"Request"} Img={bellImg}/>
+                          <Link to="/Chats"><ListItemXSmall  label={"Chat"} Img={messageImg}/></Link>
+                          <Link to="/Chats"><ListItemXSmall label={"Rate"} Img={rateImg}/></Link>
+                          <Link to="/Chats"><ListItemXSmall label={"Request"} Img={bellImg}/></Link>
                         </div>
                         <h4>Hotel Services</h4>
                         <ServiceCarousel/>
