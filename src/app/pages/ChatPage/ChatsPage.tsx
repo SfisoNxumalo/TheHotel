@@ -1,8 +1,5 @@
-import { List, ListItem, ListItemAvatar, Avatar, ListItemText, Typography, Divider, AppBar, Box, Container, CssBaseline, Toolbar, useScrollTrigger, IconButton } from "@mui/material";
-import React from "react";
-import ChatItem from "./Components/ChatItem";
-import { ArrowBack } from "@mui/icons-material";
-import MenuIcon from '@mui/icons-material/Menu';
+import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize } from "@mui/material";
+import React, { useEffect, useRef } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
 
@@ -36,6 +33,20 @@ function ElevationScroll(props: Props) {
 export default function Chats(props: Props){
 const arr = [1,2,2,5,6,5,656,6,56,5,4,4,4,4,54,564,4,];
 
+
+const bottomRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView();
+  };
+
+  
+useEffect(()=>{
+  scrollToBottom();
+  console.log("yess");
+  
+},[])
+
     return (
         <React.Fragment>
             <CssBaseline />
@@ -51,12 +62,21 @@ const arr = [1,2,2,5,6,5,656,6,56,5,4,4,4,4,54,564,4,];
             <Toolbar />
             <Container  >
                 <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-       { arr.map(() => 
-           <><LeftChatItem /><RightChatItem /></>
-    )}
-
-    
-    </List>
+                    { arr.map((index) => 
+                              <><LeftChatItem /><RightChatItem /></>
+                        )}
+                        <div>
+                          <TextareaAutosize
+                              maxRows={4}
+                              aria-label="maximum height"
+                              placeholder="Maximum 4 rows"
+                              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                  ut labore et dolore magna aliqua."
+                              style={{ width: 200 }}
+/>
+                        </div>
+                </List>
+            <div ref={bottomRef} />
             </Container>
     </React.Fragment>
     );
