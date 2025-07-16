@@ -1,4 +1,4 @@
-import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize } from "@mui/material";
+import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
@@ -56,9 +56,12 @@ useEffect(()=>{
               <ElevationScroll {...props}>
                   <AppBar>
                   <Toolbar>
-                      <Typography variant="h6" component="div">
-                      Scroll to elevate App bar
-                      </Typography>
+                    <ListItemAvatar>
+                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    </ListItemAvatar>
+                    <Typography variant="h6" component="div">
+                    Assistant manager
+                    </Typography>
                   </Toolbar>
                   </AppBar>
               </ElevationScroll>
@@ -70,7 +73,7 @@ useEffect(()=>{
                           )}
                           
                   </List>
-              <div style={{height:"60px"}} ref={bottomRef} />
+              <div style={{height:"65px"}} ref={bottomRef} />
               </Container>
               
         </React.Fragment>
