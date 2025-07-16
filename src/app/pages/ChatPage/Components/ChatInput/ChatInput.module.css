@@ -1,0 +1,51 @@
+.holder{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.inputs{
+    background-color: transparent;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    gap: 3px;
+    border-radius: 15px;
+    padding: 2px 5px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.TextareaAutosize{
+    width: 100%;
+    flex-grow: 1;
+    resize: none; 
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: black;
+    font-size: 14px;
+    padding-left: 5px;
+}
+
+.MediaButton{
+    border-radius: 50%;
+     flex-grow: 1;
+    height: 40px;
+    width: 40px;
+    outline: none;
+    border: none;
+    margin: 0;
+    
+    padding: 0;
+}

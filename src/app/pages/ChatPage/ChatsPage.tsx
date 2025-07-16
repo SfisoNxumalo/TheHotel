@@ -2,6 +2,8 @@ import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, 
 import React, { useEffect, useRef } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
+import styles from './ChatPageStyle.module.css'
+import ChatInput from "./Components/ChatInput/ChatInput";
 
 interface Props {
   /**
@@ -48,36 +50,35 @@ useEffect(()=>{
 },[])
 
     return (
+      <div className={styles.hold}>
         <React.Fragment>
-            <CssBaseline />
-            <ElevationScroll {...props}>
-                <AppBar>
-                <Toolbar>
-                    <Typography variant="h6" component="div">
-                    Scroll to elevate App bar
-                    </Typography>
-                </Toolbar>
-                </AppBar>
-            </ElevationScroll>
-            <Toolbar />
-            <Container  >
-                <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-                    { arr.map((index) => 
-                              <><LeftChatItem /><RightChatItem /></>
-                        )}
-                        <div>
-                          <TextareaAutosize
-                              maxRows={4}
-                              aria-label="maximum height"
-                              placeholder="Maximum 4 rows"
-                              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                  ut labore et dolore magna aliqua."
-                              style={{ width: 200 }}
-/>
-                        </div>
-                </List>
-            <div ref={bottomRef} />
-            </Container>
-    </React.Fragment>
+              <CssBaseline />
+              <ElevationScroll {...props}>
+                  <AppBar>
+                  <Toolbar>
+                      <Typography variant="h6" component="div">
+                      Scroll to elevate App bar
+                      </Typography>
+                  </Toolbar>
+                  </AppBar>
+              </ElevationScroll>
+              <Toolbar />
+              <Container style={{padding:"10px"}} >
+                  <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
+                      { arr.map((index) => 
+                                <><LeftChatItem /><RightChatItem /></>
+                          )}
+                          
+                  </List>
+              <div style={{height:"60px"}} ref={bottomRef} />
+              </Container>
+              
+        </React.Fragment>
+        <ChatInput/>
+
+
+      </div>
+   
+        
     );
 }
