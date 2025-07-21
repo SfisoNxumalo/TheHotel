@@ -1,0 +1,9 @@
+.searchBar{
+    border-radius: 15px;
+    padding: 2px 5px;
+    border: 1px solid black;
+}
+
+.trans{
+    border: none;
+}

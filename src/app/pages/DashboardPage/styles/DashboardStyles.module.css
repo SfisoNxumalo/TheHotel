@@ -124,8 +124,6 @@ h4{
     object-fit: cover;
     opacity: 0.5;
     z-index: -1;
-    /* position: absolute; */
-     z-index: -1;
 }
 
 .sthombeHolder{

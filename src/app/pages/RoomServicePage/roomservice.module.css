@@ -1,0 +1,58 @@
+.container{
+    background-color: transparent;
+    height: 80vh;
+    /* padding: 10px */
+    /* margin: 10px; */
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+}
+
+.Banner{
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+}
+
+.topSection{
+    /* position: fixed; */
+    background-color: yellow;
+    width: 100%;
+    /* z-index: 100; */
+    padding: 10px;
+    background-image: url(../../../assets/images/food_background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip:initial;
+    scroll-snap-align: start;
+    color: rgb(255, 255, 255);
+    outline: black;
+    text-shadow: 
+    -1px -1px 0 rgb(142, 142, 142), /* Top-left shadow */
+    1px -1px 0 rgb(142, 142, 142),  /* Top-right shadow */
+    -1px 1px 0 rgb(142, 142, 142),  /* Bottom-left shadow */
+    1px 1px 0 rgb(142, 142, 142);   /* Bottom-right shadow */
+     position: sticky;
+    letter-spacing: 2px;
+    top: 0;
+    z-index: 1000;
+}
+
+h2{
+     /* position: sticky; */
+    /* top: 0; */
+    /*z-index: 1000; 
+     position: fixed;
+    top: 0; */
+}
+
+.middleSection{
+    /* height: 100vh; */
+    padding: 15px;
+    background-color: rgb(255, 255, 255);
+    /* overflow: scroll; */
+    /* scroll-snap-align: start;
+    position: sticky;
+  top: 0; */
+}

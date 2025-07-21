@@ -1,4 +1,5 @@
 import { Stack, Autocomplete, TextField } from "@mui/material";
+import styles from './searchbar.module.css'
 
 export default function Search(){
 
@@ -129,7 +130,7 @@ export default function Search(){
   { title: 'Monty Python and the Holy Grail', year: 1975 },
 ];
     return (
-<div>
+      <div>
             <Stack spacing={2} sx={{ }}>
                 <Autocomplete
                     freeSolo
@@ -138,6 +139,7 @@ export default function Search(){
                     options={top100Films.map((option) => option.title)}
                     renderInput={(params) => (
                     <TextField
+                    
                         {...params}
                         label="Search input"
                         slotProps={{

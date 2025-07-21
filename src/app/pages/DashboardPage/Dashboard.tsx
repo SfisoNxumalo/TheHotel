@@ -122,7 +122,7 @@ export default function Dashboard(props: Props){
                     <div className={styles.mainContainerTop}>
                     <Compo/>
                     </div>
-                    <div className={styles.mainContainerBottom}>
+                    <div className={styles.mainContainerBottom}> 
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>
@@ -135,6 +135,7 @@ export default function Dashboard(props: Props){
                         </div>
                         <h4>Hotel Services</h4>
                         <ServiceCarousel/>
+                        
                     </div>
                 </div>
            </div>
