@@ -1,10 +1,16 @@
 import { Card, Box, CardContent, Typography, IconButton, CardMedia } from "@mui/material";
 import { useTheme } from "styled-components";
+import { restaurantBanner } from "../../../assets/imageStore";
+
+import styles from './Cart.module.css'
 
 export default function Cart(){
-    const theme = useTheme();
 
   return (
+<div className={styles.holder}>
+
+    <h3>Cart</h3>
+
     <Card sx={{ display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
@@ -20,15 +26,22 @@ export default function Cart(){
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          
+          bn
         </Box>
       </Box>
       <CardMedia
         component="img"
         sx={{ width: 151 }}
-        image="/static/images/cards/live-from-space.jpg"
+        image={restaurantBanner}
         alt="Live from space album cover"
       />
     </Card>
+
+    <hr/>
+
+    <label>SubTotal:</label> <label>R2000</label>
+</div>
+
+
   );
 }

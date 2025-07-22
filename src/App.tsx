@@ -8,6 +8,7 @@ import Dashboard from './app/pages/DashboardPage/Dashboard';
 import Chats from './app/pages/ChatPage/ChatsPage';
 import ViewOne from './app/pages/ViewOnePage/ViewOne';
 import Cart from './app/pages/CartPage/Cart';
+import BottomNav from './components/BottomNav/BottomNav';
 
 const queryClient = new QueryClient()
 
@@ -20,16 +21,17 @@ function App() {
       <Routes>
         {/* <Route path="/" element={<Navbar />}> */}
           <Route index element={<Dashboard/>} />
-          <Route path="Dashboard" element={<Dashboard />} />
+          <Route path="cashboard" element={<Dashboard />} />
           <Route path="room-service" element={<RoomService />} />
           <Route path="view-one" element={<ViewOne />} />
-           <Route path="Chats" element={<Chats />} />
-           <Route path="Cart" element={<Cart />} />
+           <Route path="chats" element={<Chats />} />
+           <Route path="cart" element={<Cart/>} />
           <Route path="*" element={<Dashboard/>} />
         {/* </Route> */}
       </Routes>
     </BrowserRouter>
     </QueryClientProvider>
+    <BottomNav/>
     </>
   )
 }
