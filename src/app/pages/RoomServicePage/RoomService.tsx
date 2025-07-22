@@ -5,8 +5,9 @@ import styles from './roomservice.module.css'
 import ListHolder from './Components/ListHolder/ListHolder';
 import SearchBar from './Components/SearchBar/SearchBar';
 import { FavoriteOutlined, Folder, Home, LocalAirport, Person, Person2, Person3, PersonOffOutlined, Restore, Shop, ShoppingCart } from '@mui/icons-material';
-import { retaurantBanner } from '../../../assets/imageStore';
+import { restaurantBanner } from '../../../assets/imageStore';
 import React from 'react';
+import { red } from '@mui/material/colors';
 
 
 interface Props {
@@ -63,7 +64,7 @@ export default function RoomService(props:Props){
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-      <Container>
+      <Container style={{padding:"0px"}}>
         <Box sx={{ my: 2 }}>
           <div className={styles.container}>
 

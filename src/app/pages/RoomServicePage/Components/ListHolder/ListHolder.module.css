@@ -1,4 +1,137 @@
 .List{
+    /* display: flex;
+    flex-direction: row; */
+ 
+    /* background-color: red; */
+}
+
+.ItemHolder{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* gap: 12px; */
+}
+
+.ListItem{
+     flex-basis: 1;
+    
+    min-width: 140px;
+}
+
+.imgho{
+    
+    background-color: white;
     display: flex;
     flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+
+}
+
+.menuitem4{
+    flex-basis: 1;
+    background-color: brown;
+    min-width: 140px;
+}
+
+.pchold{
+    display: flex;
+}
+
+.prodtext{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 100%;
+    /* background-color: rebeccapurple; */
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.prodtext label{
+    font-size: 14px;
+    /* max-height: 30px; */
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    text-wrap:wrap;
+    overflow: hidden;
+    line-height: normal;
+    overflow:hidden;
+
+    /* font-size: 12px;
+    height: 30px;
+    background-color: blue;
+    text-overflow: ellipsis;
+    white-space: wrap;
+    width: 110px;
+    line-height: normal;
+    overflow: hidden; */
+}
+
+
+  .promo{
+    background-color: wheat;
+    position: absolute;
+    color: green;
+    margin-top: 15px;
+}
+
+.pr{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+
+}
+
+.pr button{
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    padding: 0px;
+}
+
+.pr label:nth-child(1){
+    font-size: 15px;
+    font-weight: bold;
+    flex-basis: 1;
+}
+
+.pr label:nth-child(2){
+    font-size: 12px;
+    font-weight: normal;
+    text-decoration: line-through;
+}
+
+.pr mat-icon{
+    font-size: 17px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+
+.mainlogo2{
+    display: block;
+    width: auto;
+    height: 100px;
+    max-height: 100%;
+    max-width: 100%;
+    align-self: center;
+    border-radius: 8px 8px 0px 0px;
+    padding-bottom: 3px;
+    
+}
+
+.menuItem2{
+    /* padding: 8px; */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-radius: 8px;
+    height: 100%;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.2);
 }
