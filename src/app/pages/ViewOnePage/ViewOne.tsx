@@ -1,6 +1,7 @@
 import { AppBar, Box, Container, CssBaseline, Toolbar, Typography, useScrollTrigger } from '@mui/material';
 import styles from './ViewOne.module.css'
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   /**
@@ -33,7 +34,7 @@ function ElevationScroll(props: Props) {
 
 export default function ViewOne(props:Props){
 // console.log(...props);
-
+    const navigate = useNavigate();
     return (
 <>
             <div className={styles.container}>
@@ -44,7 +45,7 @@ export default function ViewOne(props:Props){
         <AppBar >
 
           <Toolbar>
-            
+            <button onClick={()=>navigate(-1)}>back</button>
             <Typography variant="h6" component="div">
               Chicken and pizza
             </Typography>

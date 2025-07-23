@@ -4,6 +4,7 @@ import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
 import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   /**
@@ -36,6 +37,7 @@ function ElevationScroll(props: Props) {
 export default function Chats(props: Props){
 const arr = [1,2,2,5,6,5,656,6,56,5,4,4,4,4,54,564,4,];
 
+    const navigate = useNavigate();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
 
@@ -46,7 +48,6 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
   
 useEffect(()=>{
   scrollToBottom();
-  console.log("yess");
   
 },[])
 
@@ -58,6 +59,7 @@ useEffect(()=>{
                   <AppBar>
                   <Toolbar>
                     <ListItemAvatar>
+                      <button onClick={()=>navigate(-1)}>back</button>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">

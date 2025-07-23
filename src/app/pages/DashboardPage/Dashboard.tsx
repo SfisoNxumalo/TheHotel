@@ -79,7 +79,7 @@ interface Props {
                                       <NotificationsIcon sx={{ fontSize: 20 }} />
                                     </StyledBadge>
                                   </IconButton>
-                                  <IconButton   aria-label="cart">
+                                  <IconButton  aria-label="cart">
                                     <StyledBadge badgeContent={1} sx={{color:'white'}} color="secondary">
                                       <ShoppingCartIcon sx={{ fontSize: 20 }} />
                                     </StyledBadge>
@@ -126,12 +126,12 @@ export default function Dashboard(props: Props){
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>
-                        <ListItemSmall/>
+                        <ListItemSmall />
                         <h4>Support</h4>
                         <div className={styles.SmallList}>
-                          <Link to="/Chats"><ListItemXSmall  label={"Chat"} Img={messageImg}/></Link>
-                          <Link to="/Chats"><ListItemXSmall label={"Rate"} Img={rateImg}/></Link>
-                          <Link to="/Chats"><ListItemXSmall label={"Request"} Img={bellImg}/></Link>
+                          <Link to="/chats"><ListItemXSmall  label={"Chat"} Img={messageImg}/></Link>
+                          <Link to="/chats"><ListItemXSmall label={"Rate"} Img={rateImg}/></Link>
+                          <Link to="/chats"><ListItemXSmall label={"Request"} Img={bellImg}/></Link>
                         </div>
                         <h4>Hotel Services</h4>
                         <ServiceCarousel/>

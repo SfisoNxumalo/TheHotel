@@ -8,6 +8,7 @@ import { FavoriteOutlined, Folder, Home, LocalAirport, Person, Person2, Person3,
 import { restaurantBanner } from '../../../assets/imageStore';
 import React from 'react';
 import { red } from '@mui/material/colors';
+import { useNavigate } from 'react-router-dom';
 
 
 interface Props {
@@ -71,30 +72,6 @@ export default function RoomService(props:Props){
           <div className={styles.middleSection}>
             <ListHolder/>
           </div>
-          {/* <SearchBar/>
-         <ListHolder/>
-        <IconButton>
-          <ShoppingCart fontSize="small" />
-        <Badge badgeContent={2} color="primary" overlap="circular" />
-        </IconButton>
-        <BottomNavigation sx={{ width: 500 }} value={value} onChange={handleChange}>
-      <BottomNavigationAction
-        label="Recents"
-        value="recents"
-        icon={<Home />}
-      />
-      <BottomNavigationAction
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteOutlined />}
-      />
-      <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<ShoppingCart />}
-      />
-      <BottomNavigationAction label="Folder" value="folder" icon={<Person />} />
-    </BottomNavigation>  */}
         </div>
         </Box>
       </Container>

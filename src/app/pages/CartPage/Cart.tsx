@@ -12,17 +12,17 @@ export default function Cart(){
     <h3>Cart</h3>
 
     <Card sx={{ display: 'flex' }}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <Box  style={{width:"100%"}} sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
-            Live From Space
+            Beef
           </Typography>
           <Typography
             variant="subtitle1"
             component="div"
             sx={{ color: 'text.secondary' }}
           >
-            Mac Miller
+            Quantity: 5
           </Typography>
         </CardContent>
         <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>

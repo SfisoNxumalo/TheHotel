@@ -23,15 +23,16 @@ function App() {
           <Route index element={<Dashboard/>} />
           <Route path="cashboard" element={<Dashboard />} />
           <Route path="room-service" element={<RoomService />} />
-          <Route path="view-one" element={<ViewOne />} />
+          <Route path="view-one/:id" element={<ViewOne />} />
            <Route path="chats" element={<Chats />} />
            <Route path="cart" element={<Cart/>} />
           <Route path="*" element={<Dashboard/>} />
         {/* </Route> */}
       </Routes>
+      <BottomNav/>
     </BrowserRouter>
     </QueryClientProvider>
-    <BottomNav/>
+    
     </>
   )
 }

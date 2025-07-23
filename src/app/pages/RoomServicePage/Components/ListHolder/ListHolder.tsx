@@ -1,8 +1,9 @@
 import { List, ListSubheader, ListItem, ListItemText, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
 import styles from './ListHolder.module.css'
 import { restaurantBanner } from "../../../../../assets/imageStore";
+import { useNavigate } from "react-router-dom";
 export default function ListHolder(){
-
+    const navigate = useNavigate();
     return (
         <List
       sx={{
@@ -44,7 +45,7 @@ export default function ListHolder(){
                         <Button size="small">Learn More</Button>
                       </CardActions>
                     </Card> */}
-                    <div className={styles.menuItem4}>
+                    <div onClick={()=>{navigate(`/view-one/item-${sectionId}-${item}`)}} className={styles.menuItem4}>
                       <label className={styles.promo}>Out of Stock</label>
                       <div className={styles.menuItem2}>
 
