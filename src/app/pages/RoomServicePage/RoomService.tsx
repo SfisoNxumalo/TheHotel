@@ -35,18 +35,8 @@ function HideOnScroll(props: Props) {
     </Slide>
   );
 }
-    
-
-
 
 export default function RoomService(props:Props){
-    const [value, setValue] = useState(0);
-
-    const [values, setValues] = useState('recents');
-
-  // const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-  //   setValue(newValue);
-  // };
     
     return(
  <React.Fragment>
@@ -76,12 +66,5 @@ export default function RoomService(props:Props){
         </Box>
       </Container>
     </React.Fragment>
-
-       
-        
-        
-
-       
-       
     );
 }

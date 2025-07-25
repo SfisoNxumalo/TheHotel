@@ -5,14 +5,15 @@
     align-items: flex-end;
 }
 
-.holder div{
+.holder .MessageHolder{
          background-color: rgb(58, 56, 55);
     color: white;
     padding: 5px 10px;
     border-radius: 10px 0px 10px 10px;
     display: flex;
     flex-direction: column;
-    width: 90%;
+   width: auto;
+    max-width: 90%;
 }
 
 p{
@@ -21,7 +22,11 @@ p{
     font-size: 14px;
 }
 
-label{
+.metaData{
+    display: flex;
+    flex-direction: row;
     font-size: x-small;
     text-align: right;
+    justify-content: flex-end;
+    gap: 5px;
 }

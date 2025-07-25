@@ -1,10 +1,12 @@
 import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
 import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
+import { Message } from "../../../Interfaces/message";
+import { getAllMessages } from "../../../services/messageService";
 
 interface Props {
   /**
@@ -37,6 +39,8 @@ function ElevationScroll(props: Props) {
 export default function Chats(props: Props){
 const arr = [1,2,2,5,6,5,656,6,56,5,4,4,4,4,54,564,4,];
 
+const loggedInUser = 'user-001';
+
     const navigate = useNavigate();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
@@ -45,7 +49,16 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
     bottomRef.current?.scrollIntoView();
   };
 
+    const [messages, setMessage] = useState<Message[]>([]);
   
+   useEffect(()=>{
+    getAllMessages().then((res) => {
+      setMessage(res.data);
+      console.log(res.data);
+      
+    });
+    },[]);
+
 useEffect(()=>{
   scrollToBottom();
   
@@ -71,8 +84,12 @@ useEffect(()=>{
               <Toolbar />
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-                      { arr.map((index) => 
-                                <><LeftChatItem /><RightChatItem /></>
+                      { messages.map((message, index) => 
+                                <>
+                                {message.guid == loggedInUser ? 
+                                  <RightChatItem key={message.id} message={message} /> : 
+                                  <LeftChatItem key={message.id} message={message} />} 
+                                </>
                           )}
                           
                   </List>

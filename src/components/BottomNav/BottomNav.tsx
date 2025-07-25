@@ -28,8 +28,9 @@ export default function BottomNav(){
   };
 
 
+
   return (
-    window.location.pathname  == '/Chats' ? <></> :
+    window.location.pathname  == '/chats' ? <></> :
     <BottomNavigation sx={{ position: 'fixed',fontSize:"10px", bottom: 0, left: 0, right: 0 , zIndex:1000}} value={value} onChange={handleChange}>
       <BottomNavigationAction
         // label="Dashboard"

@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "message": "Messages fetched successfully",
+  "data": [
+    {
+      "id": 1,
+      "conversationId": "conv-001",
+      "guid": "user-001",
+      "name": "Sifiso Mawila",
+      "message": "Hey, are you free to chat later today?",
+      "type": "sent",
+      "date": "2025-07-24T14:20:00Z",
+      "status": "delivered",
+      "attachments": []
+    },
+    {
+      "id": 2,
+      "conversationId": "conv-001",
+      "guid": "user-002",
+      "name": "Melissa Nkomo",
+      "message": "Sure! Around 4pm works for me.",
+      "type": "received",
+      "date": "2025-07-24T14:22:00Z",
+      "status": "read",
+      "attachments": []
+    },
+    {
+      "id": 3,
+      "conversationId": "conv-001",
+      "guid": "user-001",
+      "name": "Sifiso Mawila",
+      "message": "Perfect. I’ll send you the link before then.",
+      "type": "sent",
+      "date": "2025-07-24T14:23:10Z",
+      "status": "read",
+      "attachments": []
+    },
+    {
+      "id": 4,
+      "conversationId": "conv-001",
+      "guid": "user-002",
+      "name": "Melissa Nkomo",
+      "message": "Cool, thanks.",
+      "type": "received",
+      "date": "2025-07-24T14:24:30Z",
+      "status": "read",
+      "attachments": []
+    },
+    {
+      "id": 5,
+      "conversationId": "conv-001",
+      "guid": "user-001",
+      "name": "Sifiso Mawila",
+      "message": "Also, did you check out the docs I sent yesterday?",
+      "type": "sent",
+      "date": "2025-07-24T14:25:00Z",
+      "status": "sent",
+      "attachments": [
+        {
+          "type": "file",
+          "url": "https://example.com/docs/project-summary.pdf",
+          "fileName": "project-summary.pdf"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "conversationId": "conv-001",
+      "guid": "user-002",
+      "name": "Melissa Nkomo",
+      "message": "Not yet, but I will before our call.",
+      "type": "received",
+      "date": "2025-07-24T14:26:45Z",
+      "status": "delivered",
+      "attachments": []
+    },
+    {
+      "id": 7,
+      "conversationId": "conv-001",
+      "guid": "user-002",
+      "name": "Melissa Nkomo",
+      "message": "",
+      "type": "received",
+      "date": "2025-07-24T14:27:00Z",
+      "status": "typing",
+      "isTyping": true,
+      "attachments": []
+    }
+  ]
+}

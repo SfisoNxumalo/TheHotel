@@ -1,3 +1,4 @@
 import axios from "axios";
+import { baseURL } from "../endpoints/endpoints";
 
-export const httpService = axios.create({baseURL:"", headers:{}, timeout:10000});
+export const httpService = axios.create({baseURL:baseURL, headers:{}, timeout:10000});
