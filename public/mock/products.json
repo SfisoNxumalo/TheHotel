@@ -1,0 +1,56 @@
+{
+  "success": true,
+  "message": "Products fetched successfully",
+  "data": [
+    {
+      "id": 1,
+      "title": "Organic Honey Granola",
+      "description": "Crunchy and naturally sweetened granola, perfect for breakfast or snacking.",
+      "ingredients": ["Rolled oats", "Honey", "Almonds", "Coconut oil", "Chia seeds"],
+      "price": 79.99,
+      "rating": 4.7,
+      "category": "Snacks",
+      "image": "https://picsum.photos/seed/granola/300/200"
+    },
+    {
+      "id": 2,
+      "title": "Spicy Chickpea Curry",
+      "description": "A ready-to-eat Indian-style curry made with high-protein chickpeas and bold spices.",
+      "ingredients": ["Chickpeas", "Tomatoes", "Onions", "Garlic", "Spices"],
+      "price": 59.5,
+      "rating": 4.2,
+      "category": "Meals",
+      "image": "https://picsum.photos/seed/curry/300/200"
+    },
+    {
+      "id": 3,
+      "title": "Vegan Protein Bar - Chocolate",
+      "description": "Plant-based protein bar with rich cocoa flavour and a chewy texture.",
+      "ingredients": ["Dates", "Pea protein", "Cocoa", "Cashews", "Sea salt"],
+      "price": 24.99,
+      "rating": 4.0,
+      "category": "Supplements",
+      "image": "https://picsum.photos/seed/proteinbar/300/200"
+    },
+    {
+      "id": 4,
+      "title": "Gluten-Free Pasta",
+      "description": "Italian-style pasta made from corn and quinoa flour. Delicious and healthy.",
+      "ingredients": ["Corn flour", "Quinoa flour", "Salt"],
+      "price": 45.0,
+      "rating": 3.8,
+      "category": "Pantry",
+      "image": ""
+    },
+    {
+      "id": 5,
+      "title": "Matcha Green Tea Powder",
+      "description": "Premium ceremonial grade matcha for smoothies, lattes, and baking.",
+      "ingredients": ["Organic matcha green tea leaves"],
+      "price": 149.99,
+      "rating": 4.9,
+      "category": "Beverages",
+      "image": "https://picsum.photos/seed/matcha/300/200"
+    }
+  ]
+}

@@ -13,8 +13,6 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 import { deepOrange, deepPurple } from '@mui/material/colors';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
@@ -22,6 +20,7 @@ import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link } from 'react-router-dom';
+
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -111,8 +110,8 @@ interface Props {
     )
   }
 
-export default function Dashboard(props: Props){
-  
+export default function Dashboard(){
+
     return(
         <section style={styles}>
            <div className={styles.topContainer}></div>

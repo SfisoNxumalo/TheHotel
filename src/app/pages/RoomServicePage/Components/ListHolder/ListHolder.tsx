@@ -2,7 +2,21 @@ import { List, ListSubheader, ListItem, ListItemText, Button, Card, CardActions,
 import styles from './ListHolder.module.css'
 import { restaurantBanner } from "../../../../../assets/imageStore";
 import { useNavigate } from "react-router-dom";
+import { getAllProducts } from "../../../../../services/productService";
+import { useEffect, useState } from "react";
+import { Product } from "../../../../../Interfaces/products";
+
+
 export default function ListHolder(){
+
+  const [products, setProducts] = useState<Product[]>([]);
+
+ useEffect(()=>{
+  getAllProducts().then((res) => {
+    setProducts(res.data);
+  });
+  },[])
+
     const navigate = useNavigate();
     return (
         <List
@@ -22,7 +36,7 @@ export default function ListHolder(){
           <ul>
             <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
             <div className={styles.ItemHolder}>
-              {[0, 1, 2].map((item) => (
+              {products.map((item) => (
                 <ListItem key={`item-${sectionId}-${item}`}>
                   {/* <Card>
                       <CardMedia

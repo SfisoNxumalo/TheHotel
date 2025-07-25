@@ -48,21 +48,21 @@ export default function BottomNav(){
         // label="Chat"
         value="Chat"
         onClick={()=>navigate("/chats")}
-        icon={<IconButton  aria-label="cart">
-                                    <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
-                                      <Chat sx={{ fontSize: 20 }} />
-                                    </StyledBadge>
-                                  </IconButton>}
+        // icon={<IconButton  aria-label="cart">
+        //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
+        //                               <Chat sx={{ fontSize: 20 }} />
+        //                             </StyledBadge>
+        //                           </IconButton>}
       />
       <BottomNavigationAction
         // label="Cart"
         value="Cart"
         onClick={()=>navigate("/Cart")}
-        icon={<IconButton  aria-label="cart">
-                                    <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
-                                      <ShoppingCart sx={{ fontSize: 20 }} />
-                                    </StyledBadge>
-                                  </IconButton>}
+        // icon={<IconButton  aria-label="cart">
+        //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
+        //                               <ShoppingCart sx={{ fontSize: 20 }} />
+        //                             </StyledBadge>
+        //                           </IconButton>}
       />
       <BottomNavigationAction
         // label="Account"
