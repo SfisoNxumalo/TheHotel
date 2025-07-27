@@ -49,23 +49,22 @@ export default function BottomNav(){
         // label="Chat"
         value="Chat"
         onClick={()=>navigate("/chats")}
-        icon={<IoChatboxEllipsesOutline   fontSize={20}/>}
-        // icon={<IconButton  aria-label="cart">
-        //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
-        //                               <Chat sx={{ fontSize: 20 }} />
-        //                             </StyledBadge>
-        //                           </IconButton>}
+        icon={
+          <StyledBadge badgeContent={1} color="secondary">
+            <IoChatboxEllipsesOutline   fontSize={20}/>
+          </StyledBadge>
+        }
       />
       <BottomNavigationAction
         // label="Cart"
         value="Cart"
         onClick={()=>navigate("/Cart")}
-        icon={<IoCartOutline fontSize={20}/>}
-        // icon={<IconButton  aria-label="cart">
-        //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
-        //                               <ShoppingCart sx={{ fontSize: 20 }} />
-        //                             </StyledBadge>
-        //                           </IconButton>}
+        icon={
+          <StyledBadge badgeContent={1} color="secondary">
+            <IoCartOutline fontSize={20}/>
+          </StyledBadge>
+        }
+        
       />
       <BottomNavigationAction
         // label="Account"

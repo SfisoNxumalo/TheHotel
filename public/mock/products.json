@@ -10,7 +10,7 @@
       "price": 79.99,
       "rating": 4.7,
       "category": "Snacks",
-      "image": "https://picsum.photos/seed/granola/300/200"
+      "image": "https://tse3.mm.bing.net/th/id/OIP.Wp6XgnYRrIXB2P0mSTBhBAHaEo?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       "id": 2,
@@ -20,7 +20,7 @@
       "price": 59.5,
       "rating": 4.2,
       "category": "Meals",
-      "image": "https://picsum.photos/seed/curry/300/200"
+      "image": "https://tse3.mm.bing.net/th/id/OIP.tyC9v8gb_fBFEAjNQq_0CgHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
     },
     {
       "id": 3,
@@ -30,7 +30,7 @@
       "price": 24.99,
       "rating": 4.0,
       "category": "Supplements",
-      "image": "https://picsum.photos/seed/proteinbar/300/200"
+      "image": "https://d2zkwdgks3jmb3.cloudfront.net/fileadmin/shared/categories/food/Food_category_text.jpg"
     },
     {
       "id": 4,
@@ -40,7 +40,7 @@
       "price": 45.0,
       "rating": 3.8,
       "category": "Pantry",
-      "image": ""
+      "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836"
     },
     {
       "id": 5,
@@ -50,7 +50,7 @@
       "price": 149.99,
       "rating": 4.9,
       "category": "Beverages",
-      "image": "https://picsum.photos/seed/matcha/300/200"
+      "image": "https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg"
     }
   ]
 }
