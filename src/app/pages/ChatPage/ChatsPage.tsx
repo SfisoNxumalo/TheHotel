@@ -7,7 +7,8 @@ import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
 import { getAllMessages } from "../../../services/messageService";
-
+import { GoArrowLeft } from "react-icons/go";
+import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -70,9 +71,9 @@ useEffect(()=>{
               <CssBaseline />
               <ElevationScroll {...props}>
                   <AppBar>
-                  <Toolbar>
-                    <ListItemAvatar>
-                      <button onClick={()=>navigate(-1)}>back</button>
+                  <Toolbar style={{paddingLeft: '5px'}}>
+                    <ListItemAvatar style={{display:'flex'}}>
+                      <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">

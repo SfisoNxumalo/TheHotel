@@ -2,6 +2,8 @@ import { AppBar, Box, Container, CssBaseline, Toolbar, Typography, useScrollTrig
 import styles from './ViewOne.module.css'
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
+import { GoArrowLeft } from 'react-icons/go';
 
 interface Props {
   /**
@@ -44,8 +46,8 @@ export default function ViewOne(props:Props){
       <ElevationScroll {...props}>
         <AppBar >
 
-          <Toolbar>
-            <button onClick={()=>navigate(-1)}>back</button>
+          <Toolbar style={{paddingLeft: '5px'}}>
+            <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
             <Typography variant="h6" component="div">
               Chicken and pizza
             </Typography>

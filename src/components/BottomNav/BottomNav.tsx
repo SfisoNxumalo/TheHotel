@@ -3,6 +3,8 @@ import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, IconButton, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
+import style from './bottomNav.modules.css'
 
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -13,7 +15,7 @@ import { useNavigate } from "react-router-dom";
       padding: '0 4px',
     },
   }));
-  
+
   
 export default function BottomNav(){
 
@@ -27,28 +29,27 @@ export default function BottomNav(){
     // }
   };
 
-
-
   return (
     window.location.pathname  == '/chats' ? <></> :
-    <BottomNavigation sx={{ position: 'fixed',fontSize:"10px", bottom: 0, left: 0, right: 0 , zIndex:1000}} value={value} onChange={handleChange}>
-      <BottomNavigationAction
+    <BottomNavigation style={{boxShadow:'rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px'}} sx={{ position: 'fixed',fontSize:"10px", bottom: 0, left: 0, right: 0 , zIndex:1000}} value={value} onChange={handleChange}>
+      <BottomNavigationAction 
         // label="Dashboard"
         sx={{fill:"green"}}
         value="Dashboard"
         onClick={()=>navigate("/dashboard")}
-        icon={<Home  fontSize="small"  />}
+        icon={<IoHomeOutline  fontSize={20}/>}
       />
       <BottomNavigationAction
         // label="Room Service"
         value="Room Service"
         onClick={()=>navigate("/room-service")}
-        icon={<DinnerDining  fontSize="small" />}
+        icon={<IoFastFoodOutline fontSize={20}/>}
       />
       <BottomNavigationAction
         // label="Chat"
         value="Chat"
         onClick={()=>navigate("/chats")}
+        icon={<IoChatboxEllipsesOutline   fontSize={20}/>}
         // icon={<IconButton  aria-label="cart">
         //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
         //                               <Chat sx={{ fontSize: 20 }} />
@@ -59,6 +60,7 @@ export default function BottomNav(){
         // label="Cart"
         value="Cart"
         onClick={()=>navigate("/Cart")}
+        icon={<IoCartOutline fontSize={20}/>}
         // icon={<IconButton  aria-label="cart">
         //                             <StyledBadge badgeContent={1} sx={{color:'grey'}}color="secondary">
         //                               <ShoppingCart sx={{ fontSize: 20 }} />

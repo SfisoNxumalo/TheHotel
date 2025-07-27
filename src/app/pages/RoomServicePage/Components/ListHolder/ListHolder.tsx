@@ -37,28 +37,7 @@ export default function ListHolder(){
             <ListSubheader>{`I'm sticky ${sectionId}`}</ListSubheader>
             <div className={styles.ItemHolder}>
               {products.map((item) => (
-                <ListItem key={`item-${sectionId}-${item}`}>
-                  {/* <Card>
-                      <CardMedia
-                        component="img"
-                        alt="green iguana"
-                        height="140"
-                        image={retaurantBanner}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          Lizard
-                        </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                          Lizards are a widespread group of squamate reptiles, with over 6,000
-                          species, ranging across all continents except Antarctica
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Share</Button>
-                        <Button size="small">Learn More</Button>
-                      </CardActions>
-                    </Card> */}
+                <div className={styles.listItem}  key={`item-${sectionId}-${item}`}>
                     <div onClick={()=>{navigate(`/view-one/item-${sectionId}-${item}`)}} className={styles.menuItem4}>
                       <label className={styles.promo}>Out of Stock</label>
                       <div className={styles.menuItem2}>
@@ -87,7 +66,7 @@ export default function ListHolder(){
                       </div>
                       
                   </div>
-                </ListItem>
+                </div>
               ))}
             </div>
             

@@ -8,13 +8,26 @@
 .ItemHolder{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    /* gap: 12px; */
+    gap: 15px;
+    padding: 20px 15px;
+}
+
+.listItem{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.listItem div:nth-child(1){
+    width: 100%;
 }
 
 .ListItem{
      flex-basis: 1;
     
     min-width: 140px;
+    width: 100%;
 }
 
 .imgho{
@@ -32,6 +45,10 @@
     flex-basis: 1;
     background-color: brown;
     min-width: 140px;
+    width: 100%;
+    display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .pchold{

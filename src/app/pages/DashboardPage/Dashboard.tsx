@@ -19,7 +19,9 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import RateDialog from './Components/RateDialog/RateDialog';
+import { useState } from 'react';
 
 interface Props {
   /**
@@ -112,6 +114,12 @@ interface Props {
 
 export default function Dashboard(){
 
+  const navigate = useNavigate();
+   const [open, setOpen] = useState(false);
+
+   const closeDialog = ()=> {
+      setOpen(false)
+   }
     return(
         <section style={styles}>
            <div className={styles.topContainer}></div>
@@ -128,16 +136,18 @@ export default function Dashboard(){
                         <ListItemSmall />
                         <h4>Support</h4>
                         <div className={styles.SmallList}>
-                          <Link to="/chats"><ListItemXSmall  label={"Chat"} Img={messageImg}/></Link>
-                          <Link to="/chats"><ListItemXSmall label={"Rate"} Img={rateImg}/></Link>
-                          <Link to="/chats"><ListItemXSmall label={"Request"} Img={bellImg}/></Link>
+                          <div  onClick={()=>navigate("/chats")} ><ListItemXSmall label={"Chat"} Img={messageImg}/></div>
+                          <div  onClick={()=>setOpen(true)}><ListItemXSmall label={"Rate"} Img={rateImg}/></div>
+
+                          <div><ListItemXSmall label={"Request"} Img={bellImg}/></div>
                         </div>
-                        <h4>Hotel Services</h4>
+                        <h4>{open}</h4>
                         <ServiceCarousel/>
                         
                     </div>
                 </div>
            </div>
+           <RateDialog open={open} handleCloseDialog={closeDialog}/>
         </section>
     )
 }

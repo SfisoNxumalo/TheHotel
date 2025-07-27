@@ -16,7 +16,7 @@
 
 .topSection{
     /* position: fixed; */
-    background-color: yellow;
+    background-color: rgb(255, 255, 255);
     width: 100%;
     /* z-index: 100; */
     padding: 10px;

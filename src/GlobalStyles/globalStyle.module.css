@@ -1,0 +1,11 @@
+.backButton{
+    background-color: transparent;
+    outline: none;
+    border: 0;
+    font-size: 25px;
+    padding: 0;
+    padding-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center  ;
+}
