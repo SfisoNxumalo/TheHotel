@@ -1,6 +1,5 @@
-import { List, ListSubheader, ListItem, ListItemText, Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
+import { List, ListSubheader } from "@mui/material";
 import styles from './ListHolder.module.css'
-import { restaurantBanner } from "../../../../../assets/imageStore";
 import { useNavigate } from "react-router-dom";
 import { getAllProducts } from "../../../../../services/productService";
 import { useEffect, useState } from "react";

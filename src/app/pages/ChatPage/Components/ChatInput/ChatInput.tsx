@@ -1,8 +1,6 @@
-import { Button, Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
+import { Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
 import styles from './ChatInput.module.css'
-import { Send } from '@mui/icons-material';
 import { BsSend } from "react-icons/bs";
-import { FiSend } from "react-icons/fi";
 import { ImAttachment } from "react-icons/im";
 
 const VisuallyHiddenInput = styled('input')({

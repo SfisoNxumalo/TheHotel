@@ -1,10 +1,8 @@
-import { Restore, Favorite, LocationOn, Folder, Home, DinnerDining, Person, Chat } from "@mui/icons-material";
-import ShoppingCart from "@mui/icons-material/ShoppingCart";
-import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, IconButton, styled } from "@mui/material";
+import { Person } from "@mui/icons-material";
+import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
-import style from './bottomNav.modules.css'
 
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
