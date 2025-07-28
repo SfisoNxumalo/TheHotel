@@ -21,7 +21,7 @@ const VisuallyHiddenInput = styled('input')({
 export default function ChatInput(){
     return(
             <div className={styles.holder}>
-                <IconButton  aria-label="delete" component="label"
+                <IconButton sx={{fontSize:18}} aria-label="delete" component="label"
                     role={undefined}
                     tabIndex={-1} >
                         <ImAttachment />
