@@ -71,7 +71,7 @@ useEffect(()=>{
               <CssBaseline />
               <ElevationScroll {...props}>
                   <AppBar>
-                  <Toolbar style={{paddingLeft: '5px'}}>
+                  <Toolbar style={{display:'flex', gap:'10px', paddingLeft: '5px'}}>
                     <ListItemAvatar style={{display:'flex'}}>
                       <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -86,11 +86,12 @@ useEffect(()=>{
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
                       { messages.map((message, index) => 
-                                <>
-                                {message.guid == loggedInUser ? 
-                                  <RightChatItem key={message.id} message={message} /> : 
-                                  <LeftChatItem key={message.id} message={message} />} 
-                                </>
+                                <div key={message.id}> {message.guid == loggedInUser ? 
+                                  <RightChatItem  message={message} /> : 
+                                  <LeftChatItem  message={message} />}
+                                </div>
+                               
+                                
                           )}
                           
                   </List>

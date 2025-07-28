@@ -1,13 +1,38 @@
-import { Fab, TextareaAutosize } from '@mui/material';
+import { Button, Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
 import styles from './ChatInput.module.css'
 import { Send } from '@mui/icons-material';
 import { BsSend } from "react-icons/bs";
 import { FiSend } from "react-icons/fi";
 import { ImAttachment } from "react-icons/im";
+
+const VisuallyHiddenInput = styled('input')({
+  clip: 'rect(0 0 0 0)',
+  clipPath: 'inset(50%)',
+  height: 1,
+  overflow: 'hidden',
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
+  whiteSpace: 'nowrap',
+  width: 1,
+});
+
+
 export default function ChatInput(){
     return(
             <div className={styles.holder}>
-                <button  className={styles.MediaButton}><ImAttachment /></button>
+                <IconButton  aria-label="delete" component="label"
+                    role={undefined}
+                    tabIndex={-1} >
+                        <ImAttachment />
+                        <VisuallyHiddenInput
+                        // className={styles.MediaButton}
+                            type="file"
+                            onChange={(event) => console.log(event.target.files)}
+                            multiple
+                        />
+                </IconButton>
+                
                 <div className={styles.inputs}>
                 <TextareaAutosize className={styles.TextareaAutosize}
                     maxRows={3}
