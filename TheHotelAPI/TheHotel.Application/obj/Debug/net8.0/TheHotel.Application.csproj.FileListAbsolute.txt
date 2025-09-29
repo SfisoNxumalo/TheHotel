@@ -13,3 +13,19 @@ C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\T
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\refint\TheHotel.Application.dll
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.pdb
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\ref\TheHotel.Application.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Application.deps.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Application.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Application.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Domain.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Domain.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.csproj.AssemblyReference.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.AssemblyInfoInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.AssemblyInfo.cs
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.csproj.CoreCompileInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.sourcelink.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.A9F85CCF.Up2Date
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\refint\TheHotel.Application.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\ref\TheHotel.Application.dll
