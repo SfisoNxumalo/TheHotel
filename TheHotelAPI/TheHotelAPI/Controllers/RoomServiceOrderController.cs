@@ -35,5 +35,12 @@ namespace TheHotelAPI.Controllers
             await _orderService.UpdateOrderStatusAsync(orderId, status);
             return NoContent();
         }
+
+        [HttpGet("menu")]
+        public async Task<IActionResult> GetRoomServiceMenu()
+        {
+            var menu = await _orderService.getMenu();
+            return Ok(menu);
+        }
     }
 }

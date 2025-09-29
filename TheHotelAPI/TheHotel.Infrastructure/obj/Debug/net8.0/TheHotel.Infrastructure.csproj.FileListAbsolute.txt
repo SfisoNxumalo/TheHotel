@@ -15,3 +15,21 @@ C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.pdb
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.genruntimeconfig.cache
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\ref\TheHotel.Infrastructure.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Infrastructure.deps.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Infrastructure.runtimeconfig.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Infrastructure.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Infrastructure.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Domain.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\bin\Debug\net8.0\TheHotel.Domain.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.AssemblyInfo.cs
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.sourcelink.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.458F03C5.Up2Date
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\refint\TheHotel.Infrastructure.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.pdb
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\TheHotel.Infrastructure.genruntimeconfig.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Infrastructure\obj\Debug\net8.0\ref\TheHotel.Infrastructure.dll
