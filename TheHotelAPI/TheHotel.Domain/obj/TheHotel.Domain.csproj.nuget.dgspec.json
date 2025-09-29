@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {}
+    "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {
+    "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj",
         "projectName": "TheHotel.Domain",
-        "projectPath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj",
+        "projectPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj",
         "packagesPath": "C:\\Users\\Sifiso\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\obj\\",
+        "outputPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
