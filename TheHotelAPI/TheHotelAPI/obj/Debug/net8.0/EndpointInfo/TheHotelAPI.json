@@ -1,0 +1,843 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "TheHotelAPI",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Booking": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Booking"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Booking/{id}": {
+      "get": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BookingEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Booking"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message/booking/{bookingId}": {
+      "get": {
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/booking/{bookingId}": {
+      "get": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "parameters": [
+          {
+            "name": "bookingId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder": {
+      "post": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/{orderId}/status": {
+      "patch": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BookingEntity": {
+        "required": [
+          "checkInDate",
+          "checkOutDate",
+          "roomId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "roomId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "checkInDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "checkOutDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
+          },
+          "room": {
+            "$ref": "#/components/schemas/RoomEntity"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomServiceOrderEntity"
+            },
+            "nullable": true
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DeviceEntity": {
+        "required": [
+          "deviceUUID"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deviceUUID": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "roomId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "room": {
+            "$ref": "#/components/schemas/RoomEntity"
+          },
+          "orders": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomServiceOrderEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MessageEntity": {
+        "required": [
+          "messageText",
+          "senderUserId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "bookingId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "senderType": {
+            "type": "string",
+            "nullable": true
+          },
+          "senderUserId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "senderStaffId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "messageText": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "booking": {
+            "$ref": "#/components/schemas/BookingEntity"
+          },
+          "senderUser": {
+            "$ref": "#/components/schemas/UserEntity"
+          },
+          "senderStaff": {
+            "$ref": "#/components/schemas/StaffEntity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomEntity": {
+        "required": [
+          "roomNumber",
+          "roomType",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "roomNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "roomType": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "device": {
+            "$ref": "#/components/schemas/DeviceEntity"
+          },
+          "bookings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomServiceMenuEntity": {
+        "required": [
+          "available",
+          "description",
+          "itemName",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "itemName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "available": {
+            "type": "boolean"
+          },
+          "orderItems": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomServiceOrderItemEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomServiceOrderEntity": {
+        "required": [
+          "bookingId",
+          "orderId",
+          "status"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bookingId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "booking": {
+            "$ref": "#/components/schemas/BookingEntity"
+          },
+          "device": {
+            "$ref": "#/components/schemas/DeviceEntity"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RoomServiceOrderItemEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoomServiceOrderItemEntity": {
+        "required": [
+          "itemId",
+          "orderId",
+          "price",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "order": {
+            "$ref": "#/components/schemas/RoomServiceOrderEntity"
+          },
+          "item": {
+            "$ref": "#/components/schemas/RoomServiceMenuEntity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StaffEntity": {
+        "required": [
+          "email",
+          "fullName",
+          "phoneNumber",
+          "role"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserEntity": {
+        "required": [
+          "email",
+          "fullName",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "bookings": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BookingEntity"
+            },
+            "nullable": true
+          },
+          "messages": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MessageEntity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
+}
