@@ -482,3 +482,18 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Ignore NuGet packages
+*.nuget.props
+*.nuget.targets
+*.lock
+*/packages/*
+!**/packages/*.config
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore .NET Core files
+bin/
+obj/

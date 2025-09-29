@@ -23,5 +23,14 @@ namespace TheHotel.Infrastructure.Repositories
                 .OrderByDescending(o => o.CreatedDate)
                 .ToListAsync();
         }
+
+
+        public async Task<RoomServiceOrderEntity?> GetOrderWithItemsAsync(Guid orderId)
+        {
+            return await _context.RoomServiceOrders
+                .Include(o => o.Items)
+                    .ThenInclude(i => i.Item)
+                .FirstOrDefaultAsync(o => o.Id == orderId);
+        }
     }
 }
