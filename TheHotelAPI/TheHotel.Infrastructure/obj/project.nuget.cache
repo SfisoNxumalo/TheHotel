@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hAk78dzdk9U=",
+  "dgSpecHash": "oyEHTWV57Ho=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sifiso\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

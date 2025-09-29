@@ -80,11 +80,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Application\\TheHotel.Application.csproj",
+      "projectUniqueName": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\TheHotel.Application.csproj",
       "projectName": "TheHotel.Application",
-      "projectPath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Application\\TheHotel.Application.csproj",
+      "projectPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\TheHotel.Application.csproj",
       "packagesPath": "C:\\Users\\Sifiso\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Application\\obj\\",
+      "outputPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -105,8 +105,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {
-              "projectPath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj"
+            "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj": {
+              "projectPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\TheHotel.Domain.csproj"
             }
           }
         }
