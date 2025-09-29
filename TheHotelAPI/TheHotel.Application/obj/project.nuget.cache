@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KI2Hw2P0WoQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Sifiso\\source\\repos\\TheHotelAPI\\TheHotel.Application\\TheHotel.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.9\\microsoft.extensions.dependencyinjection.abstractions.9.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}
