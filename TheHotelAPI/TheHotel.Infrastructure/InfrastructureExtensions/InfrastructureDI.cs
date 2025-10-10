@@ -13,6 +13,7 @@ namespace TheHotel.Infrastructure.Extension
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IRoomServiceOrderRepository, RoomServiceOrderRepository>();
+            services.AddScoped<IRoomServiceMenuRepository, RoomServiceMenuRepository>();
 
             return services;
         }

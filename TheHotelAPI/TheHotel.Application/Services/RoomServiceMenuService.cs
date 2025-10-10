@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheHotel.Application.Interfaces;
+﻿using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
 
@@ -38,7 +34,7 @@ namespace TheHotel.Application.Services
             return existing;
         }
 
-        public async Task<IEnumerable<RoomServiceMenuEntity>> GetMenuAsync()
+        public async Task<IEnumerable<MenuItemDTO>> GetMenuAsync()
         {
             return await _menuRepo.GetAvailableItemsAsync();
         }

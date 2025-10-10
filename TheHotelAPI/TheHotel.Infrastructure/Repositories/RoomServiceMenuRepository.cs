@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
 using TheHotel.Infrastructure.DatabaseContext;
@@ -14,10 +15,18 @@ namespace TheHotel.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<RoomServiceMenuEntity>> GetAvailableItemsAsync()
+        public async Task<IEnumerable<MenuItemDTO>> GetAvailableItemsAsync()
         {
             return await _context.RoomServiceMenu
                 .Where(m => m.Available)
+                .Select(item => new MenuItemDTO
+                {
+                    Id = item.Id,
+                    ItemName = item.ItemName,
+                    Price = item.Price,
+                    Available = item.Available,
+
+                })
                 .ToListAsync();
         }
     }

@@ -12,6 +12,15 @@ namespace TheHotelAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend",
+                    policy => policy
+                        .WithOrigins("http://localhost:5173", "")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -19,7 +28,10 @@ namespace TheHotelAPI
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            //Add DI for Infrastructure layer
             builder.Services.AddInfrastructureDI();
+
+            //Add DI for Service Layer
             builder.Services.AddServiceDI();
 
             builder.Services.AddDbContext<HotelContext>(options =>
@@ -41,6 +53,7 @@ namespace TheHotelAPI
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
+            app.UseCors("AllowFrontend");
 
 
             app.MapControllers();
