@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 
 namespace TheHotelAPI.Controllers
@@ -17,7 +18,9 @@ namespace TheHotelAPI.Controllers
             _menuService = menuService;
         }
 
+
         [HttpGet("menu")]
+        [ProducesResponseType(200, Type=typeof(MenuItemDTO))]
         public async Task<IActionResult> GetMenu()
         {
             var menu = await _menuService.GetMenuAsync();

@@ -13,6 +13,7 @@ namespace TheHotel.Application.ServiceExtensions
             services.AddScoped<IBookingService, BookingService>();
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IRoomServiceOrderService, RoomServiceOrderService>();
+            services.AddScoped<IRoomServiceMenuService, RoomServiceMenuService>();
             return services;
         }
     }

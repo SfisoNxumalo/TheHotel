@@ -337,7 +337,6 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelA
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfoInputs.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfo.cs
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.CoreCompileInputs.cache
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.sourcelink.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\scopedcss\bundle\TheHotelAPI.styles.css
