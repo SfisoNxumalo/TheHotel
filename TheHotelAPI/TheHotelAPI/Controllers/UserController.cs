@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs.UserDTO;
 using TheHotel.Domain.Entities;
 
 namespace TheHotelAPI.Controllers
@@ -31,7 +32,7 @@ namespace TheHotelAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] UserEntity user)
+        public async Task<IActionResult> AddUser([FromBody] AddUserDTO user)
         {
             var newUser = await _userService.AddUserAsync(user);
             return CreatedAtAction(nameof(GetUser), new { id = newUser.Id }, newUser);

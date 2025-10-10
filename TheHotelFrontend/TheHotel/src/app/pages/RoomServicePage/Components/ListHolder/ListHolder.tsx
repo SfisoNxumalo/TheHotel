@@ -1,7 +1,7 @@
 import { List, ListSubheader } from "@mui/material";
 import styles from './ListHolder.module.css'
 import { useNavigate } from "react-router-dom";
-import { getAllProducts } from "../../../../../services/productService";
+import { useFetchProducts } from "../../../../../services/productService";
 import { useEffect, useState } from "react";
 import { Product } from "../../../../../Interfaces/products";
 import { MdAddShoppingCart } from "react-icons/md";
@@ -9,14 +9,29 @@ import { MdAddShoppingCart } from "react-icons/md";
 export default function ListHolder(){
 const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg/250px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg'
   const [products, setProducts] = useState<Product[]>([]);
+const navigate = useNavigate();
 
+const {data:allProducts, isSuccess} = useFetchProducts();
+
+  if(isSuccess){
+    // setProducts(allProducts)
+    
+    
+  }
+// console.log(allProducts);
  useEffect(()=>{
-  getAllProducts().then((res) => {
-    setProducts(res.data);
-  });
-  },[])
+//   // getAllProducts().then((res) => {
+//   //   setProducts(res.data);
+//   // });
 
-    const navigate = useNavigate();
+  if(isSuccess){
+    setProducts(allProducts)
+    console.log("d");
+    
+  }
+  },[isSuccess])
+
+    
     return (
         <List
       sx={{
@@ -41,12 +56,12 @@ const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Me
                       <label className={styles.promo}>Out of Stock</label>
                       <div className={styles.menuItem2}>
 
-                          <div style={{backgroundImage:`url(${product.image}`}} className={styles.imgho}>
+                          <div style={{backgroundImage:`url(${img}`}} className={styles.imgho}>
                               {/* <img className={styles.mainlogo2} src={restaurantBanner}/> */}
                           </div>
                           
                           <div className={styles.prodtext}>
-                              <label>{product.title}</label>
+                              <label>{product.itemName}</label>
 
                               <div className={styles.pchold}>
                                   <div className={styles.pr}>
