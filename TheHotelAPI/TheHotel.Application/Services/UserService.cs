@@ -1,4 +1,5 @@
 ﻿using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs.UserDTO;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
 
@@ -22,10 +23,15 @@ namespace TheHotel.Application.Services
         {
           return await _userRepository.GetByIdAsync(id);
         }
-        public async Task<UserEntity> AddUserAsync(UserEntity user)
+        public async Task<UserEntity> AddUserAsync(AddUserDTO user)
         {
-           await _userRepository.AddAsync(user);
-            return user;
+            var newUser = new UserEntity
+            {
+                FullName = user.FullName,
+            };
+
+           await _userRepository.AddAsync(newUser);
+            return newUser;
         }
         public async Task UpdateUserAsync(UserEntity user)
         {
