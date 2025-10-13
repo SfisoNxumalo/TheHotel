@@ -28,6 +28,8 @@ namespace TheHotel.Application.Services
             var newUser = new UserEntity
             {
                 FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
             };
 
            await _userRepository.AddAsync(newUser);

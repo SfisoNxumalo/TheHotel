@@ -240,7 +240,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "TheHotel.Domain.Entities.UserEntity",
+        "Type": "TheHotel.Domain.DTOs.UserDTO.AddUserDTO",
         "IsRequired": true
       }
     ],

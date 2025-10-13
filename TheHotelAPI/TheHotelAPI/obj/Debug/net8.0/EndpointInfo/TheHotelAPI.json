@@ -387,17 +387,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             }
           }
@@ -496,6 +496,29 @@
   },
   "components": {
     "schemas": {
+      "AddUserDTO": {
+        "required": [
+          "email",
+          "fullName",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "BookingEntity": {
         "required": [
           "checkInDate",

@@ -5,9 +5,6 @@ namespace TheHotel.Domain.Entities
     public class RoomServiceOrderEntity : BaseEntity
     {
         [Required]
-        public Guid OrderId { get; set; }
-
-        [Required]
         public Guid BookingId { get; set; }
 
 

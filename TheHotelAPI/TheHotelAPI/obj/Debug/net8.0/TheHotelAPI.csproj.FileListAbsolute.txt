@@ -356,3 +356,4 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\refint\Th
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.genruntimeconfig.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\ref\TheHotelAPI.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs
