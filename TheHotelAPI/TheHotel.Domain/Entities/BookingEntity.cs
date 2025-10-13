@@ -7,6 +7,8 @@ namespace TheHotel.Domain.Entities
         [Required]
         public Guid UserId { get; set; }
 
+        public required Guid? DeviceId { get; set; }
+
         [Required]
         public Guid RoomId { get; set; }
 
@@ -19,6 +21,7 @@ namespace TheHotel.Domain.Entities
 
         public UserEntity User { get; set; } = null!;
         public RoomEntity Room { get; set; } = null!;
+        public DeviceEntity? Device { get; set; } = null!;
         public ICollection<RoomServiceOrderEntity> Orders { get; set; } = new List<RoomServiceOrderEntity>();
         public ICollection<MessageEntity> Messages { get; set; } = new List<MessageEntity>();
     }

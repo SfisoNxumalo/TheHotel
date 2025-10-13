@@ -82,11 +82,14 @@ namespace TheHotel.Infrastructure.Seeding
             foreach (var user in users)
             {
                 var room = _faker.PickRandom(rooms);
+                var device = _faker.PickRandom(devices);
                 var booking = new BookingEntity
                 {
                     Id = Guid.NewGuid(),
                     User = user,
                     UserId = user.Id,
+                    DeviceId = device.Id,
+                    Device = device,
                     Room = room,
                     RoomId = room.Id,
                     CheckInDate = DateTime.UtcNow.AddDays(-_faker.Random.Int(1, 5)),
@@ -124,10 +127,10 @@ namespace TheHotel.Infrastructure.Seeding
                         Id = Guid.NewGuid(),
                         Booking = booking,
                         BookingId = booking.Id,
-                        Device = booking.Room.Device!,
-                        DeviceId = booking.Room.Device!.Id,
                         //OrderTime = DateTime.UtcNow.AddHours(-_faker.Random.Int(1, 10)),
-                        Status = "Pending"
+                        Status = "Pending",
+                        Items = new List<RoomServiceOrderItemEntity>() { }
+                      
                     };
                     orders.Add(order);
 
