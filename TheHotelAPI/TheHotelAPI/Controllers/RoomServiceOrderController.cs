@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
-using TheHotel.Domain.Entities;
+using TheHotel.Domain.DTOs.RoomServiceOrder;
 
 namespace TheHotelAPI.Controllers
 {
@@ -23,7 +23,7 @@ namespace TheHotelAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PlaceOrder([FromBody] RoomServiceOrderEntity order)
+        public async Task<IActionResult> PlaceOrder([FromBody] OrderRoomServiceDTO order)
         {
             var created = await _orderService.PlaceOrderAsync(order);
             return CreatedAtAction(nameof(GetOrdersForBooking), new { bookingId = order.BookingId }, created);
