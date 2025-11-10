@@ -6,4 +6,4 @@
 
 export const baseURL = 'https://localhost:7114/api/'
 export const productsEndpoint = `RoomService/menu`
-export const MessageEndpoint = `messages.json`
+export const MessageEndpoint = `/api/Message`
