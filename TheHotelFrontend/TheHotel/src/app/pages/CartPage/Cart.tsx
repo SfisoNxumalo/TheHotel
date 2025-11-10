@@ -1,10 +1,12 @@
-import { Card, Box, CardContent, Typography, IconButton, CardMedia } from "@mui/material";
+import { Card, Box, CardContent, Typography, IconButton, CardMedia, Button, Grid } from "@mui/material";
 import { useTheme } from "styled-components";
 import { restaurantBanner } from "../../../assets/imageStore";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import styles from './Cart.module.css'
 import { useNavigate } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
+import { FaPlus } from "react-icons/fa6";
+import { TiMinus } from "react-icons/ti";
 
 export default function Cart(){
 const navigate = useNavigate();
@@ -23,16 +25,14 @@ const navigate = useNavigate();
           <Typography component="div" variant="h5">
             Beef
           </Typography>
-          <Typography
-            variant="subtitle1"
-            component="div"
-            sx={{ color: 'text.secondary' }}
-          >
-            Quantity: 5
-          </Typography>
         </CardContent>
-        <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          bn
+        <Box sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>
+          
+          <div className={styles.cartButtonHolder}> 
+                <button className={styles.incrementButton}><TiMinus/></button>
+                  <label>12</label>
+                <button className={styles.incrementButton}><FaPlus/></button>
+            </div>
         </Box>
       </Box>
       <CardMedia
@@ -43,11 +43,18 @@ const navigate = useNavigate();
       />
     </Card>
 </div>
-    
-
-    <hr/>
-
+<hr/>
+<Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+  <Grid size={6}>
     <label>SubTotal:</label> <label>R2000</label>
+  </Grid>
+  <Grid justifyContent={'right'} display={'flex'} size={6}>
+    <Button variant="contained">Checkout</Button>
+  </Grid>
+  
+</Grid>
+
+
 </div>
 
 
