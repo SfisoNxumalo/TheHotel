@@ -13,10 +13,10 @@ export default function RightChatItem({message}:RightChatItemProps){
         <div className={styles.holder}>
             <div className={styles.MessageHolder}>
                 <p>
-                    {message.message}
+                    {message.messageText}
                 </p>
                 <div className={styles.metaData}>
-                    <label>{(String(message.date).substring(11, 16)) }</label>
+                    <label>{(String(message.createdDate).substring(11, 16)) }</label>
                     <label>&#x2713;</label>
                 </div>
                 
