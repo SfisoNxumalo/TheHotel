@@ -177,6 +177,14 @@ C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\refint\The
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.pdb
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.genruntimeconfig.cache
 C:\Users\Sifiso\source\repos\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\ref\TheHotelAPI.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.AssemblyReference.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfoInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfo.cs
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.CoreCompileInputs.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.sourcelink.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotelAPI.staticwebassets.endpoints.json
@@ -332,23 +340,15 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Application.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Infrastructure.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Domain.pdb
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.AssemblyReference.cache
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfoInputs.cache
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.AssemblyInfo.cs
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.CoreCompileInputs.cache
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.sourcelink.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\scopedcss\bundle\TheHotelAPI.styles.css
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.build.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets\msbuild.TheHotelAPI.Microsoft.AspNetCore.StaticWebAssets.props
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets\msbuild.TheHotelAPI.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets\msbuild.build.TheHotelAPI.props
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.TheHotelAPI.props
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.TheHotelAPI.props
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.pack.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotel.B255FFF2.Up2Date
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.dll
@@ -356,4 +356,3 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\refint\Th
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.genruntimeconfig.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\ref\TheHotelAPI.dll
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs

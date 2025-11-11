@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
-using TheHotel.Domain.Entities;
+using TheHotel.Domain.DTOs.NewFolder;
 
 namespace TheHotelAPI.Controllers
 {
@@ -23,10 +23,10 @@ namespace TheHotelAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendMessage([FromBody] MessageEntity message)
+        public async Task<IActionResult> SendMessage([FromBody] SendMessageDTO message)
         {
             var created = await _messageService.SendMessageAsync(message);
-            return CreatedAtAction(nameof(GetMessagesForBooking), new { bookingId = message.BookingId }, created);
+            return CreatedAtAction(nameof(GetMessagesForBooking), new { bookingId = created.Id }, created);
         }
     }
 }

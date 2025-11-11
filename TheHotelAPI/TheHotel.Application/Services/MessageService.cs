@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheHotel.Application.Interfaces;
+﻿using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs.NewFolder;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
 
@@ -23,10 +19,19 @@ namespace TheHotel.Application.Services
             return await _messageRepository.GetMessagesByBookingIdAsync(bookingId);
         }
 
-        public async Task<MessageEntity> SendMessageAsync(MessageEntity message)
+        public async Task<MessageEntity> SendMessageAsync(SendMessageDTO message)
         {
-            await _messageRepository.AddAsync(message);
-            return message;
+
+            var newMessage = new MessageEntity
+            {
+                SenderUserId = message.SenderUserId,
+                MessageText = message.MessageText,
+                SenderStaffId = message.ReceiverUserId,
+
+            };
+
+            await _messageRepository.AddAsync(newMessage);
+            return newMessage;
         }
     }
 }

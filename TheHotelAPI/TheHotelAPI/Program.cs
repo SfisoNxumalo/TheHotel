@@ -2,7 +2,6 @@ using Microsoft.EntityFrameworkCore;
 using TheHotel.Application.ServiceExtensions;
 using TheHotel.Infrastructure.DatabaseContext;
 using TheHotel.Infrastructure.Extension;
-using TheHotel.Infrastructure.Seeding;
 
 namespace TheHotelAPI
 {
@@ -46,9 +45,9 @@ namespace TheHotelAPI
                 app.UseSwaggerUI();
             }
 
-            using var scope = app.Services.CreateScope();
-            var seeder = new DatabaseSeeder(scope.ServiceProvider.GetRequiredService<HotelContext>());
-             seeder.SeedAsync();
+            //using var scope = app.Services.CreateScope();
+            //var seeder = new DatabaseSeeder(scope.ServiceProvider.GetRequiredService<HotelContext>());
+            // seeder.SeedAsync();
 
             app.UseHttpsRedirection();
 

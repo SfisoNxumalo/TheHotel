@@ -177,7 +177,7 @@
     "Parameters": [
       {
         "Name": "order",
-        "Type": "TheHotel.Domain.Entities.RoomServiceOrderEntity",
+        "Type": "TheHotel.Domain.DTOs.RoomServiceOrder.OrderRoomServiceDTO",
         "IsRequired": true
       }
     ],

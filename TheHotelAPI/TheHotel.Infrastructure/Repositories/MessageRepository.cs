@@ -19,7 +19,7 @@ namespace TheHotel.Infrastructure.Repositories
             return await _context.Messages
                         .Include(m => m.SenderUser)
                         .Include(m => m.SenderStaff)
-                        .Where(m => m.BookingId == bookingId)
+                        //.Where(m => m.BookingId == bookingId)
                         .OrderBy(m => m.CreatedDate)
                         .ToListAsync();
         }
