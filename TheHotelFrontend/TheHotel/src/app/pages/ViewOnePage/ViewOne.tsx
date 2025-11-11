@@ -1,13 +1,17 @@
 import { AppBar, Box, Button, Container, CssBaseline, IconButton, TextField, Toolbar, Typography, useScrollTrigger } from '@mui/material';
 import styles from './ViewOne.module.css'
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { GoArrowLeft } from 'react-icons/go';
 import { FaPlus } from "react-icons/fa6";
 import Stack from '@mui/material/Stack';
 import { TiMinus } from "react-icons/ti";
+import { getMenuItemById } from '../../../services/productService';
+import { Product } from '../../../Interfaces/products';
+import { useCartStore } from '../../../stores/cartStore';
+import { CartItem } from '../../../Interfaces/CartItem';
 
 interface Props {
   /**
@@ -39,8 +43,37 @@ function ElevationScroll(props: Props) {
 
 
 export default function ViewOne(props:Props){
-// console.log(...props);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+   const addItem = useCartStore((state) => state.addItem);
+
+  const [menuItem, setMenuItem] = useState<Product>();
+  const [note, setNote] = useState<string>("");
+
+
+  const { id } = useParams<{ id: string }>();
+
+  const handleAddToCart = () => {
+
+    if(!menuItem?.id) return
+    const item: CartItem = { ...menuItem, quantity: 1, note };
+    addItem(item);
+  };
+
+  useEffect(() => {
+    const getData = async () => {
+
+      if(!id) return
+
+      const res = await getMenuItemById(id);
+
+      if(res.status == 200){
+        setMenuItem(res.data)
+      }
+    }
+    getData()
+  },[])
+
+    
     return (
 <>
             <div className={styles.container}>
@@ -53,9 +86,8 @@ export default function ViewOne(props:Props){
           <Toolbar style={{paddingLeft: '5px'}}>
             <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
             <Typography variant="h6" component="div">
-              Chicken and pizza
+              {menuItem?.itemName}
             </Typography>
-            
           </Toolbar>
           
         </AppBar>
@@ -64,29 +96,28 @@ export default function ViewOne(props:Props){
       <Container>
         <div className={styles.contentHolder}>
 
-            <h4>R1000.00</h4>
+            <h4>R{menuItem?.price}</h4>
             
-
             <h6>Description:</h6>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem nostrum ratione sint corporis ex, recusandae, ut doloremque itaque minima cum, natus molestias doloribus molestiae dolore tenetur id! Itaque, quibusdam.</p>
+            <p>{menuItem?.description ?? 'No Description'}</p>
         
-            <h6>Ingridients:</h6>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem nostrum ratione sint corporis ex, recusandae, ut doloremque itaque minima cum, natus molestias doloribus molestiae dolore tenetur id! Itaque, quibusdam.</p>
+            {/* <h6>Ingridients:</h6>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi autem nostrum ratione sint corporis ex, recusandae, ut doloremque itaque minima cum, natus molestias doloribus molestiae dolore tenetur id! Itaque, quibusdam.</p> */}
 
-            <label>Notes:</label>
+            <h6>Notes:</h6>
             <TextField
               id="outlined-textarea"
               label=""
               placeholder="Add any extra notes"
               multiline
               size='small'
+              onChange={(event)=> {
+                  setNote(event.target.value);
+              }}
             />
 
             <div className={styles.cartButtonHolder}> 
-                <button className={styles.incrementButton}><TiMinus/></button>
-                  <label>12</label>
-                <button className={styles.incrementButton}><FaPlus/></button>
-                <Button variant="contained">Add to cart</Button>
+                <Button onClick={handleAddToCart} variant="contained">Add to cart</Button>
             </div>
         </div>     
     </Container>
