@@ -46,7 +46,7 @@ export default function RoomService(props:Props){
           <Toolbar style={{backgroundColor:"green", padding:"0px"}}>
             <div className={styles.topSection}>
             {/* <img className={styles.Banner} src={retaurantBanner}/> */}
-            <h2>Fake restaurant  </h2>
+            <h2>Fake restaurant</h2>
             <b>4.5★</b>
             <b>08:00 - 21:00</b>
             {/* <SearchBar /> */}
