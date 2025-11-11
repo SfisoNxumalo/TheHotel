@@ -6,7 +6,7 @@ import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
-import { getAllMessages } from "../../../services/messageService";
+import { getAllMessages, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 interface Props {
@@ -39,8 +39,9 @@ function ElevationScroll(props: Props) {
 
 export default function Chats(props: Props){
 
-const loggedInUser = 'user-001';
-
+const loggedInUser = 'FFB83527-8FC9-46DA-AC78-1FF52DFD592E';
+   const [isSending, setIsSending] = useState<boolean>(false);
+  const [messages, setMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
@@ -49,19 +50,17 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
     bottomRef.current?.scrollIntoView();
   };
 
-    const [messages, setMessage] = useState<Message[]>([]);
+    const {data, isSuccess} = useFetchMessages(loggedInUser)
   
-   useEffect(()=>{
-    getAllMessages().then((res) => {
-      setMessage(res.data);
-      console.log(res.data);
-      
-    });
-    },[]);
+    useEffect(()=>{
+      if(isSuccess){
+        setMessage(data);
+        console.log(data);
+      }
+    },[data]);
 
 useEffect(()=>{
   scrollToBottom();
-  
 },[])
 
     return (
@@ -85,12 +84,10 @@ useEffect(()=>{
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
                       { messages.map((message, index) => 
-                                <div key={message.id}> {message.guid == loggedInUser ? 
+                                <div key={message.id}> {message.userId.toLowerCase() == loggedInUser.toLowerCase() ? 
                                   <RightChatItem  message={message} /> : 
                                   <LeftChatItem  message={message} />}
-                                </div>
-                               
-                                
+                                </div>  
                           )}
                           
                   </List>
@@ -98,7 +95,7 @@ useEffect(()=>{
               </Container>
               
         </React.Fragment>
-        <ChatInput/>
+        <ChatInput setMessage={setMessage} messages={messages} setIsSending={setIsSending}/>
 
 
       </div>
