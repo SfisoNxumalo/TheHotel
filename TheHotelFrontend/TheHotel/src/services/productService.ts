@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { productsEndpoint } from "../endpoints/endpoints";
+import { getMenuItemByIdEndpoint, productsEndpoint } from "../endpoints/endpoints";
 import { httpService } from "../utils/httpService";
 import { Product } from "../Interfaces/products";
 
@@ -21,4 +21,15 @@ export const useFetchProducts = (): UseQueryResult<Product[]> => {
       staleTime: 120 * 60 * 1000
 
    })
+}
+
+export async function getMenuItemById(id:string) {
+   try{
+      const result = await httpService.get(getMenuItemByIdEndpoint(id));
+      return result;
+   }
+   catch(error){
+      console.error('Failed to fetch product:', error)
+      throw error; // rethrow if you want the caller to handle it
+   }
 }
