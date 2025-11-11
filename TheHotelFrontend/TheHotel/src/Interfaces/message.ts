@@ -6,13 +6,8 @@ export interface Attachment {
 
 export interface Message {
   id: number;
-  conversationId: string;
-  guid: string; // user ID
-  name: string;
-  message: string;
-  type: "sent" | "received";
-  date: string;
-  status: "sent" | "delivered" | "read" | "failed" | "typing";
-  attachments: Attachment[];
-  isTyping?: boolean;
+  userId: string;
+  staffId: string;
+  messageText: string;
+  createdDate: string;
 }
