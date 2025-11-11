@@ -316,17 +316,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             }
           }
@@ -523,6 +523,7 @@
         "required": [
           "checkInDate",
           "checkOutDate",
+          "deviceId",
           "roomId",
           "userId"
         ],
@@ -543,6 +544,11 @@
           "userId": {
             "type": "string",
             "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           },
           "roomId": {
             "type": "string",
@@ -565,6 +571,9 @@
           },
           "room": {
             "$ref": "#/components/schemas/RoomEntity"
+          },
+          "device": {
+            "$ref": "#/components/schemas/DeviceEntity"
           },
           "orders": {
             "type": "array",
@@ -706,6 +715,44 @@
         },
         "additionalProperties": false
       },
+      "OrderItemDTO": {
+        "required": [
+          "itemId",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "itemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderRoomServiceDTO": {
+        "required": [
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemDTO"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "RoomEntity": {
         "required": [
           "roomNumber",
@@ -800,7 +847,7 @@
       "RoomServiceOrderEntity": {
         "required": [
           "bookingId",
-          "orderId",
+          "items",
           "status"
         ],
         "type": "object",
@@ -817,18 +864,9 @@
             "type": "string",
             "format": "date-time"
           },
-          "orderId": {
-            "type": "string",
-            "format": "uuid"
-          },
           "bookingId": {
             "type": "string",
             "format": "uuid"
-          },
-          "deviceId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
           },
           "status": {
             "minLength": 1,
@@ -836,9 +874,6 @@
           },
           "booking": {
             "$ref": "#/components/schemas/BookingEntity"
-          },
-          "device": {
-            "$ref": "#/components/schemas/DeviceEntity"
           },
           "items": {
             "type": "array",

@@ -26,7 +26,7 @@ namespace TheHotelAPI.Controllers
         public async Task<IActionResult> PlaceOrder([FromBody] OrderRoomServiceDTO order)
         {
             var created = await _orderService.PlaceOrderAsync(order);
-            return CreatedAtAction(nameof(GetOrdersForBooking), new { bookingId = order.BookingId }, created);
+            return CreatedAtAction(nameof(GetOrdersForBooking), new { bookingId = created.BookingId }, created);
         }
 
         [HttpPatch("{orderId:guid}/status")]
