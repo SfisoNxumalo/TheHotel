@@ -3,6 +3,7 @@ import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, styled } f
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
+import { useCartStore } from "../../stores/cartStore";
 
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -19,6 +20,7 @@ export default function BottomNav(){
 
   const navigate = useNavigate();
     const [value, setValue] = useState('/dashboard');
+    const itemCount = useCartStore((state) => state.itemCount());
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -58,7 +60,7 @@ export default function BottomNav(){
         value="Cart"
         onClick={()=>navigate("/Cart")}
         icon={
-          <StyledBadge badgeContent={1} color="secondary">
+          <StyledBadge badgeContent={itemCount} color="secondary">
             <IoCartOutline fontSize={20}/>
           </StyledBadge>
         }
