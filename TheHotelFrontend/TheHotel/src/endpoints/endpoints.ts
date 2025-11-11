@@ -5,5 +5,14 @@
 // export const MessageEndpoint = `messages.json`
 
 export const baseURL = 'https://localhost:7114/api/'
+
 export const productsEndpoint = `RoomService/menu`
-export const MessageEndpoint = `/api/Message`
+export const messageEndpoint = `Message`
+
+export function getMenuItemByIdEndpoint(menuitemId:string){
+    return `RoomService/menu/${menuitemId}`;
+}
+
+export function getMessageEndpoint(userId:string) {
+    return `Message/${userId}`
+} 
