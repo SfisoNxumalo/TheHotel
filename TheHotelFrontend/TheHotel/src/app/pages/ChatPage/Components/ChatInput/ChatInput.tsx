@@ -2,6 +2,10 @@ import { Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
 import styles from './ChatInput.module.css'
 import { BsSend } from "react-icons/bs";
 import { ImAttachment } from "react-icons/im";
+import { useState } from 'react';
+import { SendMessage } from '../../../../../Interfaces/SendMessage';
+import { sendMessage } from '../../../../../services/messageService';
+import { Message } from '../../../../../Interfaces/message';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -15,8 +19,40 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+interface chatInputProps{
+    setMessage: (message:Message[]) => void,
+    setIsSending:(sending:boolean) => void
+    messages:Message[]
+}
 
-export default function ChatInput(){
+export default function ChatInput({setMessage, setIsSending, messages}:chatInputProps){
+
+    const [typedMessage, setTypedMessage] = useState("");
+
+    const handleSendMessage = async () => {
+        if (!typedMessage.trim()) return;
+
+        const newMessage:SendMessage = {
+            messageText:typedMessage,
+            userId:'FFB83527-8FC9-46DA-AC78-1FF52DFD592E',
+            staffId:'CF509E5B-D40F-4766-B07D-5046445C63D4'
+        }
+
+        setIsSending(true)
+        
+        const response = await sendMessage(newMessage)
+
+        if(response.status == 201){
+            console.log("Send Successfully");
+            messages.push(response.data)
+            console.log(messages);
+            
+            setMessage(messages)
+        }
+
+        setIsSending(false)
+    }
+
     return(
             <div className={styles.holder}>
                 <IconButton sx={{fontSize:18}} aria-label="delete" component="label"
@@ -37,9 +73,12 @@ export default function ChatInput(){
                     aria-label="maximum height"
                     placeholder="Message"
                     defaultValue=""
+                     onChange={(event)=> {
+                        setTypedMessage(event.target.value);
+                    }}
                     style={{ width: 200 }}
                     />
-                    <Fab size="small" color="primary" aria-label="add">
+                    <Fab onClick={handleSendMessage} size="small" color="primary" aria-label="add">
                         <BsSend />
                     </Fab>
                 </div>
