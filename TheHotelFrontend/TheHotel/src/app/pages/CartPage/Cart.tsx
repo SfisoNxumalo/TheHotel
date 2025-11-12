@@ -8,6 +8,7 @@ import { GoArrowLeft } from "react-icons/go";
 import { FaPlus } from "react-icons/fa6";
 import { TiMinus } from "react-icons/ti";
 import { useCartStore } from "../../../stores/cartStore";
+import { IconTrashFilled } from '@tabler/icons-react';
 
 export default function Cart(){
 
@@ -34,18 +35,21 @@ const { items, removeItem, updateQuantity, clearCart, total } = useCartStore();
                   <Typography component="div" variant="h6">
                     {item.itemName}
                   </Typography>
+                  
                 </CardContent>
-                <Box sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1 }}>
+                
+                <Box sx={{ display: 'flex', alignItems: 'center', pl: 2, pb: 1, pr:2 }}>
                   <div  className={styles.cartButtonHolder}> 
                         <button onClick={() =>
                             updateQuantity(item.id, item.quantity - 1)
-                          } className={styles.incrementButton}><TiMinus/></button>
+                          } className={styles.incrementButton}><TiMinus color="red"/></button>
                           <label>{item.quantity}</label>
                         <button onClick={() =>
                             updateQuantity(item.id, item.quantity + 1)
                           } className={styles.incrementButton}><FaPlus/></button>
                     </div>
                     <div style={{width:'100%', height:'100%'}} onClick={()=>{navigate(`/view-one/${item.id}`)}}></div>
+                    <button onClick={() => removeItem(item.id)} className={styles.DeleteCartItem}><IconTrashFilled color="red" size={20}/></button>
                 </Box>
               </Box>
 
@@ -72,7 +76,7 @@ const { items, removeItem, updateQuantity, clearCart, total } = useCartStore();
     <label>SubTotal:</label> <label>R{total().toFixed(2)}</label>
   </Grid>
   <Grid justifyContent={'right'} display={'flex'} size={6}>
-    <Button variant="contained">Checkout</Button>
+    <Button disabled={items.length === 0} variant="contained">Checkout</Button>
   </Grid>
   
 </Grid>
