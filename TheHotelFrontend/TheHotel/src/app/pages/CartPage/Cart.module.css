@@ -1,5 +1,7 @@
 .holder{
-    padding: 0px 15px;
+    padding: 0px 10px;
+    background-color: white;
+    padding-top: 60px;
 }
 
 
@@ -49,4 +51,30 @@
 
     transform: rotateZ(30deg);
     transition: all .1s;
+}
+
+.cartTopBar{
+    display: flex;
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    top: 0;
+    padding: 0px 10px;
+}
+.cartTopBar h3{
+    margin-bottom: 10px;
+}
+
+.itemHolders{
+     padding: 0px 10px;
+}
+
+.bottomNav{
+    padding: 0px 10px;
+    padding-top: 5px;
+    /* position: absolute; */
+    bottom: 0;
+    padding-bottom: 60px;
+    position: sticky;
+    background-color: white;
 }
