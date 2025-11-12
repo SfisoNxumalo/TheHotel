@@ -4,7 +4,7 @@
 
 
 .incrementButton{
-    background-color: rgb(251, 70, 70);
+    background-color: transparent;
     display: flex;
     font-size: 16px;
     justify-content: center;
@@ -18,14 +18,16 @@
 
 .incrementButton:hover{
     background-color: red;
+    color: white;
 }
 
 .incrementButton:nth-child(3){
-    background-color: var(--app-color);
+    color: var(--app-color);
 }
 
 .incrementButton:nth-child(3):hover{
     background-color: rgb(13, 74, 204);
+    color: white;
 }
 
 .cartButtonHolder{
@@ -33,4 +35,18 @@
     flex-direction: row;
     gap: 5px;
     align-items: center;
+}
+
+.DeleteCartItem{
+    background-color: transparent;
+    padding: 1px 2px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.DeleteCartItem:hover{
+
+    transform: rotateZ(30deg);
+    transition: all .1s;
 }
