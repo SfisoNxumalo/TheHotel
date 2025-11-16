@@ -1,9 +1,4 @@
 
-// import jsonData from '../mock/products.json'
-// export const baseURL = '../mock/'
-// export const productsEndpoint = `products.json`
-// export const MessageEndpoint = `messages.json`
-
 export const baseURL = 'https://localhost:7114/api/'
 
 export const RoomServiceMenuEndpoint = `RoomService/menu`
@@ -16,4 +11,8 @@ export function getMenuItemByIdEndpoint(menuitemId:string){
 
 export function getMessageEndpoint(userId:string) {
     return `Message/${userId}`
+} 
+
+export function getOrderDetailsEndpoint(orderId:string) {
+    return `RoomServiceOrder/${orderId}`
 } 
