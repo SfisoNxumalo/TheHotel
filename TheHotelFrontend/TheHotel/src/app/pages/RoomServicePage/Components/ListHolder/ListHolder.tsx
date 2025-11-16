@@ -19,7 +19,16 @@ const addToCart = useCartStore((state) => state.addItem)
 const handleAddToCart = (menuItem:Product) => {
 
   if(!menuItem?.id) return
-  const item: CartItem = { ...menuItem, quantity: 1, note:'' };
+  
+  const item: CartItem = { 
+        id: menuItem.id,
+        itemName: menuItem.itemName,
+        price: menuItem.price,
+        quantity: 1, 
+        image: menuItem.image,
+        note:'' 
+  };
+
   addToCart(item);
 };
 
