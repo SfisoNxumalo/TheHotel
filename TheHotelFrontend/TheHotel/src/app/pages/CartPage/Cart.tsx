@@ -9,14 +9,28 @@ import { FaPlus } from "react-icons/fa6";
 import { TiMinus } from "react-icons/ti";
 import { useCartStore } from "../../../stores/cartStore";
 import { IconTrashFilled } from '@tabler/icons-react';
+import { Checkout } from "../../../Interfaces/CartItem";
+import { PlaceOrder } from "../../../services/roomServiceService";
 
 export default function Cart(){
 
 const navigate = useNavigate();
 const { items, removeItem, updateQuantity, clearCart, total } = useCartStore();
 
-const handleCheckout = () =>{
-  console.log(items);
+const handleCheckout = async () =>{
+
+  const checkoutCart: Checkout = {
+    userId: "3C9C5A01-41A2-43D5-99E8-10B7CFD508F1",
+    items: items
+  }
+  console.log(checkoutCart);
+  
+  const response = await PlaceOrder(checkoutCart);
+
+  if(response.status == 201){
+    console.log(response.data);
+    
+  }
   
 }
 
@@ -33,8 +47,8 @@ const handleCheckout = () =>{
           ) : (
             <div className={styles.itemHolders}>
               {items.map((item) => (
-                <div style={{paddingBottom: '5px', cursor:'pointer'}} >
-                  <Card key={item.id} sx={{ display: 'flex' }}>
+                <div key={item.id} style={{paddingBottom: '5px', cursor:'pointer'}} >
+                  <Card sx={{ display: 'flex' }}>
                     <Box style={{width:"100%"}} sx={{ display: 'flex', flexDirection: 'column' }}>
                       <CardContent sx={{ flex: '1 0 auto' }} onClick={()=>{navigate(`/view-one/${item.id}`)}}>
                         <Typography component="div" variant="h6">
