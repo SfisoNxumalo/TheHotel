@@ -2,7 +2,6 @@ import { Button } from "@mui/material"
 import { cookingGif } from "../../assets/imageStore"
 import styles from './styles.module.css'
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 
 export default function OrderPlacedUI(){
 const location = useLocation();
@@ -16,9 +15,9 @@ const location = useLocation();
             <div>
                 <p>Your order was received by the restuarant and will be prepared for you</p>
                 <img src={cookingGif}/>
-            </div>{orderId}
+            </div>
             
-            <Button className={styles.button} variant="contained">View Order</Button>
+            <Button onClick={()=> navigate(`/view/order/${orderId}`)} className={styles.button} variant="contained">View Order</Button>
         </div>
     )
 }
