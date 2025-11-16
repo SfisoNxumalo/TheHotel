@@ -1,0 +1,16 @@
+.main{
+    /* background-color: brown; */
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 0px 20%;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.main p{
+    text-align: center;
+    font-size: 18px;
+}
+
