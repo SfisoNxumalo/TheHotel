@@ -6,7 +6,8 @@
 
 export const baseURL = 'https://localhost:7114/api/'
 
-export const productsEndpoint = `RoomService/menu`
+export const RoomServiceMenuEndpoint = `RoomService/menu`
+export const PlaceOrderEndpoint = `RoomServiceOrder`
 export const messageEndpoint = `Message`
 
 export function getMenuItemByIdEndpoint(menuitemId:string){

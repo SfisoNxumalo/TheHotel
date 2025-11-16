@@ -8,7 +8,7 @@ import { GoArrowLeft } from 'react-icons/go';
 import { FaPlus } from "react-icons/fa6";
 import Stack from '@mui/material/Stack';
 import { TiMinus } from "react-icons/ti";
-import { getMenuItemById } from '../../../services/productService';
+import { getMenuItemById } from '../../../services/roomServiceService';
 import { Product } from '../../../Interfaces/products';
 import { useCartStore } from '../../../stores/cartStore';
 import { CartItem } from '../../../Interfaces/CartItem';
