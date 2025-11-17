@@ -29,5 +29,32 @@ namespace TheHotel.Infrastructure.Repositories
                 })
                 .ToListAsync();
         }
+
+        public async Task<IEnumerable<MenuItemDTO>> GetMenuItemsByIdsAsync(IEnumerable<Guid> MenuItemIds)
+        {
+            return await _context.RoomServiceMenu
+                .Where(p => MenuItemIds.Contains(p.Id))
+                .Select(p => new MenuItemDTO {
+                    Id = p.Id,
+                    Price = p.Price,
+                    Available = p.Available,
+                })
+                .ToListAsync();
+        }
+
+        public async Task<MenuItemDTO> GetProductById(Guid id)
+    {
+            return await _context.RoomServiceMenu
+                .Where(m => m.Available && m.Id == id)
+                .Select(item => new MenuItemDTO
+                {
+                    Id = item.Id,
+                    ItemName = item.ItemName,
+                    Price = item.Price,
+                    Available = item.Available,
+
+                })
+                .FirstOrDefaultAsync();
+        }
     }
 }
