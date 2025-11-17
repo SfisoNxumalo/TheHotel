@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { getMenuItemByIdEndpoint, getOrderDetailsEndpoint, PlaceOrderEndpoint, RoomServiceMenuEndpoint } from "../endpoints/endpoints";
+import { getMenuItemByIdEndpoint, getOrderDetailsEndpoint, getOrdersEndpoint, PlaceOrderEndpoint, RoomServiceMenuEndpoint } from "../endpoints/endpoints";
 import { httpService } from "../utils/httpService";
 import { Product } from "../Interfaces/products";
 import { Checkout } from "../Interfaces/CartItem";
@@ -54,10 +54,28 @@ export async function getOrderById(orderId:string) {
       .finally(() => {});
 }
 
-export const useFetchOrderDetails = (userId:string): UseQueryResult<OrderDetails> => {
+export const useFetchOrderDetails = (orderId:string): UseQueryResult<OrderDetails> => {
    return useQuery<OrderDetails>({
-      queryKey: ["order", userId],
-      queryFn: async (): Promise<OrderDetails> => getOrderById(userId),
+      queryKey: ["order", orderId],
+      queryFn: async (): Promise<OrderDetails> => getOrderById(orderId),
+      staleTime: 120 * 60 * 1000
+
+   })
+}
+
+export async function getAllOrdersByUserId(userId:string) {
+    
+   return await httpService.get(getOrdersEndpoint(userId))
+      .then((res) => {return res.data;}
+      )
+      .catch((err) => console.error('Failed to fetch products:', err))
+      .finally(() => {});
+}
+
+export const useFetchAllOrders = (userId:string): UseQueryResult<OrderDetails[]> => {
+   return useQuery<OrderDetails[]>({
+      queryKey: ["orders"],
+      queryFn: async (): Promise<OrderDetails[]> => getAllOrdersByUserId(userId),
       staleTime: 120 * 60 * 1000
 
    })
