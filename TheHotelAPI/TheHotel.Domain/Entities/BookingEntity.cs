@@ -23,6 +23,5 @@ namespace TheHotel.Domain.Entities
         public RoomEntity Room { get; set; } = null!;
         public DeviceEntity? Device { get; set; } = null!;
         public ICollection<RoomServiceOrderEntity> Orders { get; set; } = new List<RoomServiceOrderEntity>();
-        public ICollection<MessageEntity> Messages { get; set; } = new List<MessageEntity>();
     }
 }
