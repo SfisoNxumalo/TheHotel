@@ -39,9 +39,14 @@ namespace TheHotel.Application.Services
             return await _menuRepo.GetAvailableItemsAsync();
         }
 
-        public async Task<RoomServiceMenuEntity?> GetMenuItemByIdAsync(Guid id)
+        public async Task<MenuItemDTO?> GetMenuItemByIdAsync(Guid id)
         {
-            return await _menuRepo.GetByIdAsync(id);
+            return await _menuRepo.GetProductById(id);
+        }
+
+        public async Task<IEnumerable<MenuItemDTO>> GetMenuItemsByIdsAsync(IEnumerable<Guid> MenuItemIds)
+        {
+            return await _menuRepo.GetMenuItemsByIdsAsync(MenuItemIds);
         }
     }
 }
