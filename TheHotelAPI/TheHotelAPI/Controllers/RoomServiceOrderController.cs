@@ -15,18 +15,25 @@ namespace TheHotelAPI.Controllers
             _orderService = orderService;
         }
 
-        [HttpGet("booking/{bookingId:guid}")]
-        public async Task<IActionResult> GetOrdersForBooking(Guid bookingId)
+        [HttpGet("user/{userId:guid}")]
+        public async Task<IActionResult> GetOrdersByUserId(Guid userId)
         {
-            var orders = await _orderService.GetOrdersForBookingAsync(bookingId);
+            var orders = await _orderService.GetOrdersByUserIdAsync(userId);
             return Ok(orders);
+        }
+
+        [HttpGet("{orderId:guid}")]
+        public async Task<IActionResult> GetOrderById(Guid orderId)
+        {
+            var order = await _orderService.GetOrderById(orderId);
+            return Ok(order);
         }
 
         [HttpPost]
         public async Task<IActionResult> PlaceOrder([FromBody] OrderRoomServiceDTO order)
         {
             var created = await _orderService.PlaceOrderAsync(order);
-            return CreatedAtAction(nameof(GetOrdersForBooking), new { bookingId = created.BookingId }, created);
+            return CreatedAtAction(nameof(PlaceOrder), new { orderId = created });
         }
 
         [HttpPatch("{orderId:guid}/status")]
