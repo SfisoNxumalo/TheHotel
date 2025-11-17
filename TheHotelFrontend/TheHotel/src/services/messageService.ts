@@ -2,7 +2,7 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { getMessageEndpoint, messageEndpoint } from "../endpoints/endpoints";
 import { Message } from "../Interfaces/message";
 import { httpService } from "../utils/httpService";
-import { SendMessage } from "../Interfaces/SendMessage";
+import { SendNewMessage } from "../Interfaces/SendMessage";
 
 export async function getAllMessages(userId:string){
 
@@ -23,7 +23,7 @@ export const useFetchMessages = (userId:string): UseQueryResult<Message[]> => {
    })
 }
 
-export async function sendMessage(message: SendMessage) {
+export async function sendMessage(message: SendNewMessage) {
   try {
     const res = await httpService.post<Message>(messageEndpoint, message);
     return res;
