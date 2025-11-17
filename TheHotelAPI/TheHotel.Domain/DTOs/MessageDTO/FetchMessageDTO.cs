@@ -4,19 +4,19 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TheHotel.Domain.Entities;
 
-namespace TheHotel.Domain.DTOs.NewFolder
+namespace TheHotel.Domain.DTOs.MessageDTO
 {
-    public class SendMessageDTO
+    public class FetchMessageDTO
     {
-        [Required]
+        public Guid Id { get; set; }
         public Guid UserId { get; set; }
 
-        [Required]
-        public string MessageText { get; set; } = null!;
+        public string MessageText { get; set; }
 
-        [Required]
         public Guid StaffId { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
     }
 }

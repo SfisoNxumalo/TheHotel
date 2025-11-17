@@ -16,6 +16,8 @@ namespace TheHotel.Domain.Entities
         [Required]
         public decimal Price { get; set; }
 
+        public string? Note { get; set; } = "";
+
         public RoomServiceOrderEntity? Order { get; set; } = null!;
         public RoomServiceMenuEntity? Item { get; set; } = null!;
     }
