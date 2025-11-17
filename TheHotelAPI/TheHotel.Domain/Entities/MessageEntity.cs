@@ -4,15 +4,14 @@ namespace TheHotel.Domain.Entities
 {
     public class MessageEntity : BaseEntity
     {
-
         [Required]
-        public Guid SenderUserId { get; set; }
-        public Guid? SenderStaffId { get; set; }
+        public Guid UserId { get; set; }
+        public Guid StaffId { get; set; }
 
         [Required]
         public string MessageText { get; set; } = null!;
 
-        public UserEntity? SenderUser { get; set; }
-        public StaffEntity? SenderStaff { get; set; }
+        public UserEntity? User { get; set; }
+        public StaffEntity? Staff { get; set; }
     }
 }
