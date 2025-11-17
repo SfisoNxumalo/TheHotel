@@ -11,6 +11,7 @@ import Cart from './app/pages/CartPage/Cart';
 import BottomNav from './components/BottomNav/BottomNav';
 import OrderPlacedUI from './components/TempUIs/OrderPlacedTempUI';
 import OrderDetailsPage from './app/pages/OrderDetailsPage/OrderDetailsPage';
+import OrdersListPage from './app/pages/OrdersListPage/OrdersListPage';
 
 const queryClient = new QueryClient()
 
@@ -30,6 +31,7 @@ function App() {
            <Route path="view/order/:id" element={<OrderDetailsPage />} />
            <Route path="cart" element={<Cart/>} />
            <Route path="order/success" element={<OrderPlacedUI/>} />
+           <Route path="orders" element={<OrdersListPage/>} />
           <Route path="*" element={<Dashboard/>} />
         {/* </Route> */}
       </Routes>

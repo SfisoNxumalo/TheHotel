@@ -16,3 +16,7 @@ export function getMessageEndpoint(userId:string) {
 export function getOrderDetailsEndpoint(orderId:string) {
     return `RoomServiceOrder/${orderId}`
 } 
+
+export function getOrdersEndpoint(userId:string) {
+    return `RoomServiceOrder/user/${userId}`
+} 

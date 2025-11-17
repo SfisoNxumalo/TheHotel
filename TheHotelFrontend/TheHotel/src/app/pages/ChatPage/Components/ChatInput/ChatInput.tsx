@@ -3,9 +3,9 @@ import styles from './ChatInput.module.css'
 import { BsSend } from "react-icons/bs";
 import { ImAttachment } from "react-icons/im";
 import { useState } from 'react';
-import { SendMessage } from '../../../../../Interfaces/SendMessage';
 import { sendMessage } from '../../../../../services/messageService';
 import { Message } from '../../../../../Interfaces/message';
+import { SendMessage } from '../../../../../Interfaces/SendMessage';
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -34,7 +34,7 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
 
         const newMessage:SendMessage = {
             messageText:typedMessage,
-            userId:'FFB83527-8FC9-46DA-AC78-1FF52DFD592E',
+            userId:'3C9C5A01-41A2-43D5-99E8-10B7CFD508F1',
             staffId:'CF509E5B-D40F-4766-B07D-5046445C63D4'
         }
 

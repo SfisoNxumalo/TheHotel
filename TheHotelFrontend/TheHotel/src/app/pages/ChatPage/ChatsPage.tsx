@@ -39,7 +39,7 @@ function ElevationScroll(props: Props) {
 
 export default function Chats(props: Props){
 
-const loggedInUser = 'FFB83527-8FC9-46DA-AC78-1FF52DFD592E';
+const loggedInUser = '3C9C5A01-41A2-43D5-99E8-10B7CFD508F1';
    const [isSending, setIsSending] = useState<boolean>(false);
   const [messages, setMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
@@ -50,18 +50,18 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
     bottomRef.current?.scrollIntoView();
   };
 
-    const {data, isSuccess} = useFetchMessages(loggedInUser)
+  const {data, isSuccess} = useFetchMessages(loggedInUser)
   
-    useEffect(()=>{
-      if(isSuccess){
-        setMessage(data);
-        console.log(data);
-      }
-    },[data]);
+  useEffect(()=>{
+    if(isSuccess){
+      setMessage(data);
+      console.log(data);
+    }
+  },[data]);
 
-useEffect(()=>{
+  useEffect(()=>{
   scrollToBottom();
-},[])
+  },[])
 
     return (
       <div className={styles.hold}>
