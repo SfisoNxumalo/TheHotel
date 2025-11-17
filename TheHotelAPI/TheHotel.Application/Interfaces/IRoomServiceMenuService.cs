@@ -8,6 +8,9 @@ namespace TheHotel.Application.Interfaces
         Task<RoomServiceMenuEntity> AddMenuItemAsync(RoomServiceMenuEntity item);
         Task<RoomServiceMenuEntity?> UpdateMenuItemAsync(RoomServiceMenuEntity item);
         Task<IEnumerable<MenuItemDTO>> GetMenuAsync();
-        Task<RoomServiceMenuEntity?> GetMenuItemByIdAsync(Guid id);
+        Task<IEnumerable<MenuItemDTO>> GetMenuItemsByIdsAsync(IEnumerable<Guid> MenuItemIds);
+        Task<MenuItemDTO?> GetMenuItemByIdAsync(Guid id);
+
+        //Task<Guid> Checkout();
     }
 }

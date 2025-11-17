@@ -1,4 +1,6 @@
-﻿using TheHotel.Application.Interfaces;
+﻿using Microsoft.AspNetCore.SignalR;
+using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.DTOs.NewFolder;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
@@ -8,10 +10,16 @@ namespace TheHotel.Application.Services
     public class MessageService : IMessageService
     {
         private readonly IMessageRepository _messageRepository;
+        private readonly IHubContext<RealtimeHub> _hubContext;
 
         public MessageService(IMessageRepository messageRepository)
         {
             _messageRepository = messageRepository;
+        }
+
+        public async Task<IEnumerable<FetchMessageDTO>> GetMessagesByUserIdAsync(Guid userId)
+        {
+            return await _messageRepository.GetMessagesByUserIdAsync(userId);
         }
 
         public async Task<IEnumerable<MessageEntity>> GetMessagesForBookingAsync(Guid bookingId)
@@ -19,19 +27,25 @@ namespace TheHotel.Application.Services
             return await _messageRepository.GetMessagesByBookingIdAsync(bookingId);
         }
 
-        public async Task<MessageEntity> SendMessageAsync(SendMessageDTO message)
+        public async Task<FetchMessageDTO> SendMessageAsync(SendMessageDTO message)
         {
-
             var newMessage = new MessageEntity
             {
-                SenderUserId = message.SenderUserId,
+                Id = Guid.NewGuid(),
+                UserId = message.UserId,
                 MessageText = message.MessageText,
-                SenderStaffId = message.ReceiverUserId,
-
+                StaffId = message.StaffId,
+                CreatedDate = DateTime.UtcNow,
+                UpdatedDate = DateTime.UtcNow,
             };
 
+
+
             await _messageRepository.AddAsync(newMessage);
-            return newMessage;
+
+            var savedMessage = await _messageRepository.GetMessageByBookingIdAsync(newMessage.Id);
+
+            return savedMessage;
         }
     }
 }
