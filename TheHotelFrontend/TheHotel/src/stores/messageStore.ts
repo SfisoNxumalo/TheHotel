@@ -1,5 +1,4 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 import { Message } from '../Interfaces/message';
 
 
@@ -19,7 +18,7 @@ resetNewMessageCount: () => void;
 }
 
 export const useMessageStore = create<MessageState>()(
-  persist(
+  
     (set, get) => ({
         newMessageCount: 0,
       messages: [],
@@ -61,9 +60,5 @@ export const useMessageStore = create<MessageState>()(
     //       set({ loading: false });
     //     }
     //   },
-    }),
-    {
-      name: 'message-storage', 
-    }
-  )
+    })
 );
