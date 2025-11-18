@@ -1,11 +1,8 @@
+import { Message } from "../../Interfaces/message";
 import { hubConnection } from "./hubConnection";
 
 export const registerMessageHandlers = (
-  onMessageReceived: (from: string, message: string) => void
+  onStatusUpdated: (messsage: Message) => void
 ) => {
-  hubConnection.on("ReceiveMessage", onMessageReceived);
-};
-
-export const sendMessage = async (to: string, content: string) => {
-  await hubConnection.invoke("SendMessage", to, content);
+  hubConnection.on("ReceiveMessage", onStatusUpdated);
 };

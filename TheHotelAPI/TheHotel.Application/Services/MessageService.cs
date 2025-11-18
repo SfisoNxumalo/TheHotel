@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using TheHotel.Application.Interfaces;
+﻿using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.DTOs.NewFolder;
 using TheHotel.Domain.Entities;
@@ -10,7 +9,6 @@ namespace TheHotel.Application.Services
     public class MessageService : IMessageService
     {
         private readonly IMessageRepository _messageRepository;
-        private readonly IHubContext<RealtimeHub> _hubContext;
 
         public MessageService(IMessageRepository messageRepository)
         {

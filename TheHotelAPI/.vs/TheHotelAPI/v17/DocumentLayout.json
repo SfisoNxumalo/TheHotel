@@ -3,72 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\signalr\\realtimehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\signalr\\realtimehub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.infrastructure\\databasecontext\\hotelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|solutionrelative:thehotel.infrastructure\\databasecontext\\hotelcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\signalr\\realtimenotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\signalr\\realtimenotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\dtos\\roomserviceorderdto\\updateorderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\dtos\\roomserviceorderdto\\updateorderstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.infrastructure\\repositories\\messagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|solutionrelative:thehotel.infrastructure\\repositories\\messagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|solutionrelative:thehotel.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\entities\\messageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\entities\\messageentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.application\\interfaces\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|solutionrelative:thehotel.application\\interfaces\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\dtos\\messagedto\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\dtos\\messagedto\\sendmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\controllers\\roomserviceordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\controllers\\roomserviceordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.infrastructure\\seeding\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A785EEE7-861E-45ED-AE9C-C425B1D79363}|TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj|solutionrelative:thehotel.infrastructure\\seeding\\databaseseeder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.application\\interfaces\\irealtimenotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|solutionrelative:thehotel.application\\interfaces\\irealtimenotifier.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.application\\services\\roomserviceorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|solutionrelative:thehotel.application\\services\\roomserviceorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\dtos\\roomserviceorderdto\\orderroomservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\dtos\\roomserviceorderdto\\orderroomservicedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotelapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{88E1C82D-AAA4-4C9C-A825-8C1D15912E59}|TheHotelAPI\\TheHotelAPI.csproj|solutionrelative:thehotelapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\entities\\roomserviceorderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\entities\\roomserviceorderentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\entities\\bookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\entities\\bookingentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\entities\\roomserviceorderitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\entities\\roomserviceorderitementity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.domain\\dtos\\roomserviceitem\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{63B5F0D9-3767-44A2-8BF2-1465087DF0F0}|TheHotel.Domain\\TheHotel.Domain.csproj|solutionrelative:thehotel.domain\\dtos\\roomserviceitem\\orderitemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|c:\\users\\sifiso\\final project\\thehotelapi\\thehotel.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AB82BB7C-B0CC-4530-BC34-6001FBB6FBD1}|TheHotel.Application\\TheHotel.Application.csproj|solutionrelative:thehotel.application\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,99 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 13,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs",
-              "RelativeDocumentMoniker": "TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs",
-              "RelativeToolTip": "TheHotel.Infrastructure\\Migrations\\20251111052358_UpdateMessageEntityAndRemoveBookingReferences.cs",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T05:23:58.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HotelContext.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\DatabaseContext\\HotelContext.cs",
-              "RelativeDocumentMoniker": "TheHotel.Infrastructure\\DatabaseContext\\HotelContext.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\DatabaseContext\\HotelContext.cs",
-              "RelativeToolTip": "TheHotel.Infrastructure\\DatabaseContext\\HotelContext.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAkwDcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T05:21:46.298Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MessageRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Repositories\\MessageRepository.cs",
-              "RelativeDocumentMoniker": "TheHotel.Infrastructure\\Repositories\\MessageRepository.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Repositories\\MessageRepository.cs",
-              "RelativeToolTip": "TheHotel.Infrastructure\\Repositories\\MessageRepository.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAQwBUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-11T05:20:49.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MessageService.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\MessageService.cs",
-              "RelativeDocumentMoniker": "TheHotel.Application\\Services\\MessageService.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\MessageService.cs",
-              "RelativeToolTip": "TheHotel.Application\\Services\\MessageService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAuwB4AAAAOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T16:23:04.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IMessageService.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Interfaces\\IMessageService.cs",
-              "RelativeDocumentMoniker": "TheHotel.Application\\Interfaces\\IMessageService.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Interfaces\\IMessageService.cs",
-              "RelativeToolTip": "TheHotel.Application\\Interfaces\\IMessageService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T16:22:57.06Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MessageController.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Controllers\\MessageController.cs",
-              "RelativeDocumentMoniker": "TheHotelAPI\\Controllers\\MessageController.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Controllers\\MessageController.cs",
-              "RelativeToolTip": "TheHotelAPI\\Controllers\\MessageController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAuwBwAAABeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T16:22:47.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MessageEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\MessageEntity.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\Entities\\MessageEntity.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\MessageEntity.cs",
-              "RelativeToolTip": "TheHotel.Domain\\Entities\\MessageEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:13:35.254Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -225,125 +94,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SendMessageDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\MessageDTO\\SendMessageDTO.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\DTOs\\MessageDTO\\SendMessageDTO.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\MessageDTO\\SendMessageDTO.cs",
-              "RelativeToolTip": "TheHotel.Domain\\DTOs\\MessageDTO\\SendMessageDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAgAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "RealtimeHub.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\SignalR\\RealtimeHub.cs",
+              "RelativeDocumentMoniker": "TheHotelAPI\\SignalR\\RealtimeHub.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\SignalR\\RealtimeHub.cs",
+              "RelativeToolTip": "TheHotelAPI\\SignalR\\RealtimeHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T14:13:32.394Z",
+              "WhenOpened": "2025-11-17T19:36:50.933Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "RoomServiceOrderController.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Controllers\\RoomServiceOrderController.cs",
-              "RelativeDocumentMoniker": "TheHotelAPI\\Controllers\\RoomServiceOrderController.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Controllers\\RoomServiceOrderController.cs",
-              "RelativeToolTip": "TheHotelAPI\\Controllers\\RoomServiceOrderController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "UpdateOrderStatus.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\UpdateOrderStatus.cs",
+              "RelativeDocumentMoniker": "TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\UpdateOrderStatus.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\UpdateOrderStatus.cs",
+              "RelativeToolTip": "TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\UpdateOrderStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:33:27.795Z",
+              "WhenOpened": "2025-11-17T11:19:29.592Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Program.cs",
-              "RelativeDocumentMoniker": "TheHotelAPI\\Program.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Program.cs",
-              "RelativeToolTip": "TheHotelAPI\\Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAQwDEAAAAiAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "RealtimeNotifier.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\SignalR\\RealtimeNotifier.cs",
+              "RelativeDocumentMoniker": "TheHotelAPI\\SignalR\\RealtimeNotifier.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\SignalR\\RealtimeNotifier.cs",
+              "RelativeToolTip": "TheHotelAPI\\SignalR\\RealtimeNotifier.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwBgAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:28:14.986Z"
+              "WhenOpened": "2025-11-17T11:15:27.791Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DatabaseSeeder.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Seeding\\DatabaseSeeder.cs",
-              "RelativeDocumentMoniker": "TheHotel.Infrastructure\\Seeding\\DatabaseSeeder.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\Seeding\\DatabaseSeeder.cs",
-              "RelativeToolTip": "TheHotel.Infrastructure\\Seeding\\DatabaseSeeder.cs",
-              "ViewState": "AgIAAIkAAAAAAAAAAAAYwJAAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:25:18.738Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "BookingEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\BookingEntity.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\Entities\\BookingEntity.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\BookingEntity.cs",
-              "RelativeToolTip": "TheHotel.Domain\\Entities\\BookingEntity.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAA1wA8AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:21:16.957Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "OrderItemDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceItem\\OrderItemDTO.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\DTOs\\RoomServiceItem\\OrderItemDTO.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceItem\\OrderItemDTO.cs",
-              "RelativeToolTip": "TheHotel.Domain\\DTOs\\RoomServiceItem\\OrderItemDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T16:18:58.358Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "RoomServiceOrderItemEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\RoomServiceOrderItemEntity.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\Entities\\RoomServiceOrderItemEntity.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\RoomServiceOrderItemEntity.cs",
-              "RelativeToolTip": "TheHotel.Domain\\Entities\\RoomServiceOrderItemEntity.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T15:57:50.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "RoomServiceOrderEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\RoomServiceOrderEntity.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\Entities\\RoomServiceOrderEntity.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\Entities\\RoomServiceOrderEntity.cs",
-              "RelativeToolTip": "TheHotel.Domain\\Entities\\RoomServiceOrderEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T14:21:17.839Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "OrderRoomServiceDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\OrderRoomServiceDTO.cs",
-              "RelativeDocumentMoniker": "TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\OrderRoomServiceDTO.cs",
-              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\OrderRoomServiceDTO.cs",
-              "RelativeToolTip": "TheHotel.Domain\\DTOs\\RoomServiceOrderDTO\\OrderRoomServiceDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T14:20:08.269Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "RoomServiceOrderService.cs",
               "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\RoomServiceOrderService.cs",
               "RelativeDocumentMoniker": "TheHotel.Application\\Services\\RoomServiceOrderService.cs",
               "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\RoomServiceOrderService.cs",
               "RelativeToolTip": "TheHotel.Application\\Services\\RoomServiceOrderService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAYwC8AAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowG0AAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T14:05:37.001Z"
+              "WhenOpened": "2025-11-17T10:34:10.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Program.cs",
+              "RelativeDocumentMoniker": "TheHotelAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotelAPI\\Program.cs",
+              "RelativeToolTip": "TheHotelAPI\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T10:31:05.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IRealTimeNotifier.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Interfaces\\IRealTimeNotifier.cs",
+              "RelativeDocumentMoniker": "TheHotel.Application\\Interfaces\\IRealTimeNotifier.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Interfaces\\IRealTimeNotifier.cs",
+              "RelativeToolTip": "TheHotel.Application\\Interfaces\\IRealTimeNotifier.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T08:25:15.715Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MessageService.cs",
+              "DocumentMoniker": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\MessageService.cs",
+              "RelativeDocumentMoniker": "TheHotel.Application\\Services\\MessageService.cs",
+              "ToolTip": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Application\\Services\\MessageService.cs",
+              "RelativeToolTip": "TheHotel.Application\\Services\\MessageService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T06:32:38.607Z",
+              "EditorCaption": ""
             }
           ]
         }

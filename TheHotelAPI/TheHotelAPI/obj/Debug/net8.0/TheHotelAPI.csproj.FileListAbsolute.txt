@@ -185,6 +185,7 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelA
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.csproj.CoreCompileInputs.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.sourcelink.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\appsettings.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotelAPI.staticwebassets.endpoints.json
@@ -340,7 +341,6 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Application.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Infrastructure.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\TheHotel.Domain.pdb
-C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjimswa.dswa.cache.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -356,3 +356,8 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\refint\Th
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\TheHotelAPI.genruntimeconfig.cache
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\obj\Debug\net8.0\ref\TheHotelAPI.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotelAPI\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

@@ -88,7 +88,23 @@
     "Parameters": [
       {
         "Name": "message",
-        "Type": "TheHotel.Domain.Entities.MessageEntity",
+        "Type": "TheHotel.Domain.DTOs.NewFolder.SendMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.MessageController",
+    "Method": "GetUserMessages",
+    "RelativePath": "api/Message/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],
@@ -148,6 +164,32 @@
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
+    "Method": "GetMenuItemById",
+    "RelativePath": "api/RoomService/menu/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TheHotel.Domain.DTOs.MenuItemDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
     "Method": "UpdateMenuItem",
     "RelativePath": "api/RoomService/menu/{id}",
     "HttpMethod": "PUT",
@@ -185,6 +227,22 @@
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
+    "Method": "GetOrderById",
+    "RelativePath": "api/RoomServiceOrder/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
     "Method": "UpdateOrderStatus",
     "RelativePath": "api/RoomServiceOrder/{orderId}/status",
     "HttpMethod": "PATCH",
@@ -206,14 +264,14 @@
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
-    "Method": "GetOrdersForBooking",
-    "RelativePath": "api/RoomServiceOrder/booking/{bookingId}",
+    "Method": "GetOrdersByUserId",
+    "RelativePath": "api/RoomServiceOrder/user/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookingId",
+        "Name": "userId",
         "Type": "System.Guid",
         "IsRequired": true
       }

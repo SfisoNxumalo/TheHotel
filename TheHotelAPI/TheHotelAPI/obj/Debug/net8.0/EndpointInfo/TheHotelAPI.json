@@ -162,21 +162,44 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/SendMessageDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/SendMessageDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/SendMessageDTO"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Message/{userId}": {
+      "get": {
+        "tags": [
+          "Message"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -243,6 +266,44 @@
       }
     },
     "/api/RoomService/menu/{id}": {
+      "get": {
+        "tags": [
+          "RoomService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              }
+            }
+          }
+        }
+      },
       "put": {
         "tags": [
           "RoomService"
@@ -284,14 +345,37 @@
         }
       }
     },
-    "/api/RoomServiceOrder/booking/{bookingId}": {
+    "/api/RoomServiceOrder/user/{userId}": {
       "get": {
         "tags": [
           "RoomServiceOrder"
         ],
         "parameters": [
           {
-            "name": "bookingId",
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/{orderId}": {
+      "get": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
             "in": "path",
             "required": true,
             "schema": {
@@ -581,13 +665,6 @@
               "$ref": "#/components/schemas/RoomServiceOrderEntity"
             },
             "nullable": true
-          },
-          "messages": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MessageEntity"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -621,13 +698,6 @@
           },
           "room": {
             "$ref": "#/components/schemas/RoomEntity"
-          },
-          "orders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RoomServiceOrderEntity"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -636,7 +706,6 @@
         "required": [
           "available",
           "id",
-          "itemName",
           "price"
         ],
         "type": "object",
@@ -666,7 +735,7 @@
       "MessageEntity": {
         "required": [
           "messageText",
-          "senderUserId"
+          "userId"
         ],
         "type": "object",
         "properties": {
@@ -682,34 +751,22 @@
             "type": "string",
             "format": "date-time"
           },
-          "bookingId": {
+          "userId": {
             "type": "string",
             "format": "uuid"
           },
-          "senderType": {
-            "type": "string",
-            "nullable": true
-          },
-          "senderUserId": {
+          "staffId": {
             "type": "string",
             "format": "uuid"
-          },
-          "senderStaffId": {
-            "type": "string",
-            "format": "uuid",
-            "nullable": true
           },
           "messageText": {
             "minLength": 1,
             "type": "string"
           },
-          "booking": {
-            "$ref": "#/components/schemas/BookingEntity"
-          },
-          "senderUser": {
+          "user": {
             "$ref": "#/components/schemas/UserEntity"
           },
-          "senderStaff": {
+          "staff": {
             "$ref": "#/components/schemas/StaffEntity"
           }
         },
@@ -717,18 +774,33 @@
       },
       "OrderItemDTO": {
         "required": [
-          "itemId",
+          "id",
+          "itemName",
+          "note",
+          "price",
           "quantity"
         ],
         "type": "object",
         "properties": {
-          "itemId": {
+          "id": {
             "type": "string",
             "format": "uuid"
+          },
+          "itemName": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
           },
           "quantity": {
             "type": "integer",
             "format": "int32"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -739,6 +811,10 @@
         ],
         "type": "object",
         "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
           "userId": {
             "type": "string",
             "format": "uuid"
@@ -748,6 +824,19 @@
             "items": {
               "$ref": "#/components/schemas/OrderItemDTO"
             },
+            "nullable": true
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -846,9 +935,9 @@
       },
       "RoomServiceOrderEntity": {
         "required": [
-          "bookingId",
           "items",
-          "status"
+          "status",
+          "userId"
         ],
         "type": "object",
         "properties": {
@@ -864,16 +953,20 @@
             "type": "string",
             "format": "date-time"
           },
-          "bookingId": {
+          "userId": {
             "type": "string",
             "format": "uuid"
+          },
+          "note": {
+            "type": "string",
+            "nullable": true
           },
           "status": {
             "minLength": 1,
             "type": "string"
           },
-          "booking": {
-            "$ref": "#/components/schemas/BookingEntity"
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
           },
           "items": {
             "type": "array",
@@ -922,11 +1015,38 @@
             "type": "number",
             "format": "double"
           },
+          "note": {
+            "type": "string",
+            "nullable": true
+          },
           "order": {
             "$ref": "#/components/schemas/RoomServiceOrderEntity"
           },
           "item": {
             "$ref": "#/components/schemas/RoomServiceMenuEntity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendMessageDTO": {
+        "required": [
+          "messageText",
+          "staffId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "messageText": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "staffId": {
+            "type": "string",
+            "format": "uuid"
           }
         },
         "additionalProperties": false
