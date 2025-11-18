@@ -1,5 +1,6 @@
 ﻿using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs.RoomServiceOrder;
+using TheHotel.Domain.DTOs.RoomServiceOrderDTO;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces;
 
@@ -10,12 +11,14 @@ namespace TheHotel.Application.Services
         private readonly IRoomServiceOrderRepository _orderRepository;
         private readonly IUserService _userService;
         private readonly IRoomServiceMenuService _roomServiceMenu;
+        private readonly IRealTimeNotifier _realtimeNotifier;
 
-        public RoomServiceOrderService(IRoomServiceOrderRepository orderRepository, IUserService userService, IRoomServiceMenuService roomServiceMenu)
+        public RoomServiceOrderService(IRoomServiceOrderRepository orderRepository, IUserService userService, IRoomServiceMenuService roomServiceMenu, IRealTimeNotifier realtimeNotifier)
         {
             _orderRepository = orderRepository;
             _userService = userService;
             _roomServiceMenu = roomServiceMenu;
+            _realtimeNotifier = realtimeNotifier;
         }
 
         public async Task<OrderRoomServiceDTO> GetOrderById(Guid orderId)
@@ -92,10 +95,19 @@ namespace TheHotel.Application.Services
         public async Task UpdateOrderStatusAsync(Guid orderId, string status)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
+
             if (order == null) throw new ArgumentException("Order not found");
 
             order.Status = status;
             await _orderRepository.UpdateAsync(order);
+
+            var orderUpdate = new UpdateOrderStatus
+            {
+                orderId = orderId,
+                status = status
+            };
+
+            await _realtimeNotifier.BroadcastOrderStatusUpdate(order.UserId, orderUpdate);
         }
     }
 }
