@@ -2,7 +2,7 @@
 using TheHotel.Domain.DTOs.RoomServiceOrder;
 using TheHotel.Domain.DTOs.RoomServiceOrderDTO;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {

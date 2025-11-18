@@ -1,6 +1,6 @@
 ﻿using TheHotel.Domain.Entities;
 
-namespace TheHotel.Domain.Interfaces
+namespace TheHotel.Domain.Interfaces.Repositories
 {
     public interface IBookingRepository : IGenericRepository<BookingEntity>
     {

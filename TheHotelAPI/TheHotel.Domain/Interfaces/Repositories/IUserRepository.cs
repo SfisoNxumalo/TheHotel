@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TheHotel.Domain.Entities;
 
-namespace TheHotel.Domain.Interfaces
+namespace TheHotel.Domain.Interfaces.Repositories
 {
     public interface IUserRepository : IGenericRepository<UserEntity>
     {

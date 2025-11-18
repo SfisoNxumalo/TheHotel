@@ -28,7 +28,8 @@ namespace TheHotel.Infrastructure.Seeding
                     Id = Guid.NewGuid(),
                     FullName = _faker.Name.FullName(),
                     Email = _faker.Internet.Email(),
-                    PhoneNumber = _faker.Phone.PhoneNumber()
+                    PhoneNumber = _faker.Phone.PhoneNumber(),
+                    PasswordHash = ""
                 });
             }
             await _context.Users.AddRangeAsync(users);
@@ -43,7 +44,8 @@ namespace TheHotel.Infrastructure.Seeding
                     FullName = _faker.Name.FullName(),
                     Role = "Receptionist",
                     Email = _faker.Internet.Email(),
-                    PhoneNumber = _faker.Phone.PhoneNumber()
+                    PhoneNumber = _faker.Phone.PhoneNumber(),
+                    PasswordHash = ""
                 });
             }
             await _context.Staff.AddRangeAsync(staff);

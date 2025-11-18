@@ -11,6 +11,9 @@ namespace TheHotel.Domain.Entities
         public string Role { get; set; } = "Receptionist";
 
         [Required]
+        public required string PasswordHash { get; set; }
+
+        [Required]
         public string Email { get; set; }
 
         [Required]

@@ -18,5 +18,9 @@ namespace TheHotel.Domain.DTOs.UserDTO
         [Required]
         public string PhoneNumber { get; set; }
 
+        [Required]
+
+        public string Password { get; set; }
+
     }
 }

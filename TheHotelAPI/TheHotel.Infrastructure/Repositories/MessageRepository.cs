@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 using TheHotel.Infrastructure.DatabaseContext;
 
 namespace TheHotel.Infrastructure.Repositories
