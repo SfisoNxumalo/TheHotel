@@ -9,10 +9,12 @@ namespace TheHotel.Application.Services
     public class MessageService : IMessageService
     {
         private readonly IMessageRepository _messageRepository;
+        private readonly IRealTimeNotifier _realtimeNotifier;
 
-        public MessageService(IMessageRepository messageRepository)
+        public MessageService(IMessageRepository messageRepository, IRealTimeNotifier realtimeNotifier)
         {
             _messageRepository = messageRepository;
+            _realtimeNotifier = realtimeNotifier;
         }
 
         public async Task<IEnumerable<FetchMessageDTO>> GetMessagesByUserIdAsync(Guid userId)
@@ -41,7 +43,9 @@ namespace TheHotel.Application.Services
 
             await _messageRepository.AddAsync(newMessage);
 
-            var savedMessage = await _messageRepository.GetMessageByBookingIdAsync(newMessage.Id);
+            var savedMessage = await _messageRepository.GetMessageByIdAsync(newMessage.Id);
+
+            await _realtimeNotifier.BroadcastMessage(message.UserId, savedMessage);
 
             return savedMessage;
         }

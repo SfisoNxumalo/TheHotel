@@ -15,7 +15,7 @@ namespace TheHotel.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<FetchMessageDTO> GetMessageByBookingIdAsync(Guid Id)
+        public async Task<FetchMessageDTO> GetMessageByIdAsync(Guid Id)
         {
             return await _context.Messages.Select(mes => new FetchMessageDTO
             {
@@ -24,8 +24,7 @@ namespace TheHotel.Infrastructure.Repositories
                 UserId = mes.UserId,
                 StaffId = mes.StaffId,
                 CreatedDate = mes.CreatedDate
-
-            }).FirstOrDefaultAsync();
+            }).Where(mes => mes.Id == Id).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<MessageEntity>> GetMessagesByBookingIdAsync(Guid bookingId)
