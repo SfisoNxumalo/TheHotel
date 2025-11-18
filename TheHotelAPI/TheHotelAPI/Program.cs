@@ -1,7 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceExtensions;
 using TheHotel.Infrastructure.DatabaseContext;
 using TheHotel.Infrastructure.Extension;
+using TheHotel.Infrastructure.Seeding;
+using TheHotel.Infrastructure.SignalR;
+using TheHotelAPI.SignalR;
 
 namespace TheHotelAPI
 {
@@ -17,18 +21,21 @@ namespace TheHotelAPI
                     policy => policy
                         .WithOrigins("http://localhost:5173", "")
                         .AllowAnyMethod()
-                        .AllowAnyHeader());
+                        .AllowAnyHeader()
+                        .AllowCredentials());
             });
 
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSignalR();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             //Add DI for Infrastructure layer
             builder.Services.AddInfrastructureDI();
+            builder.Services.AddScoped<IRealTimeNotifier, RealtimeNotifier>();
 
             //Add DI for Service Layer
             builder.Services.AddServiceDI();
@@ -45,15 +52,15 @@ namespace TheHotelAPI
                 app.UseSwaggerUI();
             }
 
-            //using var scope = app.Services.CreateScope();
-            //var seeder = new DatabaseSeeder(scope.ServiceProvider.GetRequiredService<HotelContext>());
-            // seeder.SeedAsync();
+            using var scope = app.Services.CreateScope();
+            var seeder = new DatabaseSeeder(scope.ServiceProvider.GetRequiredService<HotelContext>());
+            seeder.SeedAsync();
 
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
             app.UseCors("AllowFrontend");
-
+            app.MapHub<RealtimeHub>("/hubs/hotel");
 
             app.MapControllers();
 
