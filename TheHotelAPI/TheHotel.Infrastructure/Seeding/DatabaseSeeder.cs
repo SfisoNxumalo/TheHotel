@@ -125,8 +125,9 @@ namespace TheHotel.Infrastructure.Seeding
                     var order = new RoomServiceOrderEntity
                     {
                         Id = Guid.NewGuid(),
-                        Booking = booking,
-                        BookingId = booking.Id,
+                        User = users[0],
+                        UserId = users[0].Id,
+                        Note = "This is a note",
                         //OrderTime = DateTime.UtcNow.AddHours(-_faker.Random.Int(1, 10)),
                         Status = "Pending",
                         Items = new List<RoomServiceOrderItemEntity>() { }

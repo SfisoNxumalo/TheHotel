@@ -26,7 +26,14 @@ namespace TheHotelAPI.Controllers
         public async Task<IActionResult> SendMessage([FromBody] SendMessageDTO message)
         {
             var created = await _messageService.SendMessageAsync(message);
-            return CreatedAtAction(nameof(GetMessagesForBooking), new { bookingId = created.Id }, created);
+            return CreatedAtAction(nameof(SendMessage), new { bookingId = created.Id }, created);
+        }
+
+        [HttpGet("{userId:guid}")]
+        public async Task<IActionResult> GetUserMessages(Guid userId)
+        {
+            var messages = await _messageService.GetMessagesByUserIdAsync(userId);
+            return Ok(messages);
         }
     }
 }
