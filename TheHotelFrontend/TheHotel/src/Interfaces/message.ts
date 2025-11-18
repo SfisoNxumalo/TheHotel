@@ -9,5 +9,6 @@ export interface Message {
   userId: string;
   staffId: string;
   messageText: string;
+  senderId:string
   createdDate: string;
 }

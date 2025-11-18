@@ -5,7 +5,8 @@ import { ImAttachment } from "react-icons/im";
 import { useState } from 'react';
 import { sendMessage } from '../../../../../services/messageService';
 import { Message } from '../../../../../Interfaces/message';
-import { SendNewMessage } from '../../../../../Interfaces/SendMessage';
+import { SendNewMessage } from '../../../../../Interfaces/sendMessage';
+
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -35,7 +36,8 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
         const newMessage:SendNewMessage = {
             messageText:typedMessage,
             userId:'3C9C5A01-41A2-43D5-99E8-10B7CFD508F1',
-            staffId:'CF509E5B-D40F-4766-B07D-5046445C63D4'
+            staffId:'CF509E5B-D40F-4766-B07D-5046445C63D4',
+            senderId:'3C9C5A01-41A2-43D5-99E8-10B7CFD508F1'
         }
 
         setIsSending(true)
