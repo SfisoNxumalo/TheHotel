@@ -21,3 +21,4 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Domain\obj\Debug\net8.0\TheHo
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Domain\obj\Debug\net8.0\refint\TheHotel.Domain.dll
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Domain\obj\Debug\net8.0\TheHotel.Domain.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Domain\obj\Debug\net8.0\ref\TheHotel.Domain.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Domain\obj\Debug\net8.0\TheHotel.Domain.csproj.AssemblyReference.cache

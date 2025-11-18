@@ -2,7 +2,7 @@ import { useQuery, UseQueryResult } from "@tanstack/react-query";
 import { getMessageEndpoint, messageEndpoint } from "../endpoints/endpoints";
 import { Message } from "../Interfaces/message";
 import { httpService } from "../utils/httpService";
-import { SendNewMessage } from "../Interfaces/SendMessage";
+import { SendNewMessage } from '../Interfaces/sendMessage'
 
 export async function getAllMessages(userId:string){
 

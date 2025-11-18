@@ -9,6 +9,4 @@ export const registerOrderHandlers = (
   onStatusUpdated: (order: hubResponse) => void
 ) => {
   hubConnection.on("OrderStatusUpdated", onStatusUpdated);
-  console.log("----");
-  
 };
