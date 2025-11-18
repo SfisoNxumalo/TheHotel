@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { useCartStore } from "../../stores/cartStore";
+import { useMessageStore } from "../../stores/messageStore";
 
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
@@ -22,6 +23,8 @@ export default function BottomNav(){
   const navigate = useNavigate();
     const [value, setValue] = useState('/dashboard');
     const itemCount = useCartStore((state) => state.itemCount());
+
+    const newMessageCount = useMessageStore((s) => s.newMessageCount);
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -51,7 +54,7 @@ export default function BottomNav(){
         value="Chat"
         onClick={()=>navigate("/chats")}
         icon={
-          <StyledBadge badgeContent={1} color="secondary">
+          <StyledBadge badgeContent={newMessageCount} color="secondary">
             <IoChatboxEllipsesOutline   fontSize={20}/>
           </StyledBadge>
         }

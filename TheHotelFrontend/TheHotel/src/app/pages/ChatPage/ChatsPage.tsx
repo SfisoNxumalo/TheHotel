@@ -9,6 +9,7 @@ import { Message } from "../../../Interfaces/message";
 import { getAllMessages, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
+import { useMessageStore } from "../../../stores/messageStore";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -40,8 +41,9 @@ function ElevationScroll(props: Props) {
 export default function Chats(props: Props){
 
 const loggedInUser = '3C9C5A01-41A2-43D5-99E8-10B7CFD508F1';
+
    const [isSending, setIsSending] = useState<boolean>(false);
-  const [messages, setMessage] = useState<Message[]>([]);
+  const [allMessages, setAllMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
@@ -50,11 +52,14 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
     bottomRef.current?.scrollIntoView();
   };
 
+  // const { messages, loading, error } = useMessageStore();
+  const setMessages = useMessageStore((state) => state.setMessages);
+
   const {data, isSuccess} = useFetchMessages(loggedInUser)
   
   useEffect(()=>{
     if(isSuccess){
-      setMessage(data);
+      setMessages(data);
       console.log(data);
     }
   },[data]);
@@ -62,6 +67,8 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
   useEffect(()=>{
   scrollToBottom();
   },[])
+
+   const messages = useMessageStore((state) => state.messages);
 
     return (
       <div className={styles.hold}>
@@ -95,11 +102,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               </Container>
               
         </React.Fragment>
-        <ChatInput setMessage={setMessage} messages={messages} setIsSending={setIsSending}/>
-
-
-      </div>
-   
-        
+        <ChatInput setMessage={setAllMessage} messages={allMessages} setIsSending={setIsSending}/>
+      </div> 
     );
 }

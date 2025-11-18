@@ -1,5 +1,5 @@
-import { Button, Snackbar, SnackbarCloseReason } from "@mui/material";
-import { useState } from "react";
+import { Button, Snackbar, SnackbarCloseReason, SnackbarOrigin } from "@mui/material";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 interface SnackbarProps{
@@ -9,9 +9,14 @@ interface SnackbarProps{
     buttonText:string
     message:string,
     url: string
+    anchorOrigin: anchorOrigin
 }
 
-export default function ShowCustomSnackbar({open = false, setOpen, message, url, showButton, buttonText}:SnackbarProps)
+export interface anchorOrigin extends SnackbarOrigin{
+
+}
+
+export default function ShowCustomSnackbar({open = false, setOpen, message, url, showButton, buttonText, anchorOrigin}:SnackbarProps)
 {
     const navigate = useNavigate();
 
@@ -29,6 +34,7 @@ export default function ShowCustomSnackbar({open = false, setOpen, message, url,
     return(
         <Snackbar
             open={open }
+            anchorOrigin={anchorOrigin}
             autoHideDuration={5000}
             onClose={handleClose}
             message={message}
