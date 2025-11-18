@@ -11,6 +11,7 @@ namespace TheHotel.Domain.DTOs.MessageDTO
     {
         public Guid Id { get; set; }
         public Guid UserId { get; set; }
+        public Guid senderId { get; set; }
 
         public string MessageText { get; set; }
 

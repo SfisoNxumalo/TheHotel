@@ -14,6 +14,9 @@ namespace TheHotel.Domain.DTOs.NewFolder
         public Guid UserId { get; set; }
 
         [Required]
+        public Guid senderId { get; set; }
+
+        [Required]
         public string MessageText { get; set; } = null!;
 
         [Required]
