@@ -115,7 +115,7 @@ interface Props {
 export default function Dashboard(){
 
   const navigate = useNavigate();
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
    const closeDialog = ()=> {
       setOpen(false)
@@ -129,7 +129,8 @@ export default function Dashboard(){
                     <div className={styles.mainContainerTop}>
                     <Compo/>
                     </div>
-                    <div className={styles.mainContainerBottom}> 
+                    <div className={`${styles.mainContainerBottom} slide-up`}> 
+                      
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>

@@ -19,6 +19,8 @@ import ShowCustomSnackbar from './components/Snackbar/ShowSnackBar';
 import { registerMessageHandlers } from './services/SignalR/messageHub';
 import { SnackbarOrigin } from '@mui/material';
 import { useMessageStore } from './stores/messageStore';
+import LoginPage from './app/pages/LoginPage/LoginPage';
+import RegisterPage from './app/pages/RegisterPage/RegisterPage';
 
 const queryClient = new QueryClient()
 
@@ -60,17 +62,10 @@ function App() {
     });
 
     registerMessageHandlers((message) => {
-      // setButtonText("View")
-      
-      // setShowButton(true)
       setMessage(message.messageText)
-      // console.log(order!.orderId);
       setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
-      // setUrl(`view/order/${order!.orderId}`)
-      console.log(message);
       setOpen(true)
       addMessage(message)
-      
     });
 
 
@@ -89,8 +84,10 @@ function App() {
       
       <Routes>
         {/* <Route path="/" element={<Navbar />}> */}
-          <Route index element={<Dashboard/>} />
+          <Route index element={<LoginPage/>} />
           <Route path="dashboard" element={<Dashboard />} />
+           <Route path="auth/login" element={<LoginPage />} />
+          <Route path="auth/register" element={<RegisterPage />} />
           <Route path="room-service" element={<RoomService />} />
           <Route path="view-one/:id" element={<ViewOne />} />
            <Route path="chats" element={<Chats />} />
@@ -98,7 +95,7 @@ function App() {
            <Route path="cart" element={<Cart/>} />
            <Route path="order/success" element={<OrderPlacedUI/>} />
            <Route path="orders" element={<OrdersListPage/>} />
-          <Route path="*" element={<Dashboard/>} />
+          <Route path="*" element={<LoginPage/>} />
         {/* </Route> */}
       </Routes>
       <BottomNav/>
