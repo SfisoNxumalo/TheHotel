@@ -93,6 +93,7 @@ export default function LoginPage() {
               textTransform: "none",
               "&:hover": { background: "#2b5fcc" },
             }}
+            onClick={() => navigate("/dashboard")}
           >
             Login
           </Button>
@@ -105,7 +106,7 @@ export default function LoginPage() {
             Don’t have an account?{" "}
             <span
               style={{ color: "#3470ed", cursor: "pointer" }}
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/auth/register")}
             >
               Register
             </span>
