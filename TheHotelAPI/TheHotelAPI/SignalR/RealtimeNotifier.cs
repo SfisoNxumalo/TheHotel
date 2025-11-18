@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 using TheHotel.Application.Interfaces;
+using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.DTOs.RoomServiceOrderDTO;
 using TheHotel.Infrastructure.SignalR;
 
@@ -14,9 +15,9 @@ namespace TheHotelAPI.SignalR
         {
             _hubContext = hubContext;
         }
-        public async Task BroadcastMessage(Guid userId, string message)
+        public async Task BroadcastMessage(Guid userId, FetchMessageDTO message)
         {
-            throw new NotImplementedException();
+            await _hubContext.Clients.Group(userId.ToString().ToLower()).SendAsync("ReceiveMessage", message);
         }
 
         public async Task BroadcastOrderStatusUpdate(Guid userId, UpdateOrderStatus order)
