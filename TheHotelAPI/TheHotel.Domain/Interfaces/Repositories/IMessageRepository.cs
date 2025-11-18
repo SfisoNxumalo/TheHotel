@@ -1,7 +1,7 @@
 ﻿using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.Entities;
 
-namespace TheHotel.Domain.Interfaces
+namespace TheHotel.Domain.Interfaces.Repositories
 {
     public interface IMessageRepository : IGenericRepository<MessageEntity>
     {

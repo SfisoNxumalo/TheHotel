@@ -12,8 +12,8 @@ using TheHotel.Infrastructure.DatabaseContext;
 namespace TheHotel.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    [Migration("20251118130509_AddSenderIdPropertyToMessageEntity")]
-    partial class AddSenderIdPropertyToMessageEntity
+    [Migration("20251118191801_AddSenderIdPropertyToMessageEntityAndAddHashedPassword")]
+    partial class AddSenderIdPropertyToMessageEntityAndAddHashedPassword
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -279,6 +279,10 @@ namespace TheHotel.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -309,6 +313,10 @@ namespace TheHotel.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PasswordHash")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

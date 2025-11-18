@@ -1,7 +1,7 @@
 ﻿using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs.UserDTO;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {
@@ -30,6 +30,7 @@ namespace TheHotel.Application.Services
                 FullName = user.FullName,
                 Email = user.Email,
                 PhoneNumber = user.PhoneNumber,
+                PasswordHash = user.Password,
             };
 
            await _userRepository.AddAsync(newUser);

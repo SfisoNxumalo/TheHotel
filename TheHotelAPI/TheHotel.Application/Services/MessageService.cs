@@ -2,7 +2,7 @@
 using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.DTOs.NewFolder;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {
@@ -37,8 +37,8 @@ namespace TheHotel.Application.Services
                 StaffId = message.StaffId,
                 CreatedDate = DateTime.UtcNow,
                 UpdatedDate = DateTime.UtcNow,
+                senderId = message.senderId
             };
-
 
 
             await _messageRepository.AddAsync(newMessage);

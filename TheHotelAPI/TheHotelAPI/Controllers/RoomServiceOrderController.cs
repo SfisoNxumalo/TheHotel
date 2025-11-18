@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs.RoomServiceOrder;
 
@@ -29,6 +30,7 @@ namespace TheHotelAPI.Controllers
             return Ok(order);
         }
 
+        
         [HttpPost]
         public async Task<IActionResult> PlaceOrder([FromBody] OrderRoomServiceDTO order)
         {
@@ -36,6 +38,7 @@ namespace TheHotelAPI.Controllers
             return CreatedAtAction(nameof(PlaceOrder), new { orderId = created });
         }
 
+        [Authorize]
         [HttpPatch("{orderId:guid}/status")]
         public async Task<IActionResult> UpdateOrderStatus(Guid orderId, [FromQuery] string status)
         {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheHotel.Domain.Interfaces
+namespace TheHotel.Domain.Interfaces.Repositories
 {
     public interface IGenericRepository<TEntity> where TEntity : class
     {

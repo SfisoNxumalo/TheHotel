@@ -1,7 +1,7 @@
 ﻿using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {

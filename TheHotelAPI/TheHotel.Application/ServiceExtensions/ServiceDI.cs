@@ -14,6 +14,8 @@ namespace TheHotel.Application.ServiceExtensions
             services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IRoomServiceOrderService, RoomServiceOrderService>();
             services.AddScoped<IRoomServiceMenuService, RoomServiceMenuService>();
+            services.AddScoped<IAuthService, AuthService>();
+
             return services;
         }
     }

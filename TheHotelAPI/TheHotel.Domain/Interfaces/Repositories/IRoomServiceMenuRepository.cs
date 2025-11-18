@@ -1,7 +1,7 @@
 ﻿using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 
-namespace TheHotel.Domain.Interfaces
+namespace TheHotel.Domain.Interfaces.Repositories
 {
     public interface IRoomServiceMenuRepository : IGenericRepository<RoomServiceMenuEntity>
     {

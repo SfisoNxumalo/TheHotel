@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 using TheHotel.Infrastructure.DatabaseContext;
 
 namespace TheHotel.Infrastructure.Repositories

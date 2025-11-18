@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Integrations;
+using TheHotel.Domain.Interfaces.Repositories;
+using TheHotel.Infrastructure.Integration;
 using TheHotel.Infrastructure.Repositories;
 
 namespace TheHotel.Infrastructure.Extension
@@ -14,6 +16,9 @@ namespace TheHotel.Infrastructure.Extension
             services.AddScoped<IMessageRepository, MessageRepository>();
             services.AddScoped<IRoomServiceOrderRepository, RoomServiceOrderRepository>();
             services.AddScoped<IRoomServiceMenuRepository, RoomServiceMenuRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+
+            services.AddScoped<ITokenService, JwtService>();
 
             return services;
         }
