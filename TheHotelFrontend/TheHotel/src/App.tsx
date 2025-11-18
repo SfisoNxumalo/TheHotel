@@ -16,6 +16,9 @@ import { hubConnection } from './services/SignalR/hubConnection';
 import { useEffect, useState } from 'react';
 import { registerOrderHandlers } from './services/SignalR/orderHub';
 import ShowCustomSnackbar from './components/Snackbar/ShowSnackBar';
+import { registerMessageHandlers } from './services/SignalR/messageHub';
+import { SnackbarOrigin } from '@mui/material';
+import { useMessageStore } from './stores/messageStore';
 
 const queryClient = new QueryClient()
 
@@ -25,8 +28,11 @@ function App() {
   const [open, setOpen] = useState<boolean>(false);
   const [showButton, setShowButton] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
+  const [anchorOrigin, setAnchorOrigin] = useState<SnackbarOrigin>({ vertical: 'bottom', horizontal: 'left', });
   const [url, setUrl] = useState<string>('');
 
+  const addMessage = useMessageStore(s => s.addMessage);
+  
   useEffect(() => {
     
   async function ConnectWithsignalR(){
@@ -42,22 +48,45 @@ function App() {
   }
   }
     ConnectWithsignalR()
+
     registerOrderHandlers((order) => {
       setButtonText("View")
       setOpen(true)
       setShowButton(true)
       setMessage("Your order has received a new update")
       console.log(order!.orderId);
-      
+      setAnchorOrigin({ vertical: 'bottom', horizontal: 'left' })
       setUrl(`view/order/${order!.orderId}`)
-  });
+    });
+
+    registerMessageHandlers((message) => {
+      // setButtonText("View")
+      
+      // setShowButton(true)
+      setMessage(message.messageText)
+      // console.log(order!.orderId);
+      setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
+      // setUrl(`view/order/${order!.orderId}`)
+      console.log(message);
+      setOpen(true)
+      addMessage(message)
+      
+    });
+
+
+
 }, []);
 
   return (
     <>
      <QueryClientProvider client={queryClient}>
       <BrowserRouter>
-      <ShowCustomSnackbar open={open} setOpen={setOpen} message={message} url={url} showButton={showButton} buttonText={buttonText} />
+
+      <ShowCustomSnackbar open={open} setOpen={setOpen} 
+      message={message} url={url} 
+      showButton={showButton} buttonText={buttonText} 
+      anchorOrigin={anchorOrigin} />
+      
       <Routes>
         {/* <Route path="/" element={<Navbar />}> */}
           <Route index element={<Dashboard/>} />
