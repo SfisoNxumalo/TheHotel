@@ -1,0 +1,51 @@
+.container{
+    background-image: url(../../../assets/images/food_background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-clip:initial;
+    height: 250px;
+}
+
+.contentHolder{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contentHolder h6{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.incrementButton{
+    background-color: rgb(251, 70, 70);
+    display: flex;
+    font-size: 16px;
+    justify-content: center;
+    font-weight: bolder;
+    align-items: center;
+    outline: none;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.incrementButton:hover{
+    background-color: red;
+}
+
+.incrementButton:nth-child(3){
+    background-color: var(--app-color);
+}
+
+.incrementButton:nth-child(3):hover{
+    background-color: rgb(13, 74, 204);
+}
+
+.cartButtonHolder{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}

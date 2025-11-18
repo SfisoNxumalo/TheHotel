@@ -1,7 +1,14 @@
 import { hubConnection } from "./hubConnection";
 
+interface hubResponse{
+  orderId:string,
+  status:string
+}
+
 export const registerOrderHandlers = (
-  onStatusUpdated: (orderId: string, status: string) => void
+  onStatusUpdated: (order: hubResponse) => void
 ) => {
   hubConnection.on("OrderStatusUpdated", onStatusUpdated);
+  console.log("----");
+  
 };
