@@ -19,6 +19,10 @@ namespace TheHotel.Infrastructure.Repositories
         {
             return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
-            
+
+        public async Task<StaffEntity?> GetStaffByIdAsync(Guid id)
+        {
+            return await _context.Staff.FindAsync(id);
+        }
     }
 }

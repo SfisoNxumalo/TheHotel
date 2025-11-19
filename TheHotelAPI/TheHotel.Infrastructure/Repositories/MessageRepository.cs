@@ -17,14 +17,15 @@ namespace TheHotel.Infrastructure.Repositories
 
         public async Task<FetchMessageDTO> GetMessageByIdAsync(Guid Id)
         {
-            return await _context.Messages.Select(mes => new FetchMessageDTO
+            return await _context.Messages.Where(mes => mes.Id == Id).Select(mes => new FetchMessageDTO
             {
                 Id = mes.Id,
                 MessageText = mes.MessageText,
                 UserId = mes.UserId,
                 StaffId = mes.StaffId,
-                CreatedDate = mes.CreatedDate
-            }).Where(mes => mes.Id == Id).FirstOrDefaultAsync();
+                CreatedDate = mes.CreatedDate,
+                SenderId = mes.senderId
+            }).FirstOrDefaultAsync();
         }
 
         public async Task<IEnumerable<MessageEntity>> GetMessagesByBookingIdAsync(Guid bookingId)
@@ -39,14 +40,17 @@ namespace TheHotel.Infrastructure.Repositories
 
         public async Task<IEnumerable<FetchMessageDTO>> GetMessagesByUserIdAsync(Guid userId)
         {
-            return await _context.Messages.Select(mes => new FetchMessageDTO
+            return await _context.Messages
+                .Where(mes => mes.UserId == userId || mes.StaffId == userId)
+                .Select(mes => new FetchMessageDTO
             {
                 Id = mes.Id,
                 MessageText = mes.MessageText,
                 UserId = mes.UserId,
                 StaffId = mes.StaffId,
-                CreatedDate = mes.CreatedDate
-            }).Where(mes => mes.UserId == userId || mes.StaffId == userId)
+                CreatedDate = mes.CreatedDate,
+                SenderId = mes.senderId
+            })
             .OrderBy(m => m.CreatedDate)
             .ToListAsync();
         }
