@@ -1,4 +1,6 @@
-﻿using TheHotel.Application.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using TheHotel.Application.Interfaces;
+using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs.RoomServiceOrder;
 using TheHotel.Domain.DTOs.RoomServiceOrderDTO;
 using TheHotel.Domain.Entities;
@@ -12,13 +14,21 @@ namespace TheHotel.Application.Services
         private readonly IUserService _userService;
         private readonly IRoomServiceMenuService _roomServiceMenu;
         private readonly IRealTimeNotifier _realtimeNotifier;
+        private readonly ILogger<RoomServiceOrderService> _logger;
 
-        public RoomServiceOrderService(IRoomServiceOrderRepository orderRepository, IUserService userService, IRoomServiceMenuService roomServiceMenu, IRealTimeNotifier realtimeNotifier)
+        public RoomServiceOrderService(IRoomServiceOrderRepository orderRepository, IUserService userService, 
+            IRoomServiceMenuService roomServiceMenu, IRealTimeNotifier realtimeNotifier, ILogger<RoomServiceOrderService> logger)
         {
             _orderRepository = orderRepository;
             _userService = userService;
             _roomServiceMenu = roomServiceMenu;
             _realtimeNotifier = realtimeNotifier;
+            _logger = logger;
+        }
+
+        public async Task<IEnumerable<OrderRoomServiceDTO>> GetAllOrdersAsync()
+        {
+            return await _orderRepository.GetAllOrdersAsync();
         }
 
         public async Task<OrderRoomServiceDTO> GetOrderById(Guid orderId)
@@ -39,7 +49,8 @@ namespace TheHotel.Application.Services
 
                 if (userDetails == null)
                 {
-                    throw new Exception();
+                    _logger.LogError($"User ${order.UserId} found");
+                    throw new UserNotFoundException($"User ${order.UserId} found");
                 }
 
                 var cartItemsId = order.items.Select(item => item.Id).ToList();
@@ -89,14 +100,13 @@ namespace TheHotel.Application.Services
             {
                 throw;
             }
-
         }
 
         public async Task UpdateOrderStatusAsync(Guid orderId, string status)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
 
-            if (order == null) throw new ArgumentException("Order not found");
+            if (order == null) throw new NoOrderFoundException("Order not found");
 
             order.Status = status;
             await _orderRepository.UpdateAsync(order);
