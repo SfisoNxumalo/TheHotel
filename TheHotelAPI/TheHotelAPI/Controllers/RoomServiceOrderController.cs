@@ -45,5 +45,12 @@ namespace TheHotelAPI.Controllers
             await _orderService.UpdateOrderStatusAsync(orderId, status);
             return NoContent();
         }
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var order = await _orderService.GetAllOrdersAsync();
+            return Ok(order);
+        }
     }
 }

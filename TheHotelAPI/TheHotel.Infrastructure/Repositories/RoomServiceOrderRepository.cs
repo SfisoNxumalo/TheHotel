@@ -16,6 +16,26 @@ namespace TheHotel.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<IEnumerable<OrderRoomServiceDTO>> GetAllOrdersAsync()
+        {
+            return await _context.RoomServiceOrders.Select(order => new OrderRoomServiceDTO
+            {
+                orderId = order.Id,
+                UserId = order.UserId,
+                items = order.Items.Select(orderItems => new OrderItemDTO
+                {
+                    Id = orderItems.Id,
+                    ItemName = orderItems.Item.ItemName,
+                    note = orderItems.Note,
+                    Price = orderItems.Price,
+                    Quantity = orderItems.Quantity
+                }).ToList(),
+                Note = order.Note,
+                createdAt = order.CreatedDate,
+                status = order.Status
+            }).ToListAsync();
+        }
+
         public async Task<OrderRoomServiceDTO> GetOrderByIdAsync(Guid orderId)
         {
             return await _context.RoomServiceOrders.Where(o => o.Id == orderId).Select(order => new OrderRoomServiceDTO
