@@ -1,4 +1,5 @@
-﻿using TheHotel.Application.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs.UserDTO;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces.Repositories;
@@ -8,10 +9,12 @@ namespace TheHotel.Application.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(IUserRepository userRepository)
+        public UserService(IUserRepository userRepository, ILogger<UserService> logger)
         {
             _userRepository = userRepository;
+            _logger = logger;
         }
 
         public async Task<IEnumerable<UserEntity>> GetAllUsersAsync()
@@ -23,6 +26,12 @@ namespace TheHotel.Application.Services
         {
           return await _userRepository.GetByIdAsync(id);
         }
+
+        public async Task<StaffEntity?> GetStaffByIdAsync(Guid id)
+        {
+            return await _userRepository.GetStaffByIdAsync(id);
+        }
+
         public async Task<UserEntity> AddUserAsync(AddUserDTO user)
         {
             var newUser = new UserEntity

@@ -18,4 +18,28 @@
     {
         public ServiceException(String message) : base(message) { }
     }
+
+    public class DuplicateRecordException : Exception
+    {
+        public DuplicateRecordException(string message) : base(message) { }
+    }
+
+    public class UserNotFoundException : Exception
+    {
+        public UserNotFoundException(string message) : base(message) { }
+    }
+    public class RealTimeNotificationException : Exception
+    {
+        public RealTimeNotificationException(string message) : base(message) { }
+    }
+
+    public class NoOrderFoundException : Exception
+    {
+        public NoOrderFoundException(string message) : base(message) { }
+    }
+
+    public class IncorrectPassword : Exception
+    {
+        public IncorrectPassword(string message) : base(message) { }
+    }
 }

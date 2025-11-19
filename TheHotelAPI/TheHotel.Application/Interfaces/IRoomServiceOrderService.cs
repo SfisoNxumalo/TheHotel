@@ -9,5 +9,7 @@ namespace TheHotel.Application.Interfaces
         Task UpdateOrderStatusAsync(Guid orderId, string status);
         Task<OrderRoomServiceDTO> GetOrderById(Guid orderId);
 
+        Task<IEnumerable<OrderRoomServiceDTO>> GetAllOrdersAsync();
+
     }
 }

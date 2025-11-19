@@ -1,4 +1,5 @@
-﻿using TheHotel.Application.Interfaces;
+﻿using Microsoft.Extensions.Logging;
+using TheHotel.Application.Interfaces;
 using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces.Repositories;
@@ -8,10 +9,12 @@ namespace TheHotel.Application.Services
     public class RoomServiceMenuService : IRoomServiceMenuService
     {
         private readonly IRoomServiceMenuRepository _menuRepo;
+        private readonly ILogger<RoomServiceMenuService> _logger;
 
-        public RoomServiceMenuService(IRoomServiceMenuRepository menuRepo)
+        public RoomServiceMenuService(IRoomServiceMenuRepository menuRepo, ILogger<RoomServiceMenuService> logger)
         {
             _menuRepo = menuRepo;
+            _logger = logger;
         }
 
         public async Task<RoomServiceMenuEntity> AddMenuItemAsync(RoomServiceMenuEntity item)
@@ -23,6 +26,7 @@ namespace TheHotel.Application.Services
         public async Task<RoomServiceMenuEntity?> UpdateMenuItemAsync(RoomServiceMenuEntity item)
         {
             var existing = await _menuRepo.GetByIdAsync(item.Id);
+
             if (existing == null) return null;
 
             existing.ItemName = item.ItemName;
@@ -31,6 +35,7 @@ namespace TheHotel.Application.Services
             existing.Available = item.Available;
 
             await _menuRepo.UpdateAsync(existing);
+
             return existing;
         }
 
