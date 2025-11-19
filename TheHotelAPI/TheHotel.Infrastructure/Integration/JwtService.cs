@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 using TheHotel.Domain.DomainExceptions;
 using TheHotel.Domain.DTOs.UserDTO;
 using TheHotel.Domain.Interfaces.Integrations;
@@ -29,7 +25,6 @@ namespace TheHotel.Infrastructure.Integration
         {
             try
             {
-
                 if (string.IsNullOrEmpty(userLoginDetails.Id.ToString()))
                 {
                     throw new ServiceException("User uid is required");
@@ -37,7 +32,7 @@ namespace TheHotel.Infrastructure.Integration
 
                 var Issuer = _configuration["JwtConfig:Issuer"];
                 var Audience = _configuration["JwtConfig:Audience"];
-                //var key = _configuration["JwtConfig:Issuer"];
+
                 var tokenValidityMins = int.Parse(_configuration["JwtConfig:TokenValidityMins"]!);
                 var tokenExpiryTimestamp = DateTime.UtcNow.AddMinutes(tokenValidityMins);
 
