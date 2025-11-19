@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheHotel.Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TheHotel.Domain.DTOs.NewFolder
 {
@@ -14,7 +8,7 @@ namespace TheHotel.Domain.DTOs.NewFolder
         public Guid UserId { get; set; }
 
         [Required]
-        public Guid senderId { get; set; }
+        public Guid SenderId { get; set; }
 
         [Required]
         public string MessageText { get; set; } = null!;

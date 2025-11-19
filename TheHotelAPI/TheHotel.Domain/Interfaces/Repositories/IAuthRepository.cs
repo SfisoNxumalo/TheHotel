@@ -6,7 +6,7 @@ namespace TheHotel.Domain.Interfaces.Repositories
     public interface IAuthRepository
     {
 
-        Task<UserEntity> GetUserDetailsByEmailAsync(AuthDTO loginModel);
+        Task<UserEntity> GetUserDetailsByEmailAsync(string email);
         Task<bool> Register(UserEntity user);
     }
 }

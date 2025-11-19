@@ -10,5 +10,7 @@ namespace TheHotel.Domain.Interfaces.Repositories
         Task<OrderRoomServiceDTO> GetOrderByIdAsync(Guid orderId);
 
         Task<RoomServiceOrderEntity?> GetOrderWithItemsAsync(Guid orderId);
+
+        Task<IEnumerable<OrderRoomServiceDTO>> GetAllOrdersAsync();
     }
 }
