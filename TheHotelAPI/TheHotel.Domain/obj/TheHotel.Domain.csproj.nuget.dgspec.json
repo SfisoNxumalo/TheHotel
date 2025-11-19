@@ -50,13 +50,15 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNetCore.SignalR": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[9.0.9, )"
             },
-            "Microsoft.AspNetCore.SignalR.Core": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[1.2.0, )"
+              "version": "[9.0.9, )"
             }
           },
           "imports": [
