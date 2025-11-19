@@ -21,6 +21,9 @@ import { SnackbarOrigin } from '@mui/material';
 import { useMessageStore } from './stores/messageStore';
 import LoginPage from './app/pages/LoginPage/LoginPage';
 import RegisterPage from './app/pages/RegisterPage/RegisterPage';
+import { useAuthStore } from './stores/authStore';
+import AnalyticsPage from './app/pages/Staff/AnalyticsPage/AnalyticsPage';
+import AdminChats from './app/pages/AdminChat/AdminChatsPage';
 
 const queryClient = new QueryClient()
 
@@ -34,20 +37,21 @@ function App() {
   const [url, setUrl] = useState<string>('');
 
   const addMessage = useMessageStore(s => s.addMessage);
+  const user = useAuthStore((s) => s.user);
   
   useEffect(() => {
     
   async function ConnectWithsignalR(){
     if (hubConnection.state === "Disconnected") {
-    await hubConnection
-      .start()
-      .then(() => console.log("Signarl Connected"))
-      .catch(console.error);
+      await hubConnection
+        .start()
+        .then(() => console.log("Signarl Connected"))
+        .catch(console.error);
 
-      await hubConnection.invoke("JoinSpecificRoom", '3C9C5A01-41A2-43D5-99E8-10B7CFD508F1')
-      .then(() => console.log("Joined room"))
+      await hubConnection.invoke("JoinSpecificRoom", `${user?.id}`)
+      .then(() => console.log("Joined room as", user?.id))
       .catch(console.error);
-  }
+    }
   }
     ConnectWithsignalR()
 
@@ -62,10 +66,12 @@ function App() {
     });
 
     registerMessageHandlers((message) => {
-      setMessage(message.messageText)
-      setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
-      setOpen(true)
-      addMessage(message)
+      if(message.senderId != user?.id){
+        setMessage(message.messageText)
+        setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
+        setOpen(true)
+        addMessage(message)
+      }
     });
 
 
@@ -73,8 +79,8 @@ function App() {
 }, []);
 
   return (
-    <>
-     <QueryClientProvider client={queryClient}>
+    <div className='div-ver'>
+      <QueryClientProvider client={queryClient}>
       <BrowserRouter>
 
       <ShowCustomSnackbar open={open} setOpen={setOpen} 
@@ -91,18 +97,22 @@ function App() {
           <Route path="room-service" element={<RoomService />} />
           <Route path="view-one/:id" element={<ViewOne />} />
            <Route path="chats" element={<Chats />} />
+           <Route path="admin/chats" element={<AdminChats />} />
            <Route path="view/order/:id" element={<OrderDetailsPage />} />
            <Route path="cart" element={<Cart/>} />
            <Route path="order/success" element={<OrderPlacedUI/>} />
            <Route path="orders" element={<OrdersListPage/>} />
+           <Route path="data/analyse" element={<AnalyticsPage/>} />
           <Route path="*" element={<LoginPage/>} />
         {/* </Route> */}
       </Routes>
       <BottomNav/>
     </BrowserRouter>
     </QueryClientProvider>
+    </div>
+     
     
-    </>
+    
   )
 }
 

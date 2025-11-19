@@ -25,9 +25,15 @@
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
+    width: 100%;
+    
 }
 
+/* .itemDetails p{
+
+    text-align: left;
+} */
 
 
 .holder p{

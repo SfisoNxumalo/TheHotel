@@ -21,6 +21,7 @@ import { useFetchOrderDetails } from "../../../services/roomServiceService";
 import { useEffect, useState } from "react";
 import { OrderDetails } from "../../../Interfaces/OrderDetails";
 import styles from './style.module.css'
+import { useAuthStore } from "../../../stores/authStore";
 
 const statusColors: Record<string, string> = {
   Pending: "#f59e0b",
@@ -34,6 +35,7 @@ export default function OrderDetailsPage() {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
+  const user = useAuthStore((s) => s.user);
 
   // If no ID in URL → redirect to dashboard
   useEffect(() => {
@@ -59,7 +61,7 @@ export default function OrderDetailsPage() {
         {orderDetails && <Box sx={{ p: 2, pb: 10, maxWidth: 900, mx: "auto" }}>
       {/* HEADER */}
       <Typography variant="h5" fontWeight={700}>
-        Order #{orderDetails?.orderId.slice(0, 8)}
+        Order #{orderDetails?.orderId.slice(0, 8).toUpperCase()}
       </Typography>
 
       <Box mt={1} display="flex" alignItems="center">
@@ -74,9 +76,9 @@ export default function OrderDetailsPage() {
         Created: {new Date(orderDetails?.createdAt).toLocaleString()}
       </Typography>
 
-      <Typography color="text.secondary" fontSize={14}>
+      {/* <Typography color="text.secondary" fontSize={14}>
         User: {orderDetails?.userId}
-      </Typography>
+      </Typography> */}
 
       {/* SUMMARY CARD */}
       <Card sx={{ mt: 3 }}>
@@ -86,13 +88,16 @@ export default function OrderDetailsPage() {
           </Typography>
 
           <Box mt={2}>
-            <Typography fontWeight={600}>Order ID:</Typography>
-            <Typography color="text.secondary">{orderDetails?.orderId}</Typography>
+            {/* <Typography fontWeight={600}>Order ID:</Typography>
+            <Typography color="text.secondary">{orderDetails?.orderId}</Typography> */}
 
             <Box mt={2}>
-              <Typography fontWeight={600}>User ID:</Typography>
+              <Typography fontWeight={600}>Customer</Typography>
               <Typography color="text.secondary">
-                {orderDetails?.userId}
+                {user?.fullName}
+              </Typography>
+              <Typography color="text.secondary">
+                {user?.phoneNumber}
               </Typography>
             </Box>
 
