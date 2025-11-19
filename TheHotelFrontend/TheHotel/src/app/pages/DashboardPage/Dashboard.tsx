@@ -22,6 +22,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import { Link, useNavigate } from 'react-router-dom';
 import RateDialog from './Components/RateDialog/RateDialog';
 import { useState } from 'react';
+import { useAuthStore } from '../../../stores/authStore';
 
 interface Props {
   /**
@@ -60,6 +61,7 @@ interface Props {
   }));
   
   function Compo(props: Props){
+    const user = useAuthStore((s) => s.user);
     return(
       <React.Fragment >
                       <CssBaseline />
@@ -72,8 +74,8 @@ interface Props {
                                 <div className={styles.holder} style={{height:'100px'}}>
                                   <div  className={styles.holderItems}>
                                     <div className={styles.holderItems} style={{width:'100%', display: 'flex'}}>
-                                    <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-                                    <label> Hello Sfiso</label>
+                                    <Avatar sx={{ bgcolor: deepOrange[500] }}>{user?.fullName.charAt(0).toLocaleUpperCase()}</Avatar>
+                                    <label> Hello {`${user?.fullName.charAt(0).toLocaleUpperCase()}${user?.fullName.substring(1)}`}</label>
                                   </div>
                                   <IconButton sx={{color:'white'}} aria-label="cart">
                                     <StyledBadge badgeContent={1} color="error">

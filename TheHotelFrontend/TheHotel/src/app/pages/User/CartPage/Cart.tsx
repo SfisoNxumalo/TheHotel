@@ -1,7 +1,7 @@
 import { Card, Box, CardContent, Typography, IconButton, CardMedia, Button, Grid } from "@mui/material";
 
 import { restaurantBanner } from "../../../../assets/imageStore";
-import globalStyles from './Cart.module.css'
+import globalStyles from '../../../../GlobalStyles/globalStyle.module.css'
 import styles from './Cart.module.css'
 import { useNavigate } from "react-router-dom";
 import { GoArrowLeft } from "react-icons/go";
@@ -10,21 +10,24 @@ import { TiMinus } from "react-icons/ti";
 import { useCartStore } from "../../../../stores/cartStore";
 import { IconTrashFilled } from '@tabler/icons-react';
 import { Checkout } from "../../../../Interfaces/CartItem";
-import { PlaceOrder } from "../../../../services/roomServiceService";
+import { placeOrder } from "../../../../services/roomServiceService";
+import { useAuthStore } from "../../../../stores/authStore";
 
 export default function Cart(){
 
 const navigate = useNavigate();
 const { items, removeItem, updateQuantity, clearCart, total } = useCartStore();
 
+const user = useAuthStore((s) => s.user);
+
 const handleCheckout = async () =>{
 
   const checkoutCart: Checkout = {
-    userId: "3C9C5A01-41A2-43D5-99E8-10B7CFD508F1",
+    userId: `${user?.id}`,
     items: items
   }
   
-  const response = await PlaceOrder(checkoutCart);
+  const response = await placeOrder(checkoutCart);
 
   if(response.status == 201) {
     navigate('/order/success', {state: {orderId:response.data.orderId}})

@@ -14,6 +14,7 @@ import {
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useFetchAllOrders } from "../../../services/roomServiceService";
+import { useAuthStore } from "../../../stores/authStore";
 
 const statusColors: Record<string, string> = {
   Pending: "#f59e0b",
@@ -27,7 +28,9 @@ export default function OrdersListPage() {
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
   const navigate = useNavigate();
 
-  const { data: orders, isLoading } = useFetchAllOrders('3C9C5A01-41A2-43D5-99E8-10B7CFD508F1');
+  const user = useAuthStore((s) => s.user);
+
+  const { data: orders, isLoading } = useFetchAllOrders(`${user?.id}`);
 
   if (isLoading) return <Typography>Loading orders...</Typography>;
 
