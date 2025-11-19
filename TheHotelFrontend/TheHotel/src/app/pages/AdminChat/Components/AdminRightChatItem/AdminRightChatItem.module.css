@@ -1,0 +1,32 @@
+.holder{
+    display: flex;
+        flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.holder .MessageHolder{
+         background-color: rgb(58, 56, 55);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 10px 0px 10px 10px;
+    display: flex;
+    flex-direction: column;
+   width: auto;
+    max-width: 90%;
+}
+
+p{
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+
+.metaData{
+    display: flex;
+    flex-direction: row;
+    font-size: x-small;
+    text-align: right;
+    justify-content: flex-end;
+    gap: 5px;
+}

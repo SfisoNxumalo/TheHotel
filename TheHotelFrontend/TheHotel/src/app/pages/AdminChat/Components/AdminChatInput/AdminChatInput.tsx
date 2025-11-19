@@ -1,5 +1,5 @@
 import { Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
-import styles from './ChatInput.module.css'
+import styles from './AdminChatInput.module.css'
 import { BsSend } from "react-icons/bs";
 import { ImAttachment } from "react-icons/im";
 import { useState } from 'react';
@@ -28,7 +28,7 @@ interface chatInputProps{
     messages:Message[]
 }
 
-export default function ChatInput({setMessage, setIsSending, messages}:chatInputProps){
+export default function AdminChatInput({setMessage, setIsSending, messages}:chatInputProps){
 
     const [typedMessage, setTypedMessage] = useState("");
     const user = useAuthStore((s) => s.user);
@@ -40,9 +40,9 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
 
         const newMessage:SendNewMessage = {
             messageText:typedMessage,
-            userId: `${user?.id}`,
+            userId: `03753F20-B814-4D3E-AC83-08DE26F78854`,
             staffId:'57FD88E1-4BD2-44BD-B33E-301232D0983C',
-            senderId: `${user?.id}`
+            senderId: `57FD88E1-4BD2-44BD-B33E-301232D0983C`
         }
 
         setIsSending(true)
@@ -51,9 +51,7 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
         
         if(response.status == 201){
             
-            // messages.some(mes => mes.id == )
             addMessage(response.data)
-            // setMessage(messages)
         }
 
         setIsSending(false)

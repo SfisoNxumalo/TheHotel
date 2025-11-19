@@ -1,9 +1,9 @@
 import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
-import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
-import RightChatItem from "./Components/RightChatItem/RightChatItem";
-import styles from './ChatPageStyle.module.css'
-import ChatInput from "./Components/ChatInput/ChatInput";
+import AdminLeftChatItem from "./Components/AdminLeftChatItem/AdminLeftChatItem";
+import AdminRightChatItem from "./Components/AdminRightChatItem/AdminRightChatItem";
+import styles from './AdminChatPageStyle.module.css'
+import AdminChatInput from "./Components/AdminChatInput/AdminChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
 import { getAllMessages, useFetchMessages } from "../../../services/messageService";
@@ -11,7 +11,6 @@ import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { useMessageStore } from "../../../stores/messageStore";
 import { useAuthStore } from "../../../stores/authStore";
-import AdminChatInput from "../AdminChat/Components/AdminChatInput/AdminChatInput";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -20,7 +19,6 @@ interface Props {
   window?: () => Window;
   children?: React.ReactElement<{ elevation?: number }>;
 }
-
 
 function ElevationScroll(props: Props) {
   const { children, window } = props;
@@ -40,7 +38,7 @@ function ElevationScroll(props: Props) {
     : null;
 }
 
-export default function Chats(props: Props){
+export default function AdminChats(props: Props){
    const [isSending, setIsSending] = useState<boolean>(false);
     const [allMessages, setAllMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
@@ -53,8 +51,8 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
 
   // const { messages, loading, error } = useMessageStore();
   const setMessages = useMessageStore((state) => state.setMessages);
-  const user = useAuthStore((s) => s.user);
-  const {data, isSuccess} = useFetchMessages(`${user?.id}`)
+  const user = '57FD88E1-4BD2-44BD-B33E-301232D0983C'
+  const {data, isSuccess} = useFetchMessages(`${user}`)
   
   useEffect(()=>{
     if(isSuccess){
@@ -80,7 +78,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
                         <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">
-                    Assistant manager
+                    Ben
                     </Typography>
                   </Toolbar>
                   </AppBar>
@@ -89,17 +87,15 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
                       { messages.map((message, index) => 
-                                <div key={message.id}> {message.senderId.toLowerCase() == user?.id.toLowerCase() ? 
-                                  <RightChatItem  message={message} /> : 
-                                  <LeftChatItem  message={message} />}
+                                <div key={message.id}> {message.senderId.toLowerCase() == user.toLowerCase() ? 
+                                  <AdminRightChatItem  message={message} /> : 
+                                  <AdminLeftChatItem  message={message} />}
                                 </div>  
                           )}
-                          
                   </List>
               <div style={{height:"65px"}} ref={bottomRef} />
               </Container>
-              
-        </React.Fragment>hh
+        </React.Fragment>
         <AdminChatInput setMessage={setAllMessage} messages={allMessages} setIsSending={setIsSending}/>
       </div> 
     );
