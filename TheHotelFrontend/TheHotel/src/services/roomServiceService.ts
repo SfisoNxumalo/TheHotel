@@ -34,7 +34,7 @@ export async function getMenuItemById(id:string) {
    }
 }
 
-export async function PlaceOrder(CheckoutDetails:Checkout){
+export async function placeOrder(CheckoutDetails:Checkout){
    try{
       const result = await httpService.post(placeOrderEndpoint, CheckoutDetails);
       return result;
