@@ -29,3 +29,5 @@ C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\refint\TheHotel.Application.dll
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.pdb
 C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\ref\TheHotel.Application.dll
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\bin\Debug\net8.0\TheHotel.Application.runtimeconfig.json
+C:\Users\Sifiso\Final Project\TheHotelAPI\TheHotel.Application\obj\Debug\net8.0\TheHotel.Application.genruntimeconfig.cache

@@ -5,6 +5,68 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Booking": {
       "get": {
         "tags": [
@@ -452,6 +514,18 @@
         }
       }
     },
+    "/api/RoomServiceOrder/all": {
+      "get": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/User": {
       "get": {
         "tags": [
@@ -584,6 +658,7 @@
         "required": [
           "email",
           "fullName",
+          "password",
           "phoneNumber"
         ],
         "type": "object",
@@ -599,6 +674,24 @@
           "phoneNumber": {
             "minLength": 1,
             "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -624,6 +717,9 @@
           "updatedDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
           },
           "userId": {
             "type": "string",
@@ -686,6 +782,9 @@
           "updatedDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
           },
           "deviceUUID": {
             "minLength": 1,
@@ -751,11 +850,18 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "userId": {
             "type": "string",
             "format": "uuid"
           },
           "staffId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "senderId": {
             "type": "string",
             "format": "uuid"
           },
@@ -862,6 +968,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "roomNumber": {
             "minLength": 1,
             "type": "string"
@@ -908,6 +1017,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "itemName": {
             "minLength": 1,
             "type": "string"
@@ -952,6 +1064,9 @@
           "updatedDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
           },
           "userId": {
             "type": "string",
@@ -999,6 +1114,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid"
@@ -1031,12 +1149,17 @@
       "SendMessageDTO": {
         "required": [
           "messageText",
+          "senderId",
           "staffId",
           "userId"
         ],
         "type": "object",
         "properties": {
           "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "senderId": {
             "type": "string",
             "format": "uuid"
           },
@@ -1055,6 +1178,7 @@
         "required": [
           "email",
           "fullName",
+          "passwordHash",
           "phoneNumber",
           "role"
         ],
@@ -1072,11 +1196,18 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "fullName": {
             "minLength": 1,
             "type": "string"
           },
           "role": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "passwordHash": {
             "minLength": 1,
             "type": "string"
           },
@@ -1102,6 +1233,7 @@
         "required": [
           "email",
           "fullName",
+          "passwordHash",
           "phoneNumber"
         ],
         "type": "object",
@@ -1118,6 +1250,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "fullName": {
             "minLength": 1,
             "type": "string"
@@ -1127,6 +1262,10 @@
             "type": "string"
           },
           "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "passwordHash": {
             "minLength": 1,
             "type": "string"
           },
@@ -1147,6 +1286,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter your JWT access token",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }
