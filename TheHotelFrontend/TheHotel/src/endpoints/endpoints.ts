@@ -1,8 +1,8 @@
 
 export const baseURL = 'https://localhost:7114/api/'
 
-export const RoomServiceMenuEndpoint = `RoomService/menu`
-export const PlaceOrderEndpoint = `RoomServiceOrder`
+export const roomServiceMenuEndpoint = `RoomService/menu`
+export const placeOrderEndpoint = `RoomServiceOrder`
 export const messageEndpoint = `Message`
 
 export function getMenuItemByIdEndpoint(menuitemId:string){
@@ -20,3 +20,8 @@ export function getOrderDetailsEndpoint(orderId:string) {
 export function getOrdersEndpoint(userId:string) {
     return `RoomServiceOrder/user/${userId}`
 } 
+
+//Authentication
+
+export const loginEndpoint = `auth/login`
+export const registerEndpoint = `auth/register`

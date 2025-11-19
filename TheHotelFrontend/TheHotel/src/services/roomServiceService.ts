@@ -1,5 +1,5 @@
 import { useQuery, UseQueryResult } from "@tanstack/react-query";
-import { getMenuItemByIdEndpoint, getOrderDetailsEndpoint, getOrdersEndpoint, PlaceOrderEndpoint, RoomServiceMenuEndpoint } from "../endpoints/endpoints";
+import { getMenuItemByIdEndpoint, getOrderDetailsEndpoint, getOrdersEndpoint, placeOrderEndpoint, roomServiceMenuEndpoint } from "../endpoints/endpoints";
 import { httpService } from "../utils/httpService";
 import { Product } from "../Interfaces/products";
 import { Checkout } from "../Interfaces/CartItem";
@@ -7,7 +7,7 @@ import { OrderDetails } from "../Interfaces/OrderDetails";
 
 export async function getAllProducts() {
     
-   return await httpService.get(RoomServiceMenuEndpoint)
+   return await httpService.get(roomServiceMenuEndpoint)
       .then((res) => {return res.data;}
       )
       .catch((err) => console.error('Failed to fetch products:', err))
@@ -36,7 +36,7 @@ export async function getMenuItemById(id:string) {
 
 export async function PlaceOrder(CheckoutDetails:Checkout){
    try{
-      const result = await httpService.post(PlaceOrderEndpoint, CheckoutDetails);
+      const result = await httpService.post(placeOrderEndpoint, CheckoutDetails);
       return result;
    }
    catch(error){
