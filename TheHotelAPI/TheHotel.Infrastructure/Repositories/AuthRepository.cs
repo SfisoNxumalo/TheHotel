@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TheHotel.Domain.DomainExceptions;
-using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces.Repositories;
 using TheHotel.Infrastructure.DatabaseContext;
@@ -16,9 +15,9 @@ namespace TheHotel.Infrastructure.Repositories
             this._dbContext = _dbContext;
         }
 
-        public async Task<UserEntity> GetUserDetailsByEmailAsync(AuthDTO loginModel)
+        public async Task<UserEntity> GetUserDetailsByEmailAsync(string email)
         {
-            var user = await _dbContext.Users.Where(user => user.Email == loginModel.email)
+            var user = await _dbContext.Users.Where(user => user.Email == email)
                .FirstOrDefaultAsync();
 
                 return user;
