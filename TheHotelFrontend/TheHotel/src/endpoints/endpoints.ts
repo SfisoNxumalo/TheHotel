@@ -25,3 +25,6 @@ export function getOrdersEndpoint(userId:string) {
 
 export const loginEndpoint = `auth/login`
 export const registerEndpoint = `auth/register`
+
+//Analyse
+export const ordersAnalyseEndpoint = `RoomServiceOrder/all`
