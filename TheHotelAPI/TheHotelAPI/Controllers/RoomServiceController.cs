@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
+using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 
@@ -11,28 +12,72 @@ namespace TheHotelAPI.Controllers
     public class RoomServiceController : Controller
     {
         private readonly IRoomServiceMenuService _menuService;
+        private readonly ILogger<RoomServiceController> _logger;
 
-        public RoomServiceController(
-        IRoomServiceMenuService menuService)
+        public RoomServiceController(IRoomServiceMenuService menuService, ILogger<RoomServiceController> logger)
         {
             _menuService = menuService;
+            _logger = logger;
         }
 
 
         [HttpGet("menu")]
-        [ProducesResponseType(200, Type=typeof(MenuItemDTO))]
+        [ProducesResponseType(200, Type = typeof(MenuItemDTO))]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> GetMenu()
         {
-            var menu = await _menuService.GetMenuAsync();
-            return Ok(menu);
+            try
+            {
+                var menu = await _menuService.GetMenuAsync();
+                return Ok(menu);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    ex,
+                    "{functionName} encountered an error while retrieving menu.",
+                    nameof(GetMenu)
+                );
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while processing your request"
+                );
+            }
         }
 
         [HttpGet("menu/{id:guid}")]
         [ProducesResponseType(200, Type = typeof(MenuItemDTO))]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
         public async Task<IActionResult> GetMenuItemById([FromRoute] Guid id)
         {
-            var menu = await _menuService.GetMenuItemByIdAsync(id);
-            return Ok(menu);
+            try
+            {
+                var menu = await _menuService.GetMenuItemByIdAsync(id);
+                return Ok(menu);
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    ex,
+                    "{functionName} encountered an error while getting menu item by ID."
+                        + Environment.NewLine
+                        + "||{idName}: {id}",
+                    nameof(GetMenuItemById),
+                    nameof(id),
+                    id
+                );
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while processing your request"
+                );
+            }
         }
 
         [HttpPost("menu")]

@@ -12,9 +12,11 @@ namespace TheHotelAPI.Controllers
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        private readonly ILogger<AuthController> _logger;
+        public AuthController(IAuthService authService, ILogger<AuthController> logger)
         {
             _authService = authService;
+            _logger = logger;
         }
 
 
@@ -54,6 +56,7 @@ namespace TheHotelAPI.Controllers
                 {
                     return Ok("User registered successfully");
                 }
+
                 return Ok("unknown fail");
             }
             catch (DatabaseException DbE)

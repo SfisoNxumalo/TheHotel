@@ -33,7 +33,12 @@ namespace TheHotel.Application.Services
 
         public async Task<OrderRoomServiceDTO> GetOrderById(Guid orderId)
         {
-            return await _orderRepository.GetOrderByIdAsync(orderId);
+            var order = await _orderRepository.GetOrderByIdAsync(orderId);
+
+            if (order == null)
+                throw new NotFoundException("TheHotel order with the provided Id was not found");
+
+            return order;
         }
 
         public async Task<IEnumerable<OrderRoomServiceDTO>> GetOrdersByUserIdAsync(Guid orderId)

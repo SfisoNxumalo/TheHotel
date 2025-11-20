@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using TheHotel.Application.Interfaces;
+using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs;
 using TheHotel.Domain.Entities;
 using TheHotel.Domain.Interfaces.Repositories;
@@ -46,7 +47,12 @@ namespace TheHotel.Application.Services
 
         public async Task<MenuItemDTO?> GetMenuItemByIdAsync(Guid id)
         {
-            return await _menuRepo.GetProductById(id);
+            var product = await _menuRepo.GetProductById(id);
+
+            if (product == null)
+                throw new NotFoundException("The requested product was not found");
+
+            return  product;
         }
 
         public async Task<IEnumerable<MenuItemDTO>> GetMenuItemsByIdsAsync(IEnumerable<Guid> MenuItemIds)

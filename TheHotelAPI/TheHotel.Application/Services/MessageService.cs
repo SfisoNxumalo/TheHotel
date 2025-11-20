@@ -41,9 +41,9 @@ namespace TheHotel.Application.Services
             if (user == null)
                 throw new UserNotFoundException($"A user with id '{message.UserId}' was not found");
 
-            var staff = _userService.GetStaffByIdAsync(message.UserId);
+            var staff = _userService.GetStaffByIdAsync(message.StaffId);
             if (staff == null)
-                throw new UserNotFoundException($"A user with id '{message.UserId}' was not found");
+                throw new UserNotFoundException($"A user with id '{message.StaffId}' was not found");
 
 
             var newMessage = new MessageEntity

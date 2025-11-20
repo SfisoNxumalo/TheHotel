@@ -7,16 +7,17 @@ using TheHotel.Infrastructure.SignalR;
 
 namespace TheHotelAPI.SignalR
 {
+
     public class RealtimeNotifier : IRealTimeNotifier
     {
 
         private readonly IHubContext<RealtimeHub> _hubContext;
         private readonly ILogger<RealtimeNotifier> _logger;
 
-
         public RealtimeNotifier(IHubContext<RealtimeHub> hubContext, ILogger<RealtimeNotifier> logger)
         {
             _hubContext = hubContext;
+            _logger = logger;
         }
         public async Task BroadcastMessage(Guid userId, FetchMessageDTO message)
         {
