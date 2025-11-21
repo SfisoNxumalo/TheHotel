@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using TheHotel.Application.Interfaces;
+using TheHotel.Application.Models;
 using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs;
 using TheHotel.Domain.DTOs.UserDTO;
@@ -23,7 +24,7 @@ namespace TheHotel.Application.Services
             _logger = logger;
         }
 
-        public async Task<UserDetailsDTO> Login(AuthDTO user)
+        public async Task<AuthModel> Login(AuthDTO user)
         {
             if (user == null)
             {
@@ -59,9 +60,16 @@ namespace TheHotel.Application.Services
                 PhoneNumber = userLogin.PhoneNumber,
             };
 
-            userLoginDetails.Token = await _tokenService.EncodeToken(userLoginDetails);
+            userLoginDetails.Token = _tokenService.GenerateAccessToken(userLoginDetails);
+            var refreshtoken =  _tokenService.GenerateRefreshToken(userLogin.Id);
 
-            return userLoginDetails;
+            var userDetails = new AuthModel
+            {
+                UserDetails = userLoginDetails,
+                RefreshToken = refreshtoken
+            };       
+
+            return userDetails;
         }
 
         public async Task<bool> Register(AddUserDTO newUser)
