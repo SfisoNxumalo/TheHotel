@@ -4,7 +4,7 @@ namespace TheHotel.Application.Models
 {
     public class AuthModel
     {
-        public UserDetailsDTO userDetails { get; set; }
+        public UserDetailsDTO UserDetails { get; set; }
         public string RefreshToken { get; set; } 
     }
 }
