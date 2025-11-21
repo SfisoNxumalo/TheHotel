@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using TheHotel.Domain.Interfaces.Integrations;
 using TheHotel.Domain.Interfaces.Repositories;
-using TheHotel.Infrastructure.Integration;
+using TheHotel.Infrastructure.Integration.Auth;
 using TheHotel.Infrastructure.Repositories;
 
 namespace TheHotel.Infrastructure.Extension

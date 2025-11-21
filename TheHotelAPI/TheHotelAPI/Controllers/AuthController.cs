@@ -27,7 +27,17 @@ namespace TheHotelAPI.Controllers
             {
                 var result = await _authService.Login(loginModel);
 
-                return Ok(result);
+                var cookieOptions = new CookieOptions
+                {
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.None,
+                    Expires = DateTime.UtcNow.AddDays(7)
+                };
+
+                Response.Cookies.Append("refreshToken", result.RefreshToken, cookieOptions);
+
+                return Ok(result.UserDetails);
             }
             catch (DatabaseException DbE)
             {
@@ -41,8 +51,6 @@ namespace TheHotelAPI.Controllers
             {
                 return NotFound(e.Message);
             }
-
-
         }
 
         [HttpPost("register")]
