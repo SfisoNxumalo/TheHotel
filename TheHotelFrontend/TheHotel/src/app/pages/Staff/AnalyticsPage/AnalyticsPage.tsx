@@ -50,20 +50,16 @@ export default function AnalyticsPage() {
     getData()
   },[])
 
-  // -------------------
-  //  ANALYTICS LOGIC
-  // -------------------
 
-  // Total Revenue
+
   const totalRevenue = orders?.reduce(
     (sum, o) => sum + o.items.reduce((s, i) => s + i.price * i.quantity, 0),
     0
   );
 
-  // Total Orders
   const totalOrders = orders?.length;
 
-  // Most Bought Product
+  
   const countMap: Record<string, number> = {};
   orders?.forEach(o =>
     o.items.forEach(i => {
@@ -72,7 +68,6 @@ export default function AnalyticsPage() {
   );
   const mostBought = Object.entries(countMap).sort((a, b) => b[1] - a[1])[0];
 
-  // Revenue Per Day (Line Chart)
   const revenueByDay: Record<string, number> = {};
   orders?.forEach(o => {
     const day = o.createdAt.split("T")[0];
@@ -86,13 +81,13 @@ export default function AnalyticsPage() {
     revenue: Number(value.toFixed(2)),
   }));
 
-  // Top Selling Items (Bar Chart)
+  
   const topItemsChart = Object.entries(countMap).map(([name, qty]) => ({
     name,
     qty,
   }));
 
-  // Sales Distribution Pie Chart
+  
   const pieData = Object.entries(countMap).map(([name, qty]) => ({
     name,
     value: qty,

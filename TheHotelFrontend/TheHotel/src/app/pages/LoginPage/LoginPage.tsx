@@ -72,7 +72,7 @@ export default function LoginPage() {
             mb={1}
             color="#3470ed"
           >
-            Welcome Back 👋
+            Welcome Back
           </Typography>
 
           <Typography textAlign="center" color="text.secondary" mb={3}>

@@ -99,7 +99,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <div style={{height:"65px"}} ref={bottomRef} />
               </Container>
               
-        </React.Fragment>hh
+        </React.Fragment>
         <AdminChatInput setMessage={setAllMessage} messages={allMessages} setIsSending={setIsSending}/>
       </div> 
     );

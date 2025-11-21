@@ -74,7 +74,7 @@ export default function RegisterPage() {
             mb={1}
             color="#3470ed"
           >
-            Create Account ✨
+            Create Account
           </Typography>
 
           <Typography textAlign="center" color="text.secondary" mb={3}>
