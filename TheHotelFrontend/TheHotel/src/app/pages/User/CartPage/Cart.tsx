@@ -26,11 +26,11 @@ const handleCheckout = async () =>{
     userId: `${user?.id}`,
     items: items
   }
-  
+
   const response = await placeOrder(checkoutCart);
 
   if(response.status == 201) {
-    navigate('/order/success', {state: {orderId:response.data.orderId}})
+    navigate('/order/success', {state: {orderId:response.data}})
     clearCart()
   }
   
