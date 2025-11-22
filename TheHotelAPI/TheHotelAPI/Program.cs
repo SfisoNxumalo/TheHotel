@@ -7,6 +7,7 @@ using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceExtensions;
 using TheHotel.Infrastructure.DatabaseContext;
 using TheHotel.Infrastructure.Extension;
+using TheHotel.Infrastructure.Integration.GeminiService;
 using TheHotel.Infrastructure.Seeding;
 using TheHotel.Infrastructure.SignalR;
 using TheHotelAPI.SignalR;
@@ -31,6 +32,7 @@ namespace TheHotelAPI
 
             // Add services to the container.
 
+            builder.Services.AddHttpClient<GeminiService>();
             builder.Services.AddControllers();
             builder.Services.AddSignalR();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -82,7 +84,7 @@ namespace TheHotelAPI
                 {
                     ValidIssuer = builder.Configuration["JwtConfig:Issuer"],
                     ValidAudience = builder.Configuration["JwtConfig:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtConfig:Key"]!)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JwtConfig:AccessTokenSecret"]!)),
                     ValidateAudience = true,
                     ValidateIssuer = true,
                     ValidateLifetime = true,

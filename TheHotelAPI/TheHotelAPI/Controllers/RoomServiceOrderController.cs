@@ -105,6 +105,10 @@ namespace TheHotelAPI.Controllers
             {
                 return NotFound(ex.Message);
             }
+            catch(InappropriateContentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 _logger.LogError(

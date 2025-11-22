@@ -2,6 +2,7 @@
 using TheHotel.Domain.Interfaces.Integrations;
 using TheHotel.Domain.Interfaces.Repositories;
 using TheHotel.Infrastructure.Integration.Auth;
+using TheHotel.Infrastructure.Integration.GeminiService;
 using TheHotel.Infrastructure.Repositories;
 
 namespace TheHotel.Infrastructure.Extension
@@ -17,6 +18,8 @@ namespace TheHotel.Infrastructure.Extension
             services.AddScoped<IRoomServiceOrderRepository, RoomServiceOrderRepository>();
             services.AddScoped<IRoomServiceMenuRepository, RoomServiceMenuRepository>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+
+            services.AddScoped<IAIContentService, GeminiService>();
 
             services.AddScoped<ITokenService, JwtService>();
 
