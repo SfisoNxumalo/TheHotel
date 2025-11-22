@@ -2,7 +2,7 @@ import { AppBar, Box, Button, Container, CssBaseline, IconButton, TextField, Too
 import styles from './ViewOne.module.css'
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import globalStyles from './ViewOne.module.css'
+import globalStyles from '../../../../GlobalStyles/globalStyle.module.css'
 import { useCartStore } from '../../../../stores/cartStore';
 import { GoArrowLeft } from 'react-icons/go';
 import { CartItem } from '../../../../Interfaces/CartItem';
@@ -54,6 +54,7 @@ export default function ViewOne(props:Props){
     if(!menuItem?.id) return
     const item: CartItem = { ...menuItem, quantity: 1, note };
     addItem(item);
+    setNote("");
   };
 
   useEffect(() => {
@@ -108,6 +109,7 @@ export default function ViewOne(props:Props){
               placeholder="Add any extra notes"
               multiline
               size='small'
+              value={note} 
               onChange={(event)=> {
                   setNote(event.target.value);
               }}
