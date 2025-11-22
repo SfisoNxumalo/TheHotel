@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using System.Text;
 using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs.RoomServiceOrder;
@@ -15,15 +16,17 @@ namespace TheHotel.Application.Services
         private readonly IRoomServiceMenuService _roomServiceMenu;
         private readonly IRealTimeNotifier _realtimeNotifier;
         private readonly ILogger<RoomServiceOrderService> _logger;
+        private readonly ContentManager _contentManager;
 
         public RoomServiceOrderService(IRoomServiceOrderRepository orderRepository, IUserService userService, 
-            IRoomServiceMenuService roomServiceMenu, IRealTimeNotifier realtimeNotifier, ILogger<RoomServiceOrderService> logger)
+            IRoomServiceMenuService roomServiceMenu, IRealTimeNotifier realtimeNotifier, ILogger<RoomServiceOrderService> logger, ContentManager contentManager)
         {
             _orderRepository = orderRepository;
             _userService = userService;
             _roomServiceMenu = roomServiceMenu;
             _realtimeNotifier = realtimeNotifier;
             _logger = logger;
+            _contentManager = contentManager;
         }
 
         public async Task<IEnumerable<OrderRoomServiceDTO>> GetAllOrdersAsync()
@@ -37,7 +40,6 @@ namespace TheHotel.Application.Services
 
             if (order == null)
                 throw new NotFoundException("TheHotel order with the provided Id was not found");
-
             return order;
         }
 
@@ -65,6 +67,7 @@ namespace TheHotel.Application.Services
                 var productsById = availableMenuItems.ToDictionary(p => p.Id);
 
                 var errors = new List<string>();
+
                 foreach (var item in order.items)
                 {
                     if (!productsById.TryGetValue(item.Id, out var p))
@@ -79,7 +82,7 @@ namespace TheHotel.Application.Services
                 var orderId = Guid.NewGuid();
 
                 var lstItems = new List<RoomServiceOrderItemEntity>();
-
+                StringBuilder userNotes = new StringBuilder();
                 foreach(var item in order.items) {
                     lstItems.Add(new RoomServiceOrderItemEntity { 
                         OrderId = orderId,
@@ -88,6 +91,19 @@ namespace TheHotel.Application.Services
                         Quantity = item.Quantity,
                         Note = item.note
                     });
+
+                    if (!string.IsNullOrWhiteSpace(item.note))
+                    {
+                        userNotes.AppendLine(item.note);
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(userNotes.ToString().Trim()))
+                {
+                    var contentResults = await _contentManager.VerifyContentAsync(userNotes.ToString().Trim());
+                    
+                    if (contentResults.Equals("fail", StringComparison.OrdinalIgnoreCase))
+                        throw new InappropriateContentException("Your message includes content that cannot be processed due to safety and policy restrictions.");
                 }
 
                 var roomServiceOrder = new RoomServiceOrderEntity
