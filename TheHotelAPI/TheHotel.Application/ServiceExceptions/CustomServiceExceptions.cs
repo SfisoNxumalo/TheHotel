@@ -42,4 +42,9 @@
     {
         public IncorrectPassword(string message) : base(message) { }
     }
+
+    public class InappropriateContentException : Exception
+    {
+        public InappropriateContentException(string message) : base(message) { }
+    }
 }
