@@ -8,6 +8,7 @@ import { GoArrowLeft } from 'react-icons/go';
 import { CartItem } from '../../../../Interfaces/CartItem';
 import { Product } from '../../../../Interfaces/products';
 import { getMenuItemById } from '../../../../services/roomServiceService';
+import { Padding } from '@mui/icons-material';
 
 
 interface Props {
@@ -74,8 +75,7 @@ export default function ViewOne(props:Props){
     
     return (
 <>
-            <div className={styles.container}>
-        </div>
+            
 <React.Fragment>
       <CssBaseline />
       <ElevationScroll {...props}>
@@ -91,7 +91,9 @@ export default function ViewOne(props:Props){
         </AppBar>
       </ElevationScroll>
       <Toolbar />
-      <Container>
+      <Container sx={{padding:0}}>
+        <div className={styles.container} style={{backgroundImage:`url(${menuItem?.image})`}}>
+        </div>
         <div className={styles.contentHolder}>
 
             <h4>R{menuItem?.price}</h4>

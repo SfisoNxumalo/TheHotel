@@ -1,7 +1,7 @@
 import { Person } from "@mui/icons-material";
 import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, styled } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import { useCartStore } from "../../stores/cartStore";
@@ -26,11 +26,10 @@ export default function BottomNav(){
 
     const newMessageCount = useMessageStore((s) => s.newMessageCount);
 
+    const location = useLocation();
+
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    // if(window.location.pathname){
-    //   setValue(window.location.pathname)
-    // }
   };
 
   return (

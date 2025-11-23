@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import { loginRequest, loginUser } from "../../../services/AuthService/authService";
 import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import { useAuthStore } from "../../../stores/authStore";
+import { AuthUser } from "../../../Interfaces/AuthUser";
 
 export default function LoginPage() {
   const navigate = useNavigate();
@@ -29,11 +30,17 @@ export default function LoginPage() {
     const res = await loginUser(logUser)
 
     if(res.status == 200){
-      console.log(res.data);
-      login(res.data)
-      navigate('/dashboard')
-    }
+      const user:AuthUser = res.data
+      login(user)
 
+      if(user.role === 'Staff'){
+        navigate('/admin/chats')
+      }
+      else{
+        navigate('/dashboard')
+      }
+      
+    }
   };
 
   return (

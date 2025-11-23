@@ -25,7 +25,6 @@ export default function ShowCustomSnackbar({open = false, setOpen, message, url,
     reason?: SnackbarCloseReason,
   ) => {
     if (reason === 'clickaway') {
-        console.log('close');
         
       return;
     }
