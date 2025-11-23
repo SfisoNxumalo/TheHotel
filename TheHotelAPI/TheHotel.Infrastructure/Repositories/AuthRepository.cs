@@ -23,6 +23,14 @@ namespace TheHotel.Infrastructure.Repositories
                 return user;
         }
 
+        public async Task<StaffEntity> GetStaffDetailsByEmailAsync(string email)
+        {
+            var staff = await _dbContext.Staff.Where(staff => staff.Email == email)
+               .FirstOrDefaultAsync();
+
+            return staff;
+        }
+
         public async Task<bool> Register(UserEntity user)
         {
             
@@ -40,6 +48,25 @@ namespace TheHotel.Infrastructure.Repositories
 
                 return true;
             
+        }
+
+        public async Task<bool> RegisterStaff(StaffEntity user)
+        {
+
+            var UserFound = await _dbContext.Staff.FirstOrDefaultAsync(
+                users => user.Email == users.Email
+            );
+
+            if (UserFound != null)
+            {
+                throw new DatabaseException("A user with this email address already exists");
+            }
+
+            await _dbContext.Staff.AddAsync(user);
+            await _dbContext.SaveChangesAsync();
+
+            return true;
+
         }
     }
 }

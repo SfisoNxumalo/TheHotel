@@ -1,5 +1,4 @@
-﻿using TheHotel.Domain.DTOs;
-using TheHotel.Domain.Entities;
+﻿using TheHotel.Domain.Entities;
 
 namespace TheHotel.Domain.Interfaces.Repositories
 {
@@ -7,6 +6,9 @@ namespace TheHotel.Domain.Interfaces.Repositories
     {
 
         Task<UserEntity> GetUserDetailsByEmailAsync(string email);
+
+        Task<StaffEntity> GetStaffDetailsByEmailAsync(string email);
         Task<bool> Register(UserEntity user);
+        Task<bool> RegisterStaff(StaffEntity user);
     }
 }
