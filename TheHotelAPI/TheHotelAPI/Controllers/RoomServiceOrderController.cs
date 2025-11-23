@@ -19,6 +19,7 @@ namespace TheHotelAPI.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet("user/{userId:guid}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(500)]
@@ -48,7 +49,7 @@ namespace TheHotelAPI.Controllers
             }
         }
 
-
+        [Authorize]
         [HttpGet("{orderId:guid}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
@@ -84,7 +85,7 @@ namespace TheHotelAPI.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(404)]
@@ -133,6 +134,7 @@ namespace TheHotelAPI.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllOrders()
         {

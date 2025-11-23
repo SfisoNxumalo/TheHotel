@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs.NewFolder;
@@ -19,7 +20,7 @@ namespace TheHotelAPI.Controllers
         }
 
 
-
+        [Authorize]
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
@@ -63,6 +64,7 @@ namespace TheHotelAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{userId:guid}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(400)]
