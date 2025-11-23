@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceCustomExceptions;
 using TheHotel.Domain.DTOs;
@@ -20,7 +21,7 @@ namespace TheHotelAPI.Controllers
             _logger = logger;
         }
 
-
+        [Authorize]
         [HttpGet("menu")]
         [ProducesResponseType(200, Type = typeof(MenuItemDTO))]
         [ProducesResponseType(500)]
@@ -46,6 +47,7 @@ namespace TheHotelAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("menu/{id:guid}")]
         [ProducesResponseType(200, Type = typeof(MenuItemDTO))]
         [ProducesResponseType(404)]
@@ -80,6 +82,7 @@ namespace TheHotelAPI.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("menu")]
         public async Task<IActionResult> AddMenuItem(RoomServiceMenuEntity item)
         {
