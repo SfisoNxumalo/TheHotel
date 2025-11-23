@@ -34,7 +34,8 @@ namespace TheHotel.Infrastructure.Integration.Auth
                 {
                     new(JwtRegisteredClaimNames.Sub, userLoginDetails.Id.ToString()),
                     new(JwtRegisteredClaimNames.Email, userLoginDetails.Email),
-                    new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new("Role", userLoginDetails.Role)
                 };
 
                 var Issuer = _configuration["JwtConfig:Issuer"];
@@ -89,6 +90,30 @@ namespace TheHotel.Infrastructure.Integration.Auth
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public string RefreshAsync(string? refreshToken)
+        {
+            if (string.IsNullOrEmpty(refreshToken))
+                return null;
+
+            var principal = ValidateRefreshToken(refreshToken);
+            if (principal == null)
+                return null;
+
+            var userIdStr = principal.Claims
+                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)
+                ?.Value;
+
+            var userEmail = principal.Claims
+                .FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Email)
+                ?.Value;
+
+            if (userIdStr == null || !Guid.TryParse(userIdStr, out var userId))
+                return null;
+
+
+            return userEmail;
         }
 
         public ClaimsPrincipal? ValidateRefreshToken(string refreshToken)
