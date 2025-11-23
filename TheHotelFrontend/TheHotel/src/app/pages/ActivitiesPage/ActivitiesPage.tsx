@@ -1,4 +1,4 @@
-import { Box, Typography, Grid, Card, CardMedia } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import ActivitiesCard from "./Components/ActivitiesCard";
 
 

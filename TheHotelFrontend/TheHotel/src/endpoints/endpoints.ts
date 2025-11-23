@@ -1,5 +1,5 @@
 
-export const baseURL = 'https://localhost:7114/api/'
+export const baseURL = 'https://thehotelapi.azurewebsites.net/api/'
 
 export const roomServiceMenuEndpoint = `RoomService/menu`
 export const placeOrderEndpoint = `RoomServiceOrder`

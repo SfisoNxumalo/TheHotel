@@ -19,7 +19,7 @@ resetNewMessageCount: () => void;
 
 export const useMessageStore = create<MessageState>()(
   
-    (set, get) => ({
+    (set) => ({
         newMessageCount: 0,
       messages: [],
       loading: false,

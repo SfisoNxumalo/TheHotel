@@ -4,7 +4,6 @@ import { BsSend } from "react-icons/bs";
 import { ImAttachment } from "react-icons/im";
 import { useState } from 'react';
 import { sendMessage } from '../../../../../services/messageService';
-import { Message } from '../../../../../Interfaces/message';
 import { SendNewMessage } from '../../../../../Interfaces/sendMessage';
 import { useAuthStore } from '../../../../../stores/authStore';
 import { useMessageStore } from '../../../../../stores/messageStore';

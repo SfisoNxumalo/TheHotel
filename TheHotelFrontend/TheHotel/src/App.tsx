@@ -1,8 +1,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css'
-import LoadingComponent from './components/LoadingComponent/LoadingComponent'
-import SplashPage from './app/pages/SplashPage/SplashPage';
+
 import RoomService from './app/pages/RoomServicePage/RoomService';
 import Dashboard from './app/pages/DashboardPage/Dashboard';
 import Chats from './app/pages/ChatPage/ChatsPage';
@@ -24,7 +23,6 @@ import RegisterPage from './app/pages/RegisterPage/RegisterPage';
 import { useAuthStore } from './stores/authStore';
 import AnalyticsPage from './app/pages/Staff/AnalyticsPage/AnalyticsPage';
 import AdminChats from './app/pages/AdminChat/AdminChatsPage';
-import BottomNavSpacer from './components/BottomNav/BottomNavSpacer';
 import ActivitiesPage from './app/pages/ActivitiesPage/ActivitiesPage';
 
 const queryClient = new QueryClient()

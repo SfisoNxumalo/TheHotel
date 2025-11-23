@@ -1,4 +1,4 @@
-import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
+import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, Avatar, ListItemAvatar } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import AdminLeftChatItem from "./Components/AdminLeftChatItem/AdminLeftChatItem";
 import AdminRightChatItem from "./Components/AdminRightChatItem/AdminRightChatItem";
@@ -6,7 +6,7 @@ import styles from './AdminChatPageStyle.module.css'
 import AdminChatInput from "./Components/AdminChatInput/AdminChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
-import { getAllMessages, getUserDetails, useFetchMessages } from "../../../services/messageService";
+import { getUserDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { useMessageStore } from "../../../stores/messageStore";
@@ -23,9 +23,7 @@ interface Props {
 
 function ElevationScroll(props: Props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
   const trigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 0,
@@ -41,7 +39,7 @@ function ElevationScroll(props: Props) {
 
 export default function AdminChats(props: Props){
    const [isSending, setIsSending] = useState<boolean>(false);
-    const [allMessages, setAllMessage] = useState<Message[]>([]);
+
     const navigate = useNavigate();
     const [receiver, setReceiver] = useState<AuthUser>();
 

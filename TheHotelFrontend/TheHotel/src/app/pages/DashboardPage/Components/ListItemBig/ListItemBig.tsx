@@ -1,5 +1,5 @@
 import styles from './ListItemStyles.module.css'
-import { roomServiceImg, stayImg } from '../../../../../assets/imageStore';
+import { stayImg } from '../../../../../assets/imageStore';
 
 export default function ListItemBig()
 {

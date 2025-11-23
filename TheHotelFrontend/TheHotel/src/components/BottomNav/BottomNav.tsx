@@ -1,6 +1,6 @@
-import { Person } from "@mui/icons-material";
+
 import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, styled } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
 import ListAltIcon from '@mui/icons-material/ListAlt';
@@ -8,7 +8,7 @@ import { useCartStore } from "../../stores/cartStore";
 import { useMessageStore } from "../../stores/messageStore";
 
 
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  const StyledBadge = styled(Badge)<BadgeProps>(() => ({
     '& .MuiBadge-badge': {
       right: 0,
       top: 0,
@@ -25,8 +25,6 @@ export default function BottomNav(){
     const itemCount = useCartStore((state) => state.itemCount());
 
     const newMessageCount = useMessageStore((s) => s.newMessageCount);
-
-    const location = useLocation();
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);

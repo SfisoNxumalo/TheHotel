@@ -9,7 +9,6 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginRequest, loginUser } from "../../../services/AuthService/authService";
-import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 import { useAuthStore } from "../../../stores/authStore";
 import { AuthUser } from "../../../Interfaces/AuthUser";
 
