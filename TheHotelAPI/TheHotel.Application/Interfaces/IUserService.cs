@@ -12,5 +12,9 @@ namespace TheHotel.Application.Interfaces
         Task DeleteUserAsync(Guid id);
 
         Task<StaffEntity?> GetStaffByIdAsync(Guid id);
+        Task<UserDetailsDTO?> GetUserAsync();
+        Task<UserDetailsDTO?> GetStaffAsync();
+
+
     }
 }
