@@ -24,6 +24,8 @@ import RegisterPage from './app/pages/RegisterPage/RegisterPage';
 import { useAuthStore } from './stores/authStore';
 import AnalyticsPage from './app/pages/Staff/AnalyticsPage/AnalyticsPage';
 import AdminChats from './app/pages/AdminChat/AdminChatsPage';
+import BottomNavSpacer from './components/BottomNav/BottomNavSpacer';
+import ActivitiesPage from './app/pages/ActivitiesPage/ActivitiesPage';
 
 const queryClient = new QueryClient()
 
@@ -103,9 +105,11 @@ function App() {
            <Route path="order/success" element={<OrderPlacedUI/>} />
            <Route path="orders" element={<OrdersListPage/>} />
            <Route path="data/analyse" element={<AnalyticsPage/>} />
+           <Route path="activities" element={<ActivitiesPage/>} />
           <Route path="*" element={<LoginPage/>} />
         {/* </Route> */}
       </Routes>
+      {/* <BottomNavSpacer/> */}
       <BottomNav/>
     </BrowserRouter>
     </QueryClientProvider>
