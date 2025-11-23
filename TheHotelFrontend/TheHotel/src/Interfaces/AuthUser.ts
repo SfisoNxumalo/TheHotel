@@ -4,4 +4,5 @@ export interface AuthUser {
   email: string;
   phoneNumber: string;
   token: string;
+  role:string
 }

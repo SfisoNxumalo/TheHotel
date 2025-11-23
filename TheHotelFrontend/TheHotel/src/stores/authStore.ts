@@ -11,7 +11,6 @@ interface AuthState {
 }
 
 export const useAuthStore = create<AuthState>()(
-  persist(
     (set) => ({
       user: null,
       isAuthenticated: false,
@@ -27,13 +26,6 @@ export const useAuthStore = create<AuthState>()(
           user: null,
           isAuthenticated: false,
         }),
-    }),
-    {
-      name: "auth-storage", // key in localStorage
-      partialize: (state) => ({
-        user: state.user,
-        isAuthenticated: state.isAuthenticated,
-      }),
-    }
-  )
+        
+    })
 );
