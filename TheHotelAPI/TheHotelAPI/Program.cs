@@ -107,6 +107,13 @@ namespace TheHotelAPI
             var seeder = new DatabaseSeeder(scope.ServiceProvider.GetRequiredService<HotelContext>());
             seeder.SeedAsync();
 
+            app.MapGet("/", () => Results.Ok(new
+            {
+                message = "The Hotel API is running",
+                status = "success",
+                version = "v1.0"
+            }));
+
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
