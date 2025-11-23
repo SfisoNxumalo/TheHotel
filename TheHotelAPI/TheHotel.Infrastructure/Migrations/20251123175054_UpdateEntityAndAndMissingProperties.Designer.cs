@@ -12,7 +12,7 @@ using TheHotel.Infrastructure.DatabaseContext;
 namespace TheHotel.Infrastructure.Migrations
 {
     [DbContext(typeof(HotelContext))]
-    [Migration("20251119124519_UpdateEntityAndAndMissingProperties")]
+    [Migration("20251123175054_UpdateEntityAndAndMissingProperties")]
     partial class UpdateEntityAndAndMissingProperties
     {
         /// <inheritdoc />
@@ -199,6 +199,10 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
@@ -345,6 +349,10 @@ namespace TheHotel.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

@@ -10,6 +10,13 @@ namespace TheHotel.Infrastructure.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "Role",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
+
             migrationBuilder.AddColumn<bool>(
                 name: "isDeleted",
                 table: "Users",
@@ -37,6 +44,13 @@ namespace TheHotel.Infrastructure.Migrations
                 type: "bit",
                 nullable: false,
                 defaultValue: false);
+
+            migrationBuilder.AddColumn<string>(
+                name: "image",
+                table: "RoomServiceMenu",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.AddColumn<bool>(
                 name: "isDeleted",
@@ -78,6 +92,10 @@ namespace TheHotel.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
+                name: "Role",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
                 name: "isDeleted",
                 table: "Users");
 
@@ -92,6 +110,10 @@ namespace TheHotel.Infrastructure.Migrations
             migrationBuilder.DropColumn(
                 name: "isDeleted",
                 table: "RoomServiceOrderItems");
+
+            migrationBuilder.DropColumn(
+                name: "image",
+                table: "RoomServiceMenu");
 
             migrationBuilder.DropColumn(
                 name: "isDeleted",

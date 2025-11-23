@@ -8,6 +8,9 @@ namespace TheHotel.Domain.Entities
         public string ItemName { get; set; } = null!;
 
         [Required]
+        public string? image { get; set; }
+
+        [Required]
         public string? Description { get; set; }
 
         [Required]
