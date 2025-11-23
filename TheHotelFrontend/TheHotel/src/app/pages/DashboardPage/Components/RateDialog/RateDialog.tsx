@@ -54,7 +54,6 @@ export default function RateDialog({open, handleCloseDialog}:rateDialogProps) {
             <Rating
                 name="simple-uncontrolled"
                 onChange={(event, newValue) => {
-                console.log(newValue);
                 }}
                 defaultValue={0}
             />
