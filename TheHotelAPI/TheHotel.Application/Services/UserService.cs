@@ -53,5 +53,15 @@ namespace TheHotel.Application.Services
         {
             await _userRepository.DeleteAsync(id);
         }
+
+        public async Task<UserDetailsDTO?> GetUserAsync()
+        {
+            return await _userRepository.GetUserAsync();
+        }
+
+        public async Task<UserDetailsDTO?> GetStaffAsync()
+        {
+            return await _userRepository.GetStaffAsync();
+        }
     }
 }

@@ -40,14 +40,37 @@ namespace TheHotel.Application.Services
 
             var userLogin = await _authRepo.GetUserDetailsByEmailAsync(user.email);
 
+            StaffEntity staffLogin = null;
+
             if (userLogin == null)
+                 staffLogin = await _authRepo.GetStaffDetailsByEmailAsync(user.email);
+
+            if (userLogin == null && staffLogin == null)
             {
                 _logger.LogError($"User ${userLogin.Id} found");
                 throw new NotFoundException("A user with the entered details was not found");
             }
 
+            AuthModel userFound = null;
+
+            if (userLogin != null)
+            {
+                userFound = UserSetup(userLogin, user.password);
+            }
+            else
+            {
+                userFound = StaffSetup(staffLogin, user.password);
+            }
+
+
+
+                return userFound;
+        }
+
+        internal AuthModel UserSetup(UserEntity userLogin, string userPassword)
+        {
             var hasher = new PasswordHasher<UserEntity>();
-            var result = hasher.VerifyHashedPassword(userLogin, userLogin.PasswordHash, user.password);
+            var result = hasher.VerifyHashedPassword(userLogin, userLogin.PasswordHash, userPassword);
 
             if (result == PasswordVerificationResult.Failed)
                 throw new IncorrectPassword("Invalid credentials");
@@ -58,18 +81,76 @@ namespace TheHotel.Application.Services
                 Email = userLogin.Email,
                 FullName = userLogin.FullName,
                 PhoneNumber = userLogin.PhoneNumber,
+                Role = userLogin.Role,
             };
 
             userLoginDetails.Token = _tokenService.GenerateAccessToken(userLoginDetails);
-            var refreshtoken =  _tokenService.GenerateRefreshToken(userLogin.Id);
+            var refreshtoken = _tokenService.GenerateRefreshToken(userLogin.Id);
 
             var userDetails = new AuthModel
             {
                 UserDetails = userLoginDetails,
                 RefreshToken = refreshtoken
-            };       
+            };
 
             return userDetails;
+        }
+
+        internal AuthModel StaffSetup(StaffEntity staffLogin, string userPassword)
+        {
+            var hasher = new PasswordHasher<StaffEntity>();
+            var result = hasher.VerifyHashedPassword(staffLogin, staffLogin.PasswordHash, userPassword);
+
+            if (result == PasswordVerificationResult.Failed)
+                throw new IncorrectPassword("Invalid credentials");
+
+            var staffLoginDetails = new UserDetailsDTO
+            {
+                Id = staffLogin.Id,
+                Email = staffLogin.Email,
+                FullName = staffLogin.FullName,
+                PhoneNumber = staffLogin.PhoneNumber,
+                Role = staffLogin.Role,
+            };
+
+            staffLoginDetails.Token = _tokenService.GenerateAccessToken(staffLoginDetails);
+            var refreshtoken = _tokenService.GenerateRefreshToken(staffLogin.Id);
+
+            var userDetails = new AuthModel
+            {
+                UserDetails = staffLoginDetails,
+                RefreshToken = refreshtoken
+            };
+
+            return userDetails;
+        }
+
+        public async Task<string> RefreshAsync(string? refreshToken)
+        {
+            var userEmail = _tokenService.RefreshAsync(refreshToken);
+
+            if(userEmail == null)
+                throw new NotFoundException("A user with the entered details was not found");
+
+            var user = await _authRepo.GetUserDetailsByEmailAsync(userEmail);
+
+            if (user == null)
+            {
+                _logger.LogError($"User ${user.Id} found");
+                throw new NotFoundException("A user with the entered details was not found");
+            }
+
+            var userLoginDetails = new UserDetailsDTO
+            {
+                Id = user.Id,
+                Email = user.Email,
+                FullName = user.FullName,
+                PhoneNumber = user.PhoneNumber,
+            };
+
+            var token = _tokenService.GenerateAccessToken(userLoginDetails);
+
+            return token;
         }
 
         public async Task<bool> Register(AddUserDTO newUser)
@@ -89,7 +170,7 @@ namespace TheHotel.Application.Services
             if (existingUser != null)
                 throw new DuplicateRecordException($"A user with email '{newUser.Email}' already exists.");
 
-            var User = new UserEntity
+            var User = new StaffEntity
             {
                 FullName = newUser.FullName,
                 Email = newUser.Email,
@@ -97,10 +178,10 @@ namespace TheHotel.Application.Services
                 PhoneNumber = newUser.PhoneNumber,
             };
 
-            var hasher = new PasswordHasher<UserEntity>();
+            var hasher = new PasswordHasher<StaffEntity>();
             User.PasswordHash = hasher.HashPassword(User, User.PasswordHash);
 
-            var userRegistered = await _authRepo.Register(User);
+            var userRegistered = await _authRepo.RegisterStaff(User);
 
             if (!userRegistered)
             {
