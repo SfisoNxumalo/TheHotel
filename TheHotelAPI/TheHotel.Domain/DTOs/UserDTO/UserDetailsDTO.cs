@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TheHotel.Domain.DTOs.UserDTO
 {
@@ -21,5 +16,6 @@ namespace TheHotel.Domain.DTOs.UserDTO
         public required string PhoneNumber { get; set; }
 
         public string Token { get; set; }
+        public string Role { get; set; }
     }
 }

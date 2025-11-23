@@ -111,7 +111,8 @@ namespace TheHotel.Infrastructure.Seeding
                     ItemName = _faker.Commerce.ProductName(),
                     Description = _faker.Lorem.Sentence(),
                     Price = _faker.Random.Decimal(10, 200),
-                    Available = true
+                    Available = true,
+                    image = "https://freshrecipes.net/wp-content/uploads/2024/11/10-Homemade-salad-Recipes.jpg"
                 });
             }
             await _context.RoomServiceMenu.AddRangeAsync(menuItems);

@@ -4,6 +4,7 @@
     {
         public required Guid Id { get; set; }
         public  string ItemName { get; set; } = null!;
+        public string image { get; set; }
 
         public string? Description { get; set; }
 

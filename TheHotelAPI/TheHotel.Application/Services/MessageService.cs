@@ -62,7 +62,9 @@ namespace TheHotel.Application.Services
 
             var savedMessage = await _messageRepository.GetMessageByIdAsync(newMessage.Id);
 
-            await _realtimeNotifier.BroadcastMessage(message.UserId, savedMessage);
+            var receiver = message.SenderId.Equals(message.UserId) ? message.StaffId : message.UserId;
+
+            await _realtimeNotifier.BroadcastMessage(receiver, savedMessage);
 
             return savedMessage;
         }
