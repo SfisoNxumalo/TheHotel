@@ -25,7 +25,7 @@ namespace TheHotel.Infrastructure.Repositories
                     ItemName = item.ItemName,
                     Price = item.Price,
                     Available = item.Available,
-
+                    image = item.image
                 })
                 .ToListAsync();
         }
@@ -52,6 +52,7 @@ namespace TheHotel.Infrastructure.Repositories
                     ItemName = item.ItemName,
                     Price = item.Price,
                     Available = item.Available,
+                    image = item.image
 
                 })
                 .FirstOrDefaultAsync();

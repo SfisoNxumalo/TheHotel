@@ -8,5 +8,7 @@ namespace TheHotel.Domain.Interfaces.Integrations
         string GenerateAccessToken(UserDetailsDTO userLoginDetails);
         string GenerateRefreshToken(Guid userId);
         ClaimsPrincipal? ValidateRefreshToken(string refreshToken);
+
+        string RefreshAsync(string? refreshToken);
     }
 }
