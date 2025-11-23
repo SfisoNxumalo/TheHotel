@@ -10,7 +10,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { registerUser, registerRequest } from "../../../services/AuthService/authService";
 import SuccessPopup from "../../../components/SuccessPopup/SuccessPopup";
-import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
 export default function RegisterPage() {
   
   const navigate = useNavigate();

@@ -1,14 +1,9 @@
 
-import { List, ListSubheader, ListItem, ListItemText, Autocomplete, Stack, TextField, BottomNavigation, BottomNavigationAction, Badge, IconButton, useScrollTrigger, Container, AppBar, Box, CssBaseline, Toolbar, Typography, Slide } from '@mui/material';
-import { useState } from 'react';
+import { useScrollTrigger, Container, AppBar, Box, CssBaseline, Toolbar, Slide } from '@mui/material';
+
 import styles from './roomservice.module.css'
 import ListHolder from './Components/ListHolder/ListHolder';
-import SearchBar from './Components/SearchBar/SearchBar';
-import { FavoriteOutlined, Folder, Home, LocalAirport, Person, Person2, Person3, PersonOffOutlined, Restore, Shop, ShoppingCart } from '@mui/icons-material';
-import { restaurantBanner } from '../../../assets/imageStore';
 import React from 'react';
-import { red } from '@mui/material/colors';
-import { useNavigate } from 'react-router-dom';
 
 
 interface Props {

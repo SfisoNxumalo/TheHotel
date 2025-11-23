@@ -1,5 +1,4 @@
 import { Stack, Autocomplete, TextField } from "@mui/material";
-import styles from './searchbar.module.css'
 
 export default function Search(){
 

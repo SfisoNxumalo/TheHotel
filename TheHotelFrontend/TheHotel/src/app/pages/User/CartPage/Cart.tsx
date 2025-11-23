@@ -1,4 +1,4 @@
-import { Card, Box, CardContent, Typography, IconButton, CardMedia, Button, Grid } from "@mui/material";
+import { Card, Box, CardContent, Typography, CardMedia, Button, Grid } from "@mui/material";
 
 import { restaurantBanner } from "../../../../assets/imageStore";
 import globalStyles from '../../../../GlobalStyles/globalStyle.module.css'

@@ -53,8 +53,7 @@ export default function RateDialog({open, handleCloseDialog}:rateDialogProps) {
           <DialogContentText id="alert-dialog-slide-description">
             <Rating
                 name="simple-uncontrolled"
-                onChange={(event, newValue) => {
-                }}
+                
                 defaultValue={0}
             />
           </DialogContentText>

@@ -3,8 +3,6 @@ import {
   Card,
   CardContent,
   Typography,
-  Grid,
-  Button,
   Table,
   TableHead,
   TableBody,
@@ -14,12 +12,9 @@ import {
   Divider,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { data, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useFetchOrderDetails } from "../../../services/roomServiceService";
-import { useEffect, useState } from "react";
-import { OrderDetails } from "../../../Interfaces/OrderDetails";
+import { useEffect } from "react";
 import styles from './style.module.css'
 import { useAuthStore } from "../../../stores/authStore";
 

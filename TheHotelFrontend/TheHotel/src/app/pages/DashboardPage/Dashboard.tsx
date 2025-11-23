@@ -13,18 +13,15 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import RateDialog from './Components/RateDialog/RateDialog';
 import { useState } from 'react';
 import { useAuthStore } from '../../../stores/authStore';
-import BottomNavSpacer from '../../../components/BottomNav/BottomNavSpacer';
 import { roomServiceImg } from '../../../assets/imageStore'
 
 interface Props {
@@ -54,7 +51,7 @@ interface Props {
     );
   }
 
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  const StyledBadge = styled(Badge)<BadgeProps>(() => ({
     '& .MuiBadge-badge': {
       right: 0,
       top: 0,

@@ -1,17 +1,15 @@
-import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
+import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, Avatar, ListItemAvatar } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
 import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
-import { Message } from "../../../Interfaces/message";
-import { getAllMessages, getStaffDetails, getUserDetails, useFetchMessages } from "../../../services/messageService";
+import {  getStaffDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { useMessageStore } from "../../../stores/messageStore";
 import { useAuthStore } from "../../../stores/authStore";
-import AdminChatInput from "../AdminChat/Components/AdminChatInput/AdminChatInput";
 import { AuthUser } from "../../../Interfaces/AuthUser";
 interface Props {
   /**
@@ -43,7 +41,6 @@ function ElevationScroll(props: Props) {
 
 export default function Chats(props: Props){
    const [isSending, setIsSending] = useState<boolean>(false);
-    const [allMessages, setAllMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
 
     const [receiver, setReceiver] = useState<AuthUser>();
@@ -107,7 +104,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <Toolbar />
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-                      { messages.map((message, index) => 
+                      { messages.map((message) => 
                                 <div key={message.id}> {message.senderId.toLowerCase() == user?.id.toLowerCase() ? 
                                   <RightChatItem  message={message} /> : 
                                   <LeftChatItem  message={message} />}

@@ -1,7 +1,5 @@
 import styles from './ListItemStyles.module.css'
 
-import { useNavigate } from 'react-router-dom';
-
 interface ListProps{
     image:string;
     title:string;
