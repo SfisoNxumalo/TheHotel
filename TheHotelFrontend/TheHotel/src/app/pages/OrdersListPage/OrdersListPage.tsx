@@ -38,7 +38,7 @@ export default function OrdersListPage() {
     items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
-    <Box sx={{ p: 2, maxWidth: 900, mx: "auto" }}>
+    <Box sx={{ p: 2, pb:0, maxWidth: 900, mx: "auto" }}>
       <Typography variant="h5" fontWeight={700} mb={3}>
         Orders
       </Typography>

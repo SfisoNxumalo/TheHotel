@@ -1,19 +1,24 @@
 import styles from './ListItemStyles.module.css'
-import { roomServiceImg } from '../../../../../assets/imageStore';
+
 import { useNavigate } from 'react-router-dom';
 
-export default function ListItemSmall()
+interface ListProps{
+    image:string;
+    title:string;
+    holderClick: () => void
+}
+export default function ListItemSmall({image, title, holderClick}:ListProps)
 {
-    const navigate = useNavigate();
+    
     return(
-        <div onClick={()=> {navigate('/room-service')}} className={styles.holder}>
+        <div onClick={holderClick} className={styles.holder}>
             <div className={styles.itemDetails}>
                 {/* <h5>Room Service</h5> */}
-                 <p>Let's find you something to eat.</p>
+                 <p>{title}</p>
                 
             </div>
             <div className={styles.itemImage}>
-                <img src={roomServiceImg} />
+                <img src={image} />
             </div>
 
         </div>
