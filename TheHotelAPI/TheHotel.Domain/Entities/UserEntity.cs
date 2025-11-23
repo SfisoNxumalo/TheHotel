@@ -11,6 +11,9 @@ namespace TheHotel.Domain.Entities
         public required string Email { get; set; } = null!;
 
         [Required]
+        public string Role { get; set; } = "User";
+
+        [Required]
         public required string PhoneNumber { get; set; }
 
         [Required]
