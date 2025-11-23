@@ -46,7 +46,7 @@ export default function RoomService(props:Props){
           <Toolbar style={{backgroundColor:"green", padding:"0px"}}>
             <div className={styles.topSection}>
             {/* <img className={styles.Banner} src={retaurantBanner}/> */}
-            <h2>Fake restaurant</h2>
+            <h2>The Hotel Restaurant</h2>
             <b>4.5★</b>
             <b>08:00 - 21:00</b>
             {/* <SearchBar /> */}
@@ -55,8 +55,8 @@ export default function RoomService(props:Props){
         </AppBar>
       </HideOnScroll>
       <Toolbar />
-      <Container style={{padding:"0px"}}>
-        <Box sx={{ my: 2 }}>
+      <Container style={{padding:"0px", paddingBottom:"15px"}}>
+        <Box sx={{ my: 2, pb:5 }}>
           <div className={styles.container}>
 
           <div className={styles.middleSection}>
