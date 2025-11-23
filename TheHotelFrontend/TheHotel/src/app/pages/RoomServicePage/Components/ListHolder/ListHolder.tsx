@@ -50,7 +50,7 @@ const handleAddToCart = (menuItem:Product) => {
         position: 'relative',
         overflow: 'auto',
         // maxHeight: 900,
-        '& ul': { padding: 0 },
+        '& ul': { padding: 0, paddingBottom:5 },
       }}
       subheader={<li />}
     >
