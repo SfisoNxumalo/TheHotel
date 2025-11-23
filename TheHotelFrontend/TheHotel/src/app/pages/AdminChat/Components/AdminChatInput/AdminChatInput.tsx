@@ -8,6 +8,7 @@ import { Message } from '../../../../../Interfaces/message';
 import { SendNewMessage } from '../../../../../Interfaces/sendMessage';
 import { useAuthStore } from '../../../../../stores/authStore';
 import { useMessageStore } from '../../../../../stores/messageStore';
+import { AuthUser } from '../../../../../Interfaces/AuthUser';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -23,12 +24,11 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 interface chatInputProps{
-    setMessage: (message:Message[]) => void,
+    receiver:AuthUser,
     setIsSending:(sending:boolean) => void
-    messages:Message[]
 }
 
-export default function AdminChatInput({setMessage, setIsSending, messages}:chatInputProps){
+export default function AdminChatInput({receiver, setIsSending}:chatInputProps){
 
     const [typedMessage, setTypedMessage] = useState("");
     const user = useAuthStore((s) => s.user);
@@ -40,9 +40,9 @@ export default function AdminChatInput({setMessage, setIsSending, messages}:chat
 
         const newMessage:SendNewMessage = {
             messageText:typedMessage,
-            userId: `03753F20-B814-4D3E-AC83-08DE26F78854`,
-            staffId:'57FD88E1-4BD2-44BD-B33E-301232D0983C',
-            senderId: `57FD88E1-4BD2-44BD-B33E-301232D0983C`
+            userId: `${receiver.id}`,
+            staffId:`${user?.id}`,
+            senderId: `${user?.id}`
         }
 
         setIsSending(true)
@@ -50,8 +50,8 @@ export default function AdminChatInput({setMessage, setIsSending, messages}:chat
         const response = await sendMessage(newMessage)
         
         if(response.status == 201){
-            
             addMessage(response.data)
+            setTypedMessage("")
         }
 
         setIsSending(false)
@@ -76,7 +76,7 @@ export default function AdminChatInput({setMessage, setIsSending, messages}:chat
                     maxRows={3}
                     aria-label="maximum height"
                     placeholder="Message"
-                    defaultValue=""
+                    value={typedMessage}
                      onChange={(event)=> {
                         setTypedMessage(event.target.value);
                     }}

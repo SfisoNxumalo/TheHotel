@@ -28,3 +28,6 @@ export const registerEndpoint = `auth/register`
 
 //Analyse
 export const ordersAnalyseEndpoint = `RoomServiceOrder/all`
+
+export const getUserEndpoint = `User/user`
+export const getStaffEndpoint = `User/staff`

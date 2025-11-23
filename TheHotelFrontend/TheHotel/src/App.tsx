@@ -47,38 +47,38 @@ function App() {
     if (hubConnection.state === "Disconnected") {
       await hubConnection
         .start()
-        .then(() => console.log("Signarl Connected"))
+        .then()
         .catch(console.error);
 
       await hubConnection.invoke("JoinSpecificRoom", `${user?.id}`)
-      .then(() => console.log("Joined room as", user?.id))
+      .then()
       .catch(console.error);
     }
   }
-    ConnectWithsignalR()
 
+    if(user?.id){
+      ConnectWithsignalR()
+      
+      
     registerOrderHandlers((order) => {
       setButtonText("View")
       setOpen(true)
       setShowButton(true)
       setMessage("Your order has received a new update")
-      console.log(order!.orderId);
       setAnchorOrigin({ vertical: 'bottom', horizontal: 'left' })
       setUrl(`view/order/${order!.orderId}`)
     });
 
     registerMessageHandlers((message) => {
       if(message.senderId != user?.id){
-        setMessage(message.messageText)
+        setMessage(`New Message: "${message.messageText}"`)
         setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
         setOpen(true)
         addMessage(message)
       }
     });
-
-
-
-}, []);
+    }
+}, [user]);
 
   return (
     <div className='div-ver'>
@@ -99,24 +99,21 @@ function App() {
           <Route path="room-service" element={<RoomService />} />
           <Route path="view-one/:id" element={<ViewOne />} />
            <Route path="chats" element={<Chats />} />
-           <Route path="admin/chats" element={<AdminChats />} />
+           <Route path="admin/chats" element={<AdminChats />} /> //admin
            <Route path="view/order/:id" element={<OrderDetailsPage />} />
            <Route path="cart" element={<Cart/>} />
            <Route path="order/success" element={<OrderPlacedUI/>} />
            <Route path="orders" element={<OrdersListPage/>} />
-           <Route path="data/analyse" element={<AnalyticsPage/>} />
-           <Route path="activities" element={<ActivitiesPage/>} />
+           <Route path="data/analyse" element={<AnalyticsPage/>} /> //admin
+           <Route path="activities" element={<ActivitiesPage/>} /> 
           <Route path="*" element={<LoginPage/>} />
         {/* </Route> */}
       </Routes>
       {/* <BottomNavSpacer/> */}
-      <BottomNav/>
+      {user?.id && <BottomNav/>}
     </BrowserRouter>
     </QueryClientProvider>
     </div>
-     
-    
-    
   )
 }
 
