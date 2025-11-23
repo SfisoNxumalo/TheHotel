@@ -8,7 +8,7 @@ namespace TheHotel.Domain.Entities
         public string FullName { get; set; } = null!;
 
         [Required]
-        public string Role { get; set; } = "Receptionist";
+        public string Role { get; set; } = "Staff";
 
         [Required]
         public required string PasswordHash { get; set; }
