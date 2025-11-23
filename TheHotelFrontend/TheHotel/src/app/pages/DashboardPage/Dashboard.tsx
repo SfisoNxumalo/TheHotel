@@ -19,6 +19,7 @@ import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link, useNavigate } from 'react-router-dom';
 import RateDialog from './Components/RateDialog/RateDialog';
 import { useState } from 'react';
@@ -64,6 +65,8 @@ interface Props {
   
   function Compo(props: Props){
     const user = useAuthStore((s) => s.user);
+    const logout = useAuthStore.getState().logout;
+    const navigate = useNavigate();
     return(
       <React.Fragment >
                       <CssBaseline />
@@ -76,17 +79,12 @@ interface Props {
                                 <div className={styles.holder} style={{height:'100px'}}>
                                   <div  className={styles.holderItems}>
                                     <div className={styles.holderItems} style={{width:'100%', display: 'flex'}}>
-                                    <Avatar sx={{ bgcolor: deepOrange[500] }}>{user?.fullName.charAt(0).toLocaleUpperCase()}</Avatar>
+                                    <Avatar sx={{ bgcolor: deepOrange[500]}}>{user?.fullName.charAt(0).toLocaleUpperCase()}</Avatar>
                                     <label> Hello {`${user?.fullName.charAt(0).toLocaleUpperCase()}${user?.fullName.substring(1)}`}</label>
                                   </div>
-                                  <IconButton sx={{color:'white'}} aria-label="cart">
-                                    <StyledBadge badgeContent={1} color="error">
-                                      <NotificationsIcon sx={{ fontSize: 20 }} />
-                                    </StyledBadge>
-                                  </IconButton>
-                                  <IconButton  aria-label="cart">
-                                    <StyledBadge badgeContent={1} sx={{color:'white'}} color="secondary">
-                                      <ShoppingCartIcon sx={{ fontSize: 20 }} />
+                                  <IconButton onClick={()=>{logout(), navigate('/login') }} sx={{color:'white'}} aria-label="cart">
+                                    <StyledBadge color="error">
+                                      <LogoutIcon sx={{ fontSize: 20 }} />
                                     </StyledBadge>
                                   </IconButton>
                                   </div>
@@ -137,7 +135,6 @@ export default function Dashboard(){
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>
-                        <div></div>
                         <ListItemSmall image={roomServiceImg} title={"Let's find you something to eat."} holderClick={()=> {navigate('/room-service')}} />
                         <h4>Support</h4>
                         <div className={styles.SmallList}>

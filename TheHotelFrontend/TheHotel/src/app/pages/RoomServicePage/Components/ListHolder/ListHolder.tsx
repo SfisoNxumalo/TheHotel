@@ -9,7 +9,7 @@ import { useCartStore } from "../../../../../stores/cartStore";
 import { CartItem } from "../../../../../Interfaces/CartItem";
 
 export default function ListHolder(){
-const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg/250px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg'
+
   const [products, setProducts] = useState<Product[]>([]);
 const navigate = useNavigate();
 
@@ -35,7 +35,6 @@ const handleAddToCart = (menuItem:Product) => {
  useEffect(()=>{
   if(isSuccess){
     setProducts(allProducts)
-    console.log("d");
     
   }
   },[isSuccess])
@@ -65,7 +64,7 @@ const handleAddToCart = (menuItem:Product) => {
                       {!product.available && <label className={styles.promo}>Out of Stock</label>}
                       <div className={styles.menuItem2}>
 
-                          <div onClick={()=>{navigate(`/view-one/${product.id}`)}} style={{backgroundImage:`url(${img}`}} className={styles.imgho}>
+                          <div onClick={()=>{navigate(`/view-one/${product.id}`)}} style={{backgroundImage:`url(${product.image}`}} className={styles.imgho}>
                               {/* <img className={styles.mainlogo2} src={restaurantBanner}/> */}
                           </div>
                           
