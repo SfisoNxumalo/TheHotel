@@ -5,7 +5,7 @@ import Slide from '@mui/material/Slide';
 import ListItemSmall from './Components/ListItemSmall/ListItemSmall';
 import ListItemBig from './Components/ListItemBig/ListItemBig';
 import ListItemXSmall from './Components/ListItemXSmall/ListItemXSmall';
-import { bellImg, dashIma, messageImg, rateImg } from '../../../assets/imageStore';
+import { activitiesImg, bellImg, dashIma, messageImg, rateImg } from '../../../assets/imageStore';
 import ServiceCarousel from './Components/ServiceCarousel/ServiceCarousel';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,6 +23,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import RateDialog from './Components/RateDialog/RateDialog';
 import { useState } from 'react';
 import { useAuthStore } from '../../../stores/authStore';
+import BottomNavSpacer from '../../../components/BottomNav/BottomNavSpacer';
+import { roomServiceImg } from '../../../assets/imageStore'
 
 interface Props {
   /**
@@ -132,24 +134,25 @@ export default function Dashboard(){
                     <Compo/>
                     </div>
                     <div className={`${styles.mainContainerBottom} slide-up`}> 
-                      
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>
-                        <ListItemSmall />
+                        <div></div>
+                        <ListItemSmall image={roomServiceImg} title={"Let's find you something to eat."} holderClick={()=> {navigate('/room-service')}} />
                         <h4>Support</h4>
                         <div className={styles.SmallList}>
-                          <div  onClick={()=>navigate("/chats")} ><ListItemXSmall label={"Chat"} Img={messageImg}/></div>
-                          <div  onClick={()=>setOpen(true)}><ListItemXSmall label={"Rate"} Img={rateImg}/></div>
-
+                          <div onClick={()=>navigate("/chats")} ><ListItemXSmall label={"Chat"} Img={messageImg}/></div>
+                          <div onClick={()=>setOpen(true)}><ListItemXSmall label={"Rate"} Img={rateImg}/></div>
                           <div><ListItemXSmall label={"Request"} Img={bellImg}/></div>
                         </div>
                         <h4>{open}</h4>
+                        <ListItemSmall image={activitiesImg} title={"Cool activities you should try while you enjoy your stay with us"} holderClick={()=> {navigate('/activities')}}/>
                         <ServiceCarousel/>
-                        
                     </div>
                 </div>
+                
            </div>
+           
            <RateDialog open={open} handleCloseDialog={closeDialog}/>
         </section>
     )
