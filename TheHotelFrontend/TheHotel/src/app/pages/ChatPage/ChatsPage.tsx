@@ -6,12 +6,13 @@ import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
-import { getAllMessages, useFetchMessages } from "../../../services/messageService";
+import { getAllMessages, getStaffDetails, getUserDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { useMessageStore } from "../../../stores/messageStore";
 import { useAuthStore } from "../../../stores/authStore";
 import AdminChatInput from "../AdminChat/Components/AdminChatInput/AdminChatInput";
+import { AuthUser } from "../../../Interfaces/AuthUser";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -45,6 +46,8 @@ export default function Chats(props: Props){
     const [allMessages, setAllMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
 
+    const [receiver, setReceiver] = useState<AuthUser>();
+
 const bottomRef = useRef<null | HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -53,20 +56,36 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
 
   // const { messages, loading, error } = useMessageStore();
   const setMessages = useMessageStore((state) => state.setMessages);
+  const resetNewMessagecount = useMessageStore((state) => state.resetNewMessageCount);
   const user = useAuthStore((s) => s.user);
   const {data, isSuccess} = useFetchMessages(`${user?.id}`)
   
   useEffect(()=>{
     if(isSuccess){
       setMessages(data);
+      resetNewMessagecount()
     }
+  },[data]);
+
+   useEffect(()=>{
+    const getReceiver = async() =>{
+      const res = await getStaffDetails();
+
+      if(res.status === 200){
+        setReceiver(res.data)
+      }
+    }
+
+    getReceiver()
   },[data]);
 
   useEffect(()=>{
   scrollToBottom();
   },[])
 
-   const messages = useMessageStore((state) => state.messages);
+   const messages = useMessageStore((state) => state.messages).filter(
+    (msg, index, self) => index === self.findIndex(m => m.id === msg.id)
+);
 
     return (
       <div className={styles.hold}>
@@ -77,10 +96,10 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
                   <Toolbar style={{display:'flex', gap:'10px', paddingLeft: '5px'}}>
                     <ListItemAvatar style={{display:'flex'}}>
                       <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                        <Avatar alt={`${receiver?.fullName.toUpperCase()}`} src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">
-                    Assistant manager
+                    {receiver?.fullName}
                     </Typography>
                   </Toolbar>
                   </AppBar>
@@ -100,7 +119,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               </Container>
               
         </React.Fragment>
-        <AdminChatInput setMessage={setAllMessage} messages={allMessages} setIsSending={setIsSending}/>
+        { receiver?.id && <ChatInput receiver={receiver} setIsSending={setIsSending}/>}
       </div> 
     );
 }

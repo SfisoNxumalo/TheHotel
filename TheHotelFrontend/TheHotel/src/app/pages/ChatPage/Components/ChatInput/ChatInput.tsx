@@ -8,6 +8,7 @@ import { Message } from '../../../../../Interfaces/message';
 import { SendNewMessage } from '../../../../../Interfaces/sendMessage';
 import { useAuthStore } from '../../../../../stores/authStore';
 import { useMessageStore } from '../../../../../stores/messageStore';
+import { AuthUser } from '../../../../../Interfaces/AuthUser';
 
 
 const VisuallyHiddenInput = styled('input')({
@@ -23,12 +24,11 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 interface chatInputProps{
-    setMessage: (message:Message[]) => void,
+    receiver:AuthUser
     setIsSending:(sending:boolean) => void
-    messages:Message[]
 }
 
-export default function ChatInput({setMessage, setIsSending, messages}:chatInputProps){
+export default function ChatInput({receiver, setIsSending}:chatInputProps){
 
     const [typedMessage, setTypedMessage] = useState("");
     const user = useAuthStore((s) => s.user);
@@ -41,7 +41,7 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
         const newMessage:SendNewMessage = {
             messageText:typedMessage,
             userId: `${user?.id}`,
-            staffId:'57FD88E1-4BD2-44BD-B33E-301232D0983C',
+            staffId: receiver.id,
             senderId: `${user?.id}`
         }
 
@@ -50,10 +50,8 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
         const response = await sendMessage(newMessage)
         
         if(response.status == 201){
-            
-            // messages.some(mes => mes.id == )
             addMessage(response.data)
-            // setMessage(messages)
+            setTypedMessage("")
         }
 
         setIsSending(false)
@@ -78,7 +76,7 @@ export default function ChatInput({setMessage, setIsSending, messages}:chatInput
                     maxRows={3}
                     aria-label="maximum height"
                     placeholder="Message"
-                    defaultValue=""
+                    value={typedMessage}
                      onChange={(event)=> {
                         setTypedMessage(event.target.value);
                     }}

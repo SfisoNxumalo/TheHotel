@@ -6,11 +6,12 @@ import styles from './AdminChatPageStyle.module.css'
 import AdminChatInput from "./Components/AdminChatInput/AdminChatInput";
 import { useNavigate } from "react-router-dom";
 import { Message } from "../../../Interfaces/message";
-import { getAllMessages, useFetchMessages } from "../../../services/messageService";
+import { getAllMessages, getUserDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
 import { useMessageStore } from "../../../stores/messageStore";
 import { useAuthStore } from "../../../stores/authStore";
+import { AuthUser } from "../../../Interfaces/AuthUser";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -42,6 +43,7 @@ export default function AdminChats(props: Props){
    const [isSending, setIsSending] = useState<boolean>(false);
     const [allMessages, setAllMessage] = useState<Message[]>([]);
     const navigate = useNavigate();
+    const [receiver, setReceiver] = useState<AuthUser>();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
 
@@ -51,14 +53,26 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
 
   // const { messages, loading, error } = useMessageStore();
   const setMessages = useMessageStore((state) => state.setMessages);
-  const user = '57FD88E1-4BD2-44BD-B33E-301232D0983C'
-  const {data, isSuccess} = useFetchMessages(`${user}`)
+  const user = useAuthStore((s) => s.user);
+  const {data, isSuccess} = useFetchMessages(`${user?.id}`)
   
   useEffect(()=>{
     if(isSuccess){
       setMessages(data);
     }
   },[data]);
+
+  useEffect(()=>{
+      const getReceiver = async() =>{
+        const res = await getUserDetails();
+  
+        if(res.status === 200){
+          setReceiver(res.data)
+        }
+      }
+  
+      getReceiver()
+    },[data]);
 
   useEffect(()=>{
   scrollToBottom();
@@ -75,10 +89,10 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
                   <Toolbar style={{display:'flex', gap:'10px', paddingLeft: '5px'}}>
                     <ListItemAvatar style={{display:'flex'}}>
                       <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                        <Avatar alt={`${receiver?.fullName.toUpperCase()}`} src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">
-                    Ben
+                    {receiver?.fullName}
                     </Typography>
                   </Toolbar>
                   </AppBar>
@@ -87,7 +101,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
                       { messages.map((message, index) => 
-                                <div key={message.id}> {message.senderId.toLowerCase() == user.toLowerCase() ? 
+                                <div key={message.id}> {message.senderId.toLowerCase() == user?.id.toLowerCase() ? 
                                   <AdminRightChatItem  message={message} /> : 
                                   <AdminLeftChatItem  message={message} />}
                                 </div>  
@@ -96,7 +110,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <div style={{height:"65px"}} ref={bottomRef} />
               </Container>
         </React.Fragment>
-        <AdminChatInput setMessage={setAllMessage} messages={allMessages} setIsSending={setIsSending}/>
+        {receiver?.id && <AdminChatInput receiver={receiver}  setIsSending={setIsSending}/>}
       </div> 
     );
 }
