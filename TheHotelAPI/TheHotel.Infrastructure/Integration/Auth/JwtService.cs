@@ -18,7 +18,7 @@ namespace TheHotel.Infrastructure.Integration.Auth
         public JwtService(IConfiguration configurations)
         {
             _configuration = configurations;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:Key"]!));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:AccessTokenSecret"]!));
         }
 
         public string GenerateAccessToken(UserDetailsDTO userLoginDetails)
