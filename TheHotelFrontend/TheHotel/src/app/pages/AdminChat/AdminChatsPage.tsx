@@ -5,7 +5,6 @@ import AdminRightChatItem from "./Components/AdminRightChatItem/AdminRightChatIt
 import styles from './AdminChatPageStyle.module.css'
 import AdminChatInput from "./Components/AdminChatInput/AdminChatInput";
 import { useNavigate } from "react-router-dom";
-import { Message } from "../../../Interfaces/message";
 import { getUserDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
@@ -38,7 +37,7 @@ function ElevationScroll(props: Props) {
 }
 
 export default function AdminChats(props: Props){
-   const [isSending, setIsSending] = useState<boolean>(false);
+   const [_isSending, setIsSending] = useState<boolean>(false);
 
     const navigate = useNavigate();
     const [receiver, setReceiver] = useState<AuthUser>();
@@ -98,7 +97,7 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
               <Toolbar />
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-                      { messages.map((message, index) => 
+                      { messages.map((message) => 
                                 <div key={message.id}> {message.senderId.toLowerCase() == user?.id.toLowerCase() ? 
                                   <AdminRightChatItem  message={message} /> : 
                                   <AdminLeftChatItem  message={message} />}
