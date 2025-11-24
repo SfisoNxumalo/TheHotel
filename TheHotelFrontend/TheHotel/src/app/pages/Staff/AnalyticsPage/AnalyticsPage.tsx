@@ -3,8 +3,7 @@ import {
   Grid,
   Card,
   CardContent,
-  Typography,
-  Divider,
+  Typography
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import {
@@ -30,7 +29,7 @@ const COLORS = ["#3470ed", "#62a3ff", "#89b9ff", "#aecfff", "#d3e5ff"];
 export default function AnalyticsPage() {
 
   const [orders, setOrders] = useState<OrderDetails[]>();
-  const [menu, setMenu] = useState<Product[]>();
+  const [_menu, setMenu] = useState<Product[]>();
 
   useEffect(()=> {
     const getData = async () =>{

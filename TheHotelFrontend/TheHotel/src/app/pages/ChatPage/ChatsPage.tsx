@@ -40,7 +40,7 @@ function ElevationScroll(props: Props) {
 }
 
 export default function Chats(props: Props){
-   const [isSending, setIsSending] = useState<boolean>(false);
+   const [_isSending, setIsSending] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const [receiver, setReceiver] = useState<AuthUser>();
