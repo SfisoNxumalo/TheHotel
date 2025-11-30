@@ -28,20 +28,15 @@ namespace TheHotel.Application.Services
             return await _messageRepository.GetMessagesByUserIdAsync(userId);
         }
 
-        public async Task<IEnumerable<MessageEntity>> GetMessagesForBookingAsync(Guid bookingId)
-        {
-            return await _messageRepository.GetMessagesByBookingIdAsync(bookingId);
-        }
-
         public async Task<FetchMessageDTO> SendMessageAsync(SendMessageDTO message)
         {
 
-            var user = _userService.GetUserByIdAsync(message.UserId);
+            var user = await _userService.GetUserByIdAsync(message.UserId);
 
             if (user == null)
                 throw new UserNotFoundException($"A user with id '{message.UserId}' was not found");
 
-            var staff = _userService.GetStaffByIdAsync(message.StaffId);
+            var staff = await _userService.GetStaffByIdAsync(message.StaffId);
             if (staff == null)
                 throw new UserNotFoundException($"A user with id '{message.StaffId}' was not found");
 
