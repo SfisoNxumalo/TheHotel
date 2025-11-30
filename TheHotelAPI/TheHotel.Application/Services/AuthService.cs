@@ -170,7 +170,7 @@ namespace TheHotel.Application.Services
             if (existingUser != null)
                 throw new DuplicateRecordException($"A user with email '{newUser.Email}' already exists.");
 
-            var User = new StaffEntity
+            var User = new UserEntity
             {
                 FullName = newUser.FullName,
                 Email = newUser.Email,
@@ -178,10 +178,10 @@ namespace TheHotel.Application.Services
                 PhoneNumber = newUser.PhoneNumber,
             };
 
-            var hasher = new PasswordHasher<StaffEntity>();
+            var hasher = new PasswordHasher<UserEntity>();
             User.PasswordHash = hasher.HashPassword(User, User.PasswordHash);
 
-            var userRegistered = await _authRepo.RegisterStaff(User);
+            var userRegistered = await _authRepo.Register(User);
 
             if (!userRegistered)
             {
