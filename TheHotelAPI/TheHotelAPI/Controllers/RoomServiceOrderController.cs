@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
 using TheHotel.Application.ServiceCustomExceptions;
@@ -127,19 +128,57 @@ namespace TheHotelAPI.Controllers
 
 
         [Authorize]
-        [HttpPatch("{orderId:guid}/status")]
-        public async Task<IActionResult> UpdateOrderStatus(Guid orderId, [FromQuery] string status)
+        [HttpPatch("{orderId:guid}/{status}")]
+        public async Task<IActionResult> UpdateOrderStatus(Guid orderId, string status)
         {
-            await _orderService.UpdateOrderStatusAsync(orderId, status);
-            return NoContent();
+            try
+            {
+                await _orderService.UpdateOrderStatusAsync(orderId, status);
+                return Ok();
+            }
+            catch (NoOrderFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    ex,
+                    "{functionName} encountered an error while updating an order.",
+                    nameof(PlaceOrder)
+                );
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while processing your request"
+                );
+            }
+            
         }
 
         [Authorize]
         [HttpGet("all")]
         public async Task<IActionResult> GetAllOrders()
         {
-            var order = await _orderService.GetAllOrdersAsync();
-            return Ok(order);
+            try
+            {
+                var order = await _orderService.GetAllOrdersAsync();
+                return Ok(order);
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(
+                    e,
+                    "{functionName} encountered an error while getting all orders.",
+                    nameof(PlaceOrder)
+                );
+
+                return StatusCode(
+                    StatusCodes.Status500InternalServerError,
+                    "An error occurred while processing your request"
+                );
+            }
+            
         }
     }
 }
