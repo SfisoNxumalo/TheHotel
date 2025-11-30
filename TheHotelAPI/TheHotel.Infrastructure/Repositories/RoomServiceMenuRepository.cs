@@ -49,6 +49,7 @@ namespace TheHotel.Infrastructure.Repositories
                 .Select(item => new MenuItemDTO
                 {
                     Id = item.Id,
+                    Description = item.Description,
                     ItemName = item.ItemName,
                     Price = item.Price,
                     Available = item.Available,

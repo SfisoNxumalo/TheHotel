@@ -42,6 +42,8 @@ namespace TheHotel.Infrastructure.Repositories
             {
                 orderId = order.Id,
                 UserId = order.UserId,
+                UserName = order.User.FullName,
+                UserContact = order.User.PhoneNumber,
                 items = order.Items.Select(orderItems => new OrderItemDTO
                 {
                     Id = orderItems.Id,

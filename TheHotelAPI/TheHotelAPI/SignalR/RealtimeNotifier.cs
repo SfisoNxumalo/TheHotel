@@ -31,7 +31,7 @@ namespace TheHotelAPI.SignalR
             {
 
                 _logger.LogError($"Error broadcasting message: {ex.Message}");
-                throw new RealTimeNotificationException("Failed to send a realtime message.");
+                //throw new RealTimeNotificationException("Failed to send a realtime message.");
             }
         }
 
@@ -47,7 +47,7 @@ namespace TheHotelAPI.SignalR
             {
 
                 _logger.LogError($"Error broadcasting order: {ex.Message}");
-                throw new RealTimeNotificationException("Failed to send a realtime order update.");
+                //throw new RealTimeNotificationException("Failed to send a realtime order update.");
             }
             
         }
