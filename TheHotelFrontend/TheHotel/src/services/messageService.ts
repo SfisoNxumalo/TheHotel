@@ -20,7 +20,8 @@ export const useFetchMessages = (userId:string): UseQueryResult<Message[]> => {
    return useQuery<Message[]>({
       queryKey: ["messages", userId],
       queryFn: async (): Promise<Message[]> => (await getAllMessages(userId)).data,
-      staleTime: 120 * 60 * 1000
+      staleTime: 15 * 1000,
+      enabled: !!userId
    })
 }
 
