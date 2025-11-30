@@ -34,7 +34,7 @@ export default function ShowCustomSnackbar({open = false, setOpen, message, url,
         <Snackbar
             open={open }
             anchorOrigin={anchorOrigin}
-            autoHideDuration={5000}
+            autoHideDuration={3000}
             onClose={handleClose}
             message={message}
             action={showButton ? (

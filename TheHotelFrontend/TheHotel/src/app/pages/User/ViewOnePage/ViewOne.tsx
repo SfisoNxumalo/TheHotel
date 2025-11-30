@@ -8,6 +8,7 @@ import { GoArrowLeft } from 'react-icons/go';
 import { CartItem } from '../../../../Interfaces/CartItem';
 import { Product } from '../../../../Interfaces/products';
 import { getMenuItemById } from '../../../../services/roomServiceService';
+import LoadingComponent from '../../../../components/LoadingComponent/LoadingComponent';
 
 
 interface Props {
@@ -45,6 +46,7 @@ export default function ViewOne(props:Props){
 
   const [menuItem, setMenuItem] = useState<Product>();
   const [note, setNote] = useState<string>("");
+  const [isLoading, setLoading] = useState<boolean>(false);
 
 
   const { id } = useParams<{ id: string }>();
@@ -59,6 +61,7 @@ export default function ViewOne(props:Props){
 
   useEffect(() => {
     const getData = async () => {
+      setLoading(true)
 
       if(!id) return
 
@@ -67,6 +70,8 @@ export default function ViewOne(props:Props){
       if(res.status == 200){
         setMenuItem(res.data)
       }
+
+      setLoading(false)
     }
     getData()
   },[])
@@ -119,8 +124,10 @@ export default function ViewOne(props:Props){
             <div className={styles.cartButtonHolder}> 
                 <Button onClick={handleAddToCart} variant="contained">Add to cart</Button>
             </div>
-        </div>     
+        </div>
+         
     </Container>
+    {isLoading && <LoadingComponent message={'Fetching Product Details'}/>}
     </React.Fragment>
 </>
         

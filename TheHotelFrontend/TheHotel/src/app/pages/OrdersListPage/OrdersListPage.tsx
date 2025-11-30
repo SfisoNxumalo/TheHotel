@@ -126,7 +126,7 @@ export default function OrdersListPage() {
                       <Button
                         variant="outlined"
                         onClick={() =>
-                          navigate(`/orders/${order.orderId}`)
+                          navigate(`/view/order/${order.orderId}`)
                         }
                       >
                         View
