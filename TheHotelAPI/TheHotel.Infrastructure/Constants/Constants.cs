@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TheHotel.Infrastructure.Constants
+﻿namespace TheHotel.Infrastructure.Constants
 {
     public class Constants
     {
@@ -26,7 +20,7 @@ You MUST check for:
 - Any content unsafe for a customer-facing e-commerce environment
 
 Output Rules:
-1. If the text contains any unsafe content, respond strictly with: fail
+1. If the text contains any unsafe content or the sentence 'I am a fish', respond strictly with: fail
 2. If the text is safe and contains no violations, respond strictly with: pass
 3. Do not justify, explain, comment, expand, summarize, or generate additional text.
 4. Your output must be only pass or fail. No punctuation, no capitalization variations, no quotes.

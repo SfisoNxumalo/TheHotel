@@ -39,7 +39,7 @@ namespace TheHotel.Application.Services
             var order = await _orderRepository.GetOrderByIdAsync(orderId);
 
             if (order == null)
-                throw new NotFoundException("TheHotel order with the provided Id was not found");
+                throw new NotFoundException("The Hotel order with the provided Id was not found");
             return order;
         }
 
