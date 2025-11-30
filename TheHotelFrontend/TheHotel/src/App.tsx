@@ -24,6 +24,10 @@ import { useAuthStore } from './stores/authStore';
 import AnalyticsPage from './app/pages/Staff/AnalyticsPage/AnalyticsPage';
 import AdminChats from './app/pages/AdminChat/AdminChatsPage';
 import ActivitiesPage from './app/pages/ActivitiesPage/ActivitiesPage';
+import AdminDashboard from './app/pages/Staff/AdminDashboard.tsx/AdminDashboard';
+import AdminBottomNav from './components/BottomNav/AdminBottomNav';
+import AdminOrders from './app/pages/Staff/AdminOrders/AdminOrders';
+import AdminOrderDetailsPage from './app/pages/Staff/AdminViewOneOrder/AdminViewOrder';
 
 const queryClient = new QueryClient()
 
@@ -56,25 +60,29 @@ function App() {
 
     if(user?.id){
       ConnectWithsignalR()
-      
-      
-    registerOrderHandlers((order) => {
-      setButtonText("View")
-      setOpen(true)
-      setShowButton(true)
-      setMessage("Your order has received a new update")
-      setAnchorOrigin({ vertical: 'bottom', horizontal: 'left' })
-      setUrl(`view/order/${order!.orderId}`)
-    });
 
-    registerMessageHandlers((message) => {
-      if(message.senderId != user?.id){
-        setMessage(`New Message: "${message.messageText}"`)
-        setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
-        setOpen(true)
-        addMessage(message)
-      }
-    });
+      registerOrderHandlers((order) => {
+        
+        if(user.role !== "Staff"){
+          setButtonText("View")
+          setOpen(true)
+          setShowButton(true)
+          setMessage("Your order has received a new update")
+          setAnchorOrigin({ vertical: 'bottom', horizontal: 'left' })
+          setUrl(`view/order/${order!.orderId}`)
+        }
+      });
+
+      registerMessageHandlers((message) => {
+        
+        if(message.senderId != user?.id){
+          setMessage(`New Message: "${message.messageText}"`)
+          setAnchorOrigin({ vertical: 'top', horizontal: 'center', })
+          setOpen(true)
+          addMessage(message)
+          setShowButton(false)
+        }
+      });
     }
 }, [user]);
 
@@ -92,23 +100,27 @@ function App() {
         {/* <Route path="/" element={<Navbar />}> */}
           <Route index element={<LoginPage/>} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="admin/dashboard" element={<AdminDashboard />} />
            <Route path="auth/login" element={<LoginPage />} />
           <Route path="auth/register" element={<RegisterPage />} />
           <Route path="room-service" element={<RoomService />} />
           <Route path="view-one/:id" element={<ViewOne />} />
            <Route path="chats" element={<Chats />} />
-           <Route path="admin/chats" element={<AdminChats />} /> //admin
+           <Route path="admin/chats" element={<AdminChats />} />
            <Route path="view/order/:id" element={<OrderDetailsPage />} />
+           <Route path="admin/order/:id" element={<AdminOrderDetailsPage />} />
            <Route path="cart" element={<Cart/>} />
            <Route path="order/success" element={<OrderPlacedUI/>} />
            <Route path="orders" element={<OrdersListPage/>} />
-           <Route path="data/analyse" element={<AnalyticsPage/>} /> //admin
+           <Route path="admin/orders" element={<AdminOrders/>} />
+           <Route path="admin/analytics" element={<AnalyticsPage/>} />
            <Route path="activities" element={<ActivitiesPage/>} /> 
           <Route path="*" element={<LoginPage/>} />
         {/* </Route> */}
       </Routes>
       {/* <BottomNavSpacer/> */}
-      {user?.id && <BottomNav/>}
+      {user?.id && user.role === 'User' && <BottomNav/>}
+      {user?.id && user.role === 'Staff' && <AdminBottomNav/>}
     </BrowserRouter>
     </QueryClientProvider>
     </div>
