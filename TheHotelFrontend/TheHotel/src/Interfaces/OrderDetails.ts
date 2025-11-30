@@ -1,6 +1,8 @@
 export interface OrderDetails {
 orderId: string,
 userId: string,
+userName:string,
+userContact:string,
 items: OrderItems[],
 note: null,
 createdAt: string,

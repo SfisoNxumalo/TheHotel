@@ -31,3 +31,7 @@ export const ordersAnalyseEndpoint = `RoomServiceOrder/all`
 
 export const getUserEndpoint = `User/user`
 export const getStaffEndpoint = `User/staff`
+
+export function updateOrderStatusEndpoint(orderId:string, status:string){
+    return `RoomServiceOrder/${orderId}/${status}`
+}

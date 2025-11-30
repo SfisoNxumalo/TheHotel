@@ -1,6 +1,7 @@
 import { Box, Typography, Grid } from "@mui/material";
 import ActivitiesCard from "./Components/ActivitiesCard";
-
+import LoadingComponent from "../../../components/LoadingComponent/LoadingComponent";
+import { useEffect, useState } from "react";
 
 const mockActivities = [
   {
@@ -15,7 +16,7 @@ const mockActivities = [
     title: "Wine Tasting Tour",
     subtitle: "Somerset West, 15 minutes away",
     image:
-      "https://images.unsplash.com/photo-1592861956120-e524fc739727?auto=format&fit=crop&w=900&q=60",
+      "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/07/80/fe/a1.jpg",
     description:
       "Taste world-class wines and explore the stunning Cape Winelands.",
   },
@@ -23,7 +24,7 @@ const mockActivities = [
     title: "Shark Cage Diving",
     subtitle: "Gansbaai, 2 hours away",
     image:
-      "https://images.unsplash.com/photo-1578496781983-2f88e17efb0a?auto=format&fit=crop&w=900&q=60",
+      "https://media-cdn.tripadvisor.com/media/attractions-splice-spp-674x446/15/52/a3/f5.jpg",
     description:
       "Get up close with great white sharks in a safe, unforgettable underwater experience.",
   },
@@ -31,15 +32,24 @@ const mockActivities = [
     title: "Table Mountain Hike",
     subtitle: "Full Day Adventure",
     image:
-      "https://images.unsplash.com/photo-1544986581-efac024faf62?auto=format&fit=crop&w=900&q=60",
+      "https://insideguide.co.za/cape-town/app/uploads/2018/05/india-venster.png",
     description:
       "Hike one of the world's 7 natural wonders with breathtaking views of Cape Town.",
   },
 ];
 
 export default function ActivitiesPage() {
+  const [isLoading, setLoading] = useState<boolean>(true);
+
+    useEffect(()=>{
+      window.scrollTo(0, 0);
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  },[]);
   return (
-    <Box sx={{ p: 4, maxWidth: 1200, mx: "auto" }}>
+    <>
+      <Box sx={{ p: 4, maxWidth: 1200, mx: "auto" }}>
 
       {/* PAGE HEADER */}
       <Typography
@@ -58,7 +68,7 @@ export default function ActivitiesPage() {
         sx={{ textAlign: "center", maxWidth: 700, mx: "auto" }}
       >
         Discover exciting experiences, relaxing activities, and unforgettable
-        adventures — all within reach of your stay.
+        adventures, all within reach of your stay.
       </Typography>
 
       {/* ACTIVITIES GRID */}
@@ -73,7 +83,11 @@ export default function ActivitiesPage() {
             />
           </Grid>
         ))}
+        
       </Grid>
     </Box>
+    {isLoading && <LoadingComponent message={"Let's find you something to do"}/>}
+    </>
+    
   );
 }
