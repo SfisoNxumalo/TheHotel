@@ -38,7 +38,7 @@ namespace TheHotel.Application.UnitTests.MessageServiceTests
                 .Setup(s => s.GetUserByIdAsync(dto.UserId))
                 .ReturnsAsync((UserEntity)null);
 
-            Assert.ThrowsAsync<UserNotFoundException>(() => MessageService.SendMessageAsync(dto));
+            Assert.ThrowsAsync<UserNotFoundException>(async () => await MessageService.SendMessageAsync(dto));
         }
 
         
@@ -55,7 +55,7 @@ namespace TheHotel.Application.UnitTests.MessageServiceTests
                 .Setup(s => s.GetStaffByIdAsync(dto.StaffId))
                 .ReturnsAsync((StaffEntity)null);
 
-            Assert.ThrowsAsync<UserNotFoundException>(() => MessageService.SendMessageAsync(dto));
+            Assert.ThrowsAsync<UserNotFoundException>(async () => await MessageService.SendMessageAsync(dto));
         }
 
         [Test]
