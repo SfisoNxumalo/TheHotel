@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   CardContent,
+  CircularProgress,
   TextField,
   Typography,
 } from "@mui/material";
@@ -18,11 +19,14 @@ export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const [openSuccess, setOpenSuccess] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setLoading(true)
     const newUser:registerRequest = {
       fullName: fullName,
       email: email,
@@ -35,6 +39,8 @@ export default function RegisterPage() {
     if(res.status == 200){
       setOpenSuccess(true);
     }
+
+    setLoading(false)
   };
 
   return (
@@ -126,6 +132,7 @@ export default function RegisterPage() {
 
             <Button
               type="submit"
+              disabled={isLoading}
               fullWidth
               variant="contained"
               size="large"
@@ -138,7 +145,7 @@ export default function RegisterPage() {
                 "&:hover": { background: "#2b5fcc" },
               }}
             >
-              Register
+              {!isLoading ? <label>Register</label> : <CircularProgress sx={{ color: "white" }} size={20}/>}
             </Button>
           </form>
 

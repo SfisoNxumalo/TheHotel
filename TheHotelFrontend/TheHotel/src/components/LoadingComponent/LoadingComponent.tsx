@@ -1,7 +1,13 @@
 import styled from "styled-components";
 import { loadingGif } from "../../assets/imageStore";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
-export default function LoadingComponent() {
+interface LoadingComponentProps{
+    message:string
+}
+export default function LoadingComponent({message}:LoadingComponentProps) {
+    const navigate = useNavigate();
     const Div = styled.div`
     display: flex;
     flex-direction: column;
@@ -12,11 +18,14 @@ export default function LoadingComponent() {
     width:100%;
     height:100%;
     top: 0;
+    bottom:0;
     background-color: white;
     `
     return (
         <Div>
             <img src={loadingGif}/>
+            <p>{message}</p>
+            <Button onClick={() => {navigate('/auth/login')}}>Exit</Button>
         </Div>
     )
 

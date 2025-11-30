@@ -1,6 +1,4 @@
-import { Card, Box, CardContent, Typography, CardMedia, Button, Grid } from "@mui/material";
-
-import { restaurantBanner } from "../../../../assets/imageStore";
+import { Card, Box, CardContent, Typography, CardMedia, Button, Grid, CircularProgress, SnackbarCloseReason, Snackbar, Alert } from "@mui/material";
 import globalStyles from '../../../../GlobalStyles/globalStyle.module.css'
 import styles from './Cart.module.css'
 import { useNavigate } from "react-router-dom";
@@ -12,27 +10,51 @@ import { IconTrashFilled } from '@tabler/icons-react';
 import { Checkout } from "../../../../Interfaces/CartItem";
 import { placeOrder } from "../../../../services/roomServiceService";
 import { useAuthStore } from "../../../../stores/authStore";
+import { useState } from "react";
 
 export default function Cart(){
 
 const navigate = useNavigate();
 const { items, removeItem, updateQuantity, clearCart, total } = useCartStore();
-
+const [isLoading, setLoading] = useState<boolean>(false);
 const user = useAuthStore((s) => s.user);
 
+const [open, setOpen] = useState(false);
+const [snackMessage, setSnackMessage] = useState(false);
+
+  const handleClose = (
+    _event?: React.SyntheticEvent | Event,
+    reason?: SnackbarCloseReason,
+  ) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
 const handleCheckout = async () =>{
+   setLoading(true)
+    try{
+      const checkoutCart: Checkout = {
+        userId: `${user?.id}`,
+        items: items
+      }
+    
+      const response = await placeOrder(checkoutCart);
 
-  const checkoutCart: Checkout = {
-    userId: `${user?.id}`,
-    items: items
-  }
+      if(response.status == 201) {
+        navigate('/order/success', {state: {orderId:response.data}})
+        clearCart()
+      }
+    }
+    catch(error:any){
+      setOpen(true)
+      setSnackMessage(error.response.data);
+    }
+  
 
-  const response = await placeOrder(checkoutCart);
-
-  if(response.status == 201) {
-    navigate('/order/success', {state: {orderId:response.data}})
-    clearCart()
-  }
+  setLoading(false)
   
 }
 
@@ -45,7 +67,7 @@ const handleCheckout = async () =>{
       </div>
         
       {items.length === 0 ? (
-            <p>Your cart is empty 🛍️</p>
+            <p>Your cart is empty </p>
           ) : (
             <div className={styles.itemHolders}>
               {items.map((item) => (
@@ -77,7 +99,7 @@ const handleCheckout = async () =>{
                     <CardMedia
                       component="img"
                       sx={{ width: 151 }}
-                      image={restaurantBanner}
+                      image={item.image}
                       alt="Live from space album cover"
                       onClick={()=>{navigate(`/view-one/${item.id}`)}}
                     />
@@ -96,12 +118,21 @@ const handleCheckout = async () =>{
             <label>SubTotal: </label> <label><b>R{total().toFixed(2)}</b></label>
           </Grid>
           <Grid  justifyContent={'right'} display={'flex'} size={6}>
-            <Button onClick={handleCheckout} disabled={items.length === 0} variant="contained">Checkout</Button>
+            <Button onClick={handleCheckout} disabled={items.length === 0} variant="contained">{!isLoading ? <label>Checkout</label> : <CircularProgress  sx={{ color: "white" }} size={20}/>}</Button>
+            
           </Grid>
         </Grid>
       </div>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="error"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+          {snackMessage}
+        </Alert>
+      </Snackbar>
     </div>
-
-
   );
 }

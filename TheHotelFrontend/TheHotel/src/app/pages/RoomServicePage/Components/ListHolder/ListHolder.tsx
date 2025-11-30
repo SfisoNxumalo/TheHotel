@@ -8,12 +8,24 @@ import { MdAddShoppingCart } from "react-icons/md";
 import { useCartStore } from "../../../../../stores/cartStore";
 import { CartItem } from "../../../../../Interfaces/CartItem";
 
-export default function ListHolder(){
+interface ListHolderProps{
+  setLoading: (value:boolean) => void
+}
+
+export default function ListHolder({setLoading}:ListHolderProps){
 
   const [products, setProducts] = useState<Product[]>([]);
 const navigate = useNavigate();
 
 const {data:allProducts, isSuccess} = useFetchProducts();
+
+  useEffect(()=>{
+    setLoading(true)
+    if(isSuccess){
+      setLoading(false)
+    }
+  },[isSuccess]);
+
 const addToCart = useCartStore((state) => state.addItem)
 
 const handleAddToCart = (menuItem:Product) => {

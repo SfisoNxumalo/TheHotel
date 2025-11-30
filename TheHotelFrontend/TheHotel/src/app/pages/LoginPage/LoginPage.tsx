@@ -3,6 +3,7 @@ import {
   Button,
   Card,
   CardContent,
+  CircularProgress,
   TextField,
   Typography,
 } from "@mui/material";
@@ -17,15 +18,18 @@ export default function LoginPage() {
   const login = useAuthStore.getState().login; // or use selector
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    setLoading(true)
 
     const logUser:loginRequest = {
       email:email,
       password:password
     }
-    
+
     const res = await loginUser(logUser)
 
     if(res.status == 200){
@@ -33,11 +37,13 @@ export default function LoginPage() {
       login(user)
 
       if(user.role === 'Staff'){
-        navigate('/admin/chats')
+        navigate('/admin/dashboard')
       }
       else{
         navigate('/dashboard')
       }
+
+      setLoading(false)
       
     }
   };
@@ -110,6 +116,7 @@ export default function LoginPage() {
             />
 
             <Button
+              disabled={isLoading}
               fullWidth
               type="submit"
               variant="contained"
@@ -123,7 +130,7 @@ export default function LoginPage() {
                 "&:hover": { background: "#2b5fcc" },
               }}
             >
-              Login
+              {!isLoading ? <label>Login</label> : <CircularProgress  sx={{ color: "white" }} size={20}/>}
             </Button>
           </form>
           {/* FORM ENDS */}

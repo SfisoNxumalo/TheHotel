@@ -3,7 +3,8 @@ import { useScrollTrigger, Container, AppBar, Box, CssBaseline, Toolbar, Slide }
 
 import styles from './roomservice.module.css'
 import ListHolder from './Components/ListHolder/ListHolder';
-import React from 'react';
+import React, { useState } from 'react';
+import LoadingComponent from '../../../components/LoadingComponent/LoadingComponent';
 
 
 interface Props {
@@ -32,6 +33,8 @@ function HideOnScroll(props: Props) {
 }
 
 export default function RoomService(props:Props){
+
+    const [isLoading, setLoading] = useState<boolean>(false);
     
     return(
  <React.Fragment>
@@ -43,7 +46,7 @@ export default function RoomService(props:Props){
             {/* <img className={styles.Banner} src={retaurantBanner}/> */}
             <h2>The Hotel Restaurant</h2>
             <b>4.5★</b>
-            <b>08:00 - 21:00</b>
+            <b>07:00 - 21:00</b>
             {/* <SearchBar /> */}
           </div>
           </Toolbar>
@@ -55,11 +58,12 @@ export default function RoomService(props:Props){
           <div className={styles.container}>
 
           <div className={styles.middleSection}>
-            <ListHolder/>
+            <ListHolder setLoading={setLoading}/>
           </div>
         </div>
         </Box>
       </Container>
+      {isLoading && <LoadingComponent message={'Fetching Our Menu'}/>}
     </React.Fragment>
     );
 }
