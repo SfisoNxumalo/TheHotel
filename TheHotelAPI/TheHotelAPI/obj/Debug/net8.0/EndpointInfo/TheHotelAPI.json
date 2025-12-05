@@ -602,7 +602,7 @@
         }
       }
     },
-    "/api/RoomServiceOrder/{orderId}/status": {
+    "/api/RoomServiceOrder/{orderId}/{status}": {
       "patch": {
         "tags": [
           "RoomServiceOrder"
@@ -619,7 +619,8 @@
           },
           {
             "name": "status",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
@@ -636,6 +637,18 @@
       "get": {
         "tags": [
           "RoomServiceOrder"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "TheHotelAPI"
         ],
         "responses": {
           "200": {
@@ -761,6 +774,30 @@
               "format": "uuid"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/staff": {
+      "get": {
+        "tags": [
+          "User"
         ],
         "responses": {
           "200": {
@@ -935,6 +972,10 @@
             "type": "string",
             "nullable": true
           },
+          "image": {
+            "type": "string",
+            "nullable": true
+          },
           "description": {
             "type": "string",
             "nullable": true
@@ -1054,6 +1095,14 @@
             "type": "string",
             "nullable": true
           },
+          "userName": {
+            "type": "string",
+            "nullable": true
+          },
+          "userContact": {
+            "type": "string",
+            "nullable": true
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time",
@@ -1145,6 +1194,7 @@
         "required": [
           "available",
           "description",
+          "image",
           "itemName",
           "price"
         ],
@@ -1166,6 +1216,10 @@
             "type": "boolean"
           },
           "itemName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "image": {
             "minLength": 1,
             "type": "string"
           },
@@ -1379,7 +1433,8 @@
           "email",
           "fullName",
           "passwordHash",
-          "phoneNumber"
+          "phoneNumber",
+          "role"
         ],
         "type": "object",
         "properties": {
@@ -1403,6 +1458,10 @@
             "type": "string"
           },
           "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "role": {
             "minLength": 1,
             "type": "string"
           },

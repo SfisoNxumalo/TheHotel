@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "TheHotelAPI.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_5",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "TheHotelAPI.Controllers.AuthController",
     "Method": "Login",
     "RelativePath": "api/auth/login",
@@ -368,7 +384,7 @@
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
     "Method": "UpdateOrderStatus",
-    "RelativePath": "api/RoomServiceOrder/{orderId}/status",
+    "RelativePath": "api/RoomServiceOrder/{orderId}/{status}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -381,7 +397,7 @@
       {
         "Name": "status",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -451,7 +467,7 @@
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.UserController",
-    "Method": "GetUser",
+    "Method": "GetUserById",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -500,6 +516,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.UserController",
+    "Method": "GetStaff",
+    "RelativePath": "api/User/staff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.UserController",
+    "Method": "GetUser",
+    "RelativePath": "api/User/user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]
