@@ -12,6 +12,11 @@ using PasswordVerificationResult = Microsoft.AspNetCore.Identity.PasswordVerific
 
 namespace TheHotel.Application.Services
 {
+    // Handles all authentication-related business logic for the application.
+    // This service manages user and staff login flows, password verification,
+    // JWT access/refresh token generation, and user registration. It acts as
+    // the middle layer between controllers and the auth repository, enforcing
+    // validation, error handling, and security-related rules.
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _authRepo;

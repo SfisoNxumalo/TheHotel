@@ -12,6 +12,6 @@ namespace TheHotel.Application.Interfaces
     {
         Task BroadcastMessage(Guid userId, FetchMessageDTO message);
 
-        Task BroadcastOrderStatusUpdate(Guid userId, UpdateOrderStatus order);
+        Task BroadcastOrderStatusUpdate(Guid userId, UpdateOrderStatusDTO order);
     }
 }
