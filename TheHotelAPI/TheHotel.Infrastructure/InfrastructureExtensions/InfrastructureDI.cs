@@ -7,6 +7,10 @@ using TheHotel.Infrastructure.Repositories;
 
 namespace TheHotel.Infrastructure.Extension
 {
+    // Centralised Infrastructure dependency injection registration.
+    // provide a single, organised place for configuring Infrastructure
+    // dependencies. This extension method keeps the service configuration
+    // clean and separated from the main Program.cs file.
     public static class InfrastructureDI
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
