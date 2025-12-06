@@ -5,15 +5,17 @@ namespace TheHotel.Domain.Entities
     public class RoomServiceMenuEntity : BaseEntity
     {
         [Required]
+        [StringLength(150)]
         public string ItemName { get; set; } = null!;
 
-        [Required]
+        [StringLength(500)]
         public string? image { get; set; }
 
-        [Required]
+        [StringLength(500)]
         public string? Description { get; set; }
 
         [Required]
+        [Range(0.01, double.MaxValue)]
         public decimal Price { get; set; }
 
         [Required]

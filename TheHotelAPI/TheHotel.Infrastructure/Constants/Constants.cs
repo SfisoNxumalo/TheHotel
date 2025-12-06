@@ -26,4 +26,11 @@ Output Rules:
 6. If the input is empty or whitespace, respond pass.
 ";
     }
+
+    public enum OrderStatus
+    {
+        Pending,
+        InProgress,
+        Complete
+    }
 }

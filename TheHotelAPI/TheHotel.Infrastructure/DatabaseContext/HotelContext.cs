@@ -29,6 +29,10 @@ namespace TheHotel.Infrastructure.DatabaseContext
                 .HasIndex(d => d.RoomId)
                 .IsUnique();
 
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
             // Relationships for Message
             modelBuilder.Entity<MessageEntity>()
                 .HasOne(m => m.User)
