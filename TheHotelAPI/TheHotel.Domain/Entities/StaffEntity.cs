@@ -4,21 +4,27 @@ namespace TheHotel.Domain.Entities
 {
     public class StaffEntity : BaseEntity
     {
-        [Required]
-        public string FullName { get; set; } = null!;
+        [StringLength(150)]
+        public required string FullName { get; set; } = null!;
 
         [Required]
-        public string Role { get; set; } = "Staff";
+        [StringLength(150)]
+        [EmailAddress]
+        public required string Email { get; set; } = null!;
 
         [Required]
+        [StringLength(20)]
+        public string Role { get; set; } = "User";
+
+        [Required]
+        [StringLength(20)]
+        [Phone]
+        public required string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(500)]
         public required string PasswordHash { get; set; }
 
-        [Required]
-        public string Email { get; set; }
-
-        [Required]
-        public string PhoneNumber { get; set; }
-      
         public ICollection<MessageEntity> Messages { get; set; } = new List<MessageEntity>();
     }
 }
