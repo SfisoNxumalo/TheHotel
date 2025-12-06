@@ -62,9 +62,7 @@ namespace TheHotel.Application.Services
                 userFound = StaffSetup(staffLogin, user.password);
             }
 
-
-
-                return userFound;
+            return userFound;
         }
 
         internal AuthModel UserSetup(UserEntity userLogin, string userPassword)

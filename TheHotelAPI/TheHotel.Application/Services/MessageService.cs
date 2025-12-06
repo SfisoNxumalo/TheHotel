@@ -52,7 +52,6 @@ namespace TheHotel.Application.Services
                 senderId = message.SenderId
             };
 
-
             await _messageRepository.AddAsync(newMessage);
 
             var savedMessage = await _messageRepository.GetMessageByIdAsync(newMessage.Id);
