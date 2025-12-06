@@ -34,7 +34,7 @@ namespace TheHotelAPI.SignalR
             }
         }
 
-        public async Task BroadcastOrderStatusUpdate(Guid userId, UpdateOrderStatus order)
+        public async Task BroadcastOrderStatusUpdate(Guid userId, UpdateOrderStatusDTO order)
         {
             try
             {
