@@ -1,8 +1,13 @@
-﻿namespace TheHotel.Domain.DTOs
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace TheHotel.Domain.DTOs
 {
     public class AuthDTO
     {
-        public string email { get; set; }
-        public string password { get; set; }
+        [Required]
+        public required string email { get; set; }
+
+        [Required]
+        public required string password { get; set; }
     }
 }

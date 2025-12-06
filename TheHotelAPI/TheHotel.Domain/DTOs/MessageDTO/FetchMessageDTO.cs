@@ -2,15 +2,15 @@
 {
     public class FetchMessageDTO
     {
-        public Guid Id { get; set; }
-        public Guid UserId { get; set; }
-        public Guid SenderId { get; set; }
+        public required Guid Id { get; set; }
+        public required Guid UserId { get; set; }
+        public required Guid SenderId { get; set; }
 
-        public string MessageText { get; set; }
+        public required string MessageText { get; set; }
 
-        public Guid StaffId { get; set; }
+        public required Guid StaffId { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public required DateTime CreatedDate { get; set; }
 
     }
 }
