@@ -9,6 +9,13 @@ using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {
+
+    // Handles all business logic related to Room Service orders.
+    // This service manages order creation, validation, content safety checks,
+    // retrieval of orders, and status updates. It coordinates user validation,
+    // menu item verification, and real-time notifications, acting as the 
+    // application layer between controllers, repositories, and integrations.
+
     public class RoomServiceOrderService : IRoomServiceOrderService
     {
         private readonly IRoomServiceOrderRepository _orderRepository;
@@ -47,6 +54,13 @@ namespace TheHotel.Application.Services
         {
             return await _orderRepository.GetOrdersByUserIdAsync(orderId);
         }
+
+        /// <summary>
+        /// Places a new room service order. This includes validating the user,
+        /// checking each menu item for availability and price changes, performing
+        /// content safety checks on user notes, constructing the full order entity,
+        /// and saving it to the repository.
+        /// </summary>
 
         public async Task<Guid> PlaceOrderAsync(OrderRoomServiceDTO order)
         {
@@ -123,6 +137,12 @@ namespace TheHotel.Application.Services
             }
         }
 
+        /// <summary>
+        /// Updates the status of an existing room service order. After persisting
+        /// the change, a real-time notification is broadcast to the user to reflect
+        /// the updated status.
+        /// </summary>
+
         public async Task UpdateOrderStatusAsync(Guid orderId, string status)
         {
             var order = await _orderRepository.GetByIdAsync(orderId);
@@ -132,7 +152,7 @@ namespace TheHotel.Application.Services
             order.Status = status;
             await _orderRepository.UpdateAsync(order);
 
-            var orderUpdate = new UpdateOrderStatus
+            var orderUpdate = new UpdateOrderStatusDTO
             {
                 orderId = orderId,
                 status = status

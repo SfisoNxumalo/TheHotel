@@ -43,7 +43,7 @@ namespace TheHotel.Application.Services
             };
 
            await _userRepository.AddAsync(newUser);
-            return newUser;
+           return newUser;
         }
         public async Task UpdateUserAsync(UserEntity user)
         {

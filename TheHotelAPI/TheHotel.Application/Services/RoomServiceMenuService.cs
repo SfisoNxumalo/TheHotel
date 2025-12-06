@@ -7,6 +7,12 @@ using TheHotel.Domain.Interfaces.Repositories;
 
 namespace TheHotel.Application.Services
 {
+    // Handles all business logic related to the Room Service menu.
+    // This service manages menu item creation, updates, retrieval of available
+    // items, and fetching individual menu details. It acts as the layer between
+    // controllers and the repository, ensuring validation and consistent data
+    // handling for menu operations.
+
     public class RoomServiceMenuService : IRoomServiceMenuService
     {
         private readonly IRoomServiceMenuRepository _menuRepo;
