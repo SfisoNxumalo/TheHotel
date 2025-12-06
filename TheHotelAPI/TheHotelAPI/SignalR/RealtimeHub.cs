@@ -17,7 +17,6 @@ namespace TheHotel.Infrastructure.SignalR
             try
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, customerId.ToLower());
-                Console.WriteLine($"connected with {customerId}");
             }
             catch (Exception ex)
             {
