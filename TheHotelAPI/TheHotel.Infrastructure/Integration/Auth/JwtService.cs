@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,11 +15,13 @@ namespace TheHotel.Infrastructure.Integration.Auth
 
         private readonly IConfiguration _configuration;
         private readonly SymmetricSecurityKey _key;
+        private Logger<JwtService> _logger;
 
-        public JwtService(IConfiguration configurations)
+        public JwtService(IConfiguration configurations, Logger<JwtService> logger)
         {
             _configuration = configurations;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:AccessTokenSecret"]!));
+            _logger = logger;
         }
 
         public string GenerateAccessToken(UserDetailsDTO userLoginDetails)
@@ -60,8 +63,9 @@ namespace TheHotel.Infrastructure.Integration.Auth
 
                 return tokenHandler.WriteToken(token);
             }
-            catch
+            catch(Exception e)
             {
+                _logger.LogError(e.Message);
                 throw new ServiceException("An error occurred while trying to generate a token");
             }
 
