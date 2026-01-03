@@ -23,6 +23,7 @@ namespace TheHotel.Infrastructure.Repositories
                 {
                     Id = item.Id,
                     ItemName = item.ItemName,
+                    Description = item.Description,
                     Price = item.Price,
                     Available = item.Available,
                     image = item.image
@@ -36,6 +37,9 @@ namespace TheHotel.Infrastructure.Repositories
                 .Where(p => MenuItemIds.Contains(p.Id))
                 .Select(p => new MenuItemDTO {
                     Id = p.Id,
+                    ItemName = p.ItemName,
+                    Description = p.Description,
+                    image = p.image,
                     Price = p.Price,
                     Available = p.Available,
                 })
