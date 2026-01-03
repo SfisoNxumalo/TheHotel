@@ -15,9 +15,9 @@ namespace TheHotel.Infrastructure.Integration.Auth
 
         private readonly IConfiguration _configuration;
         private readonly SymmetricSecurityKey _key;
-        private Logger<JwtService> _logger;
+        private readonly ILogger<JwtService> _logger;
 
-        public JwtService(IConfiguration configurations, Logger<JwtService> logger)
+        public JwtService(IConfiguration configurations, ILogger<JwtService> logger)
         {
             _configuration = configurations;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtConfig:AccessTokenSecret"]!));
