@@ -24,6 +24,8 @@ This project was built to demonstrate:
 - Clean and maintainable architecture
 - Practical AI integration using Google Gemini
 
+I’ve included a [Design Choices](/TheHotelAPI/README.md#design-choices) section to explain some of the decisions I made while building this project. If you come across something that seems unusual or unclear (hopefully not 😄), please refer to that section first. If your question isn’t answered there, feel free to reach out, I’d love to hear your thoughts and discuss it further
+
 ---
 ## High Level Architectural Diagram
 ![alt text](./DocumentationImages/high_level_architectural_diagram.png)  
