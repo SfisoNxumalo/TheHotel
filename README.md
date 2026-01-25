@@ -1,13 +1,16 @@
 # The Hotel
 
 **The Hotel** is a full-stack hotel management system built as my Portfolio of Evidence (POE) during my internship at 1Nebula.  
-The project showcases my understanding and ability to design and build a complete, real-world application that supports both hotel visitors and hotel staff, with a strong focus on digitising room service.
+The project showcases my understanding and ability to architecture and build a complete real-world application that supports both hotel visitors and hotel staff, with a strong focus on digitising room service.
 
 The idea behind the project is simple:  
 Room service is still commonly handled via telephone calls, which is often a manual, slow, and error-prone process.  
 The Hotel modernises this by introducing a digital, e-commerce-style room service experience with real-time updates and messaging.
 
-[Demo video on Youtube: https://youtu.be/d-QtRmSQfEQ](https://youtu.be/d-QtRmSQfEQ)
+[Demo video on Youtube: https://youtu.be/oFofIzm1wIs](https://youtu.be/oFofIzm1wIs)
+
+[Backend README.md](/TheHotelAPI/README.md)
+[Frontend README.md](/TheHotelFrontend/TheHotel/README.md)
 
 ---
 
@@ -20,6 +23,51 @@ This project was built to demonstrate:
 - Real-time communication using SignalR
 - Clean and maintainable architecture
 - Practical AI integration using Google Gemini
+
+---
+## High Level Architectural Diagram
+![alt text](./DocumentationImages/high_level_architectural_diagram.png)  
+
+
+### Tech Stack
+
+#### Frontend
+- **React**
+- TypeScript  
+- Vite  
+- Material UI  
+- Axios  
+- TanStack Query  
+- SignalR  
+- Zustand  
+- Recharts  
+
+Architecture: Bulletproof Architecture
+
+#### Backend
+- **ASP.NET Core 8**
+- **C#**  
+- **Entity Framework Core**
+- JWT Authentication  
+- SignalR
+- Gemini AI
+
+Architecture: Onion Architecture
+
+
+#### Backend Testing
+- NUnit  
+- FluentAssertions  
+- Moq  
+- AutoFixture  
+
+
+#### Database
+- SQL Server  
+
+
+#### Cloud Resources
+- Microsoft Azure  
 
 ---
 
@@ -61,72 +109,7 @@ Staff can manage incoming orders, communicate with guests, and monitor hotel act
 - Send and receive messages from guests in real time
 - View basic analytics and insights
 
----
-
-## Tech Stack
-
-#### Frontend
-- React  
-- TypeScript  
-- Vite  
-- Material UI  
-- Axios  
-- TanStack Query  
-- SignalR  
-- Zustand  
-- Recharts  
-
-Architecture: Bulletproof Architecture
-
-#### Backend
-- ASP.NET Core 8  
-- C#  
-- Entity Framework Core  
-- JWT Authentication  
-- SignalR  
-
-Architecture: Onion Architecture
-
-
-#### Backend Testing
-- NUnit  
-- FluentAssertions  
-- Moq  
-- AutoFixture  
-
-
-#### Database
-- SQL Server  
-
-
-#### Cloud Resources
-- Microsoft Azure  
-
 --- 
-
-### External package usage
-##### Real-Time Communication (SignalR)
-
-SignalR is used in the application to improve user experience:
-
-- Instant order status updates for guests
-- Real-time chat between guests and staff
-- No page refresh needed to see changes
-
----
-
-##### AI Content Moderation (Gemini AI)
-
-Google Gemini AI is integrated as a content moderation layer.
-
-When a guest adds a note or instruction to a room service item:
-- The note is sent to Gemini AI from the backend
-- The AI checks for profanity or inappropriate language
-- Messages that do not meet the rules are rejected
-
-This helps maintain respectful communication and protects hotel staff.
-
----
 
 ## Screenshots
 
@@ -141,7 +124,7 @@ This helps maintain respectful communication and protects hotel staff.
 ![alt text](./DocumentationImages/userDashboard.png)
 
 ***Menu List Page***
-![alt text](./DocumentationImages/userMenuItemPage.png)
+![alt text](./DocumentationImages/userMenuListPage.png)
 
 ***Meal Details Page***  
 ![alt text](./DocumentationImages/userMenuItemPage.png)
@@ -167,9 +150,3 @@ This helps maintain respectful communication and protects hotel staff.
 
 ***Analytics Page***
 ![alt text](./DocumentationImages/adminAnalyticsPage.png)  
-
-
----
-Separate README files will be provided for:
-- Backend API
-- Frontend Application
