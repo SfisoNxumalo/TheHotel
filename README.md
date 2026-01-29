@@ -1,10 +1,10 @@
 # The Hotel
 
 **The Hotel** is a full-stack hotel management system built as my Portfolio of Evidence (POE) during my internship at 1Nebula.  
-The project showcases my understanding and ability to architecture and build a complete real-world application that supports both hotel visitors and hotel staff, with a strong focus on digitising room service.
+The project showcases my understanding and ability to architecture and build a complete real-world application that supports both hotel visitors and hotel staff, with a focus on digitising room service.
 
 The idea behind the project is simple:  
-Room service is still commonly handled via telephone calls, which is often a manual, slow, and error-prone process.  
+Room service is still commonly handled via telephone calls and hand written notes, which is often a manual, slow, and error-prone process.  
 The Hotel modernises this by introducing a digital, e-commerce-style room service experience with real-time updates and messaging.
 
 [Demo video on Youtube: https://youtu.be/oFofIzm1wIs](https://youtu.be/oFofIzm1wIs)
@@ -27,7 +27,7 @@ This project was built to demonstrate:
 I’ve included a [Design Choices](/TheHotelAPI/README.md#design-choices) section to explain some of the decisions I made while building this project. If you come across something that seems unusual or unclear (hopefully not 😄), please refer to that section first. If your question isn’t answered there, feel free to reach out, I’d love to hear your thoughts and discuss it further
 
 ---
-## High Level Architectural Diagram
+## High-level Architectural Diagram
 ![alt text](./DocumentationImages/high_level_architectural_diagram.png)  
 
 
