@@ -128,7 +128,6 @@ When a guest adds a note or instruction to a room service item:
 ---
 ## Installation
 
-
 **Prerequisites**
 
 Make sure you have the following installed:
