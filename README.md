@@ -9,8 +9,8 @@ The Hotel modernises this by introducing a digital, e-commerce-style room servic
 
 [Demo video on Youtube: https://youtu.be/oFofIzm1wIs](https://youtu.be/oFofIzm1wIs)
 
-[Backend README.md](/TheHotelAPI/README.md)
-[Frontend README.md](/TheHotelFrontend/TheHotel/README.md)
+- [Backend README.md](/TheHotelAPI/README.md)
+- [Frontend README.md](/TheHotelFrontend/TheHotel/README.md)
 
 ---
 
