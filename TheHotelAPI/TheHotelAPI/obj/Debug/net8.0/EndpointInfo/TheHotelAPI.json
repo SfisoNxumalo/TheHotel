@@ -838,15 +838,19 @@
         "additionalProperties": false
       },
       "AuthDTO": {
+        "required": [
+          "email",
+          "password"
+        ],
         "type": "object",
         "properties": {
           "email": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "password": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -959,7 +963,10 @@
       "MenuItemDTO": {
         "required": [
           "available",
+          "description",
           "id",
+          "image",
+          "itemName",
           "price"
         ],
         "type": "object",
@@ -993,6 +1000,7 @@
       "MessageEntity": {
         "required": [
           "messageText",
+          "senderId",
           "userId"
         ],
         "type": "object",
@@ -1025,7 +1033,8 @@
             "format": "uuid"
           },
           "messageText": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 0,
             "type": "string"
           },
           "user": {
@@ -1052,8 +1061,8 @@
             "format": "uuid"
           },
           "itemName": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "price": {
             "type": "number",
@@ -1064,15 +1073,22 @@
             "format": "int32"
           },
           "note": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
       },
       "OrderRoomServiceDTO": {
         "required": [
-          "userId"
+          "createdAt",
+          "items",
+          "note",
+          "orderId",
+          "status",
+          "userContact",
+          "userId",
+          "userName"
         ],
         "type": "object",
         "properties": {
@@ -1088,29 +1104,27 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/OrderItemDTO"
-            },
-            "nullable": true
+            }
           },
           "note": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "userName": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "userContact": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           },
           "createdAt": {
             "type": "string",
-            "format": "date-time",
-            "nullable": true
+            "format": "date-time"
           },
           "status": {
-            "type": "string",
-            "nullable": true
+            "minLength": 1,
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -1193,8 +1207,6 @@
       "RoomServiceMenuEntity": {
         "required": [
           "available",
-          "description",
-          "image",
           "itemName",
           "price"
         ],
@@ -1216,18 +1228,24 @@
             "type": "boolean"
           },
           "itemName": {
-            "minLength": 1,
+            "maxLength": 150,
+            "minLength": 0,
             "type": "string"
           },
           "image": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "description": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "price": {
+            "minimum": 0,01,
             "type": "number",
             "format": "double"
           },
@@ -1272,11 +1290,14 @@
             "format": "uuid"
           },
           "note": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
           "status": {
-            "minLength": 1,
+            "maxLength": 50,
+            "minLength": 0,
             "type": "string"
           },
           "user": {
@@ -1325,14 +1346,19 @@
             "format": "uuid"
           },
           "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "format": "int32"
           },
           "price": {
+            "minimum": 0,01,
             "type": "number",
             "format": "double"
           },
           "note": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
@@ -1399,23 +1425,31 @@
             "type": "boolean"
           },
           "fullName": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "role": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "passwordHash": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "minLength": 1,
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "minLength": 1,
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel"
+          },
+          "passwordHash": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string"
           },
           "messages": {
@@ -1454,23 +1488,31 @@
             "type": "boolean"
           },
           "fullName": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
           },
           "role": {
-            "minLength": 1,
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel"
           },
           "passwordHash": {
-            "minLength": 1,
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string"
           },
           "bookings": {
