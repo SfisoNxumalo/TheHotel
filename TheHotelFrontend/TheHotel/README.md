@@ -7,7 +7,7 @@ The Hotel Frontend is a React with TypeScript web application built as part of m
 
 The frontend follows [Bulletproof Architecture](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md), which promotes feature-based folder organisation. The architecture’s emphasis on separation of concerns makes it possible to configure ESLint rules that forbid cross-feature imports, helping to enforce clear boundaries between features.
 
-- **Tech stack**
+**Tech stack**
 | Category        | Technology / Library | Purpose |
 |-----------------|----------------------|---------|
 | Framework       | React                | Building the user interface |
