@@ -1,7 +1,7 @@
 # The Hotel – Backend API
 
 
-The The Hotel API is an ASP.NET Core Web API built as part of my POE during my internship at 1Nebula.
+The Hotel API is an ASP.NET Core Web API built as part of my POE during my internship at 1Nebula.
 
 ## Architecture Overview
 
@@ -197,7 +197,7 @@ This section explains some of the key design decisions made while building the b
 
 #### Onion Architecture.
 
-I chose Onion Architecture to keep the system clean, maintainable, and testable and because this is the architecture used as 1Nebula.
+I chose Onion Architecture to keep the system clean, maintainable, and testable. Additionally, this is the architecture used at 1Nebula.
 
 - Business logic lives at the center of the application
 - Infrastructure concerns are kept separate
@@ -232,10 +232,3 @@ I implemented soft deletes rather than permanently removing records.
 Reasons:
 - Preserves historical data
 - Useful for auditing and analytics
-
-#### Single API for Guests and Staff
-
-Both guests and staff use the same API, with access controlled by roles.
-
-Reason:
-- Reduces duplication, centralised business rules, easier to maintain and extend in the long run.
