@@ -1,6 +1,5 @@
 
-export const baseURL = 'https://thehotelapi.azurewebsites.net/api/'  //Hardcoded for demo purposes only, you should never hardcode this. Preferably store this in the .env
-
+export const baseURL = 'https://thehotelapi.azurewebsites.net/api/'  //Hardcoded for demo purposes only.
 export const roomServiceMenuEndpoint = `RoomService/menu`
 export const placeOrderEndpoint = `RoomServiceOrder`
 export const messageEndpoint = `Message`

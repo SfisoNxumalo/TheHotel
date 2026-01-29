@@ -4,8 +4,7 @@
 The project showcases my understanding and ability to architecture and build a complete real-world application that supports both hotel visitors and hotel staff, with a focus on digitising room service.
 
 The idea behind the project is simple:  
-Room service is still commonly handled via telephone calls and hand written notes, which is often a manual, slow, and error-prone process.  
-The Hotel modernises this by introducing a digital, e-commerce-style room service experience with real-time updates and messaging.
+Room service is still commonly handled via telephone calls and hand written notes, which is often a manual, slow, and error-prone process. The Hotel modernises this by introducing a digital, e-commerce-style room service experience with real-time updates and messaging.
 
 [Demo video on Youtube: https://youtu.be/oFofIzm1wIs](https://youtu.be/oFofIzm1wIs)
 
