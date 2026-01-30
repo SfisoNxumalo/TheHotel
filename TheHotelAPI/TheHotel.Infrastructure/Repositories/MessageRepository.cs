@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TheHotel.Domain.DTOs.MessageDTO;
 using TheHotel.Domain.Entities;
-using TheHotel.Domain.Interfaces;
+using TheHotel.Domain.Interfaces.Repositories;
 using TheHotel.Infrastructure.DatabaseContext;
 
 namespace TheHotel.Infrastructure.Repositories
@@ -14,15 +15,44 @@ namespace TheHotel.Infrastructure.Repositories
             _context = context;
         }
 
+        public async Task<FetchMessageDTO> GetMessageByIdAsync(Guid Id)
+        {
+            return await _context.Messages.Where(mes => mes.Id == Id).Select(mes => new FetchMessageDTO
+            {
+                Id = mes.Id,
+                MessageText = mes.MessageText,
+                UserId = mes.UserId,
+                StaffId = mes.StaffId,
+                CreatedDate = mes.CreatedDate,
+                SenderId = mes.senderId
+            }).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<MessageEntity>> GetMessagesByBookingIdAsync(Guid bookingId)
         {
             return await _context.Messages
-                        .Include(m => m.SenderUser)
-                        .Include(m => m.SenderStaff)
-                        .Where(m => m.BookingId == bookingId)
+                        .Include(m => m.User)
+                        .Include(m => m.Staff)
+                        //.Where(m => m.BookingId == bookingId)
                         .OrderBy(m => m.CreatedDate)
                         .ToListAsync();
         }
-            
+
+        public async Task<IEnumerable<FetchMessageDTO>> GetMessagesByUserIdAsync(Guid userId)
+        {
+            return await _context.Messages
+                .Where(mes => mes.UserId == userId || mes.StaffId == userId)
+                .Select(mes => new FetchMessageDTO
+            {
+                Id = mes.Id,
+                MessageText = mes.MessageText,
+                UserId = mes.UserId,
+                StaffId = mes.StaffId,
+                CreatedDate = mes.CreatedDate,
+                SenderId = mes.senderId
+            })
+            .OrderBy(m => m.CreatedDate)
+            .ToListAsync();
+        }
     }
 }

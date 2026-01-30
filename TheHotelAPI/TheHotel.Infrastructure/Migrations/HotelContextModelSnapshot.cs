@@ -37,6 +37,9 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("DeviceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
 
@@ -50,7 +53,12 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("DeviceId");
 
                     b.HasIndex("RoomId");
 
@@ -78,6 +86,9 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.HasIndex("RoomId")
@@ -93,9 +104,6 @@ namespace TheHotel.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BookingId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
@@ -103,26 +111,26 @@ namespace TheHotel.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("SenderStaffId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("SenderType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid>("SenderUserId")
+                    b.Property<Guid>("StaffId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("senderId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("BookingId");
+                    b.HasIndex("StaffId");
 
-                    b.HasIndex("SenderStaffId");
-
-                    b.HasIndex("SenderUserId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Messages");
                 });
@@ -150,6 +158,9 @@ namespace TheHotel.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -185,6 +196,13 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("image")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
                     b.ToTable("RoomServiceMenu");
@@ -196,17 +214,14 @@ namespace TheHotel.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("BookingId")
+                    b.Property<Guid?>("BookingEntityId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("DeviceId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -215,11 +230,17 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("BookingId");
+                    b.HasIndex("BookingEntityId");
 
-                    b.HasIndex("DeviceId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("RoomServiceOrders");
                 });
@@ -236,6 +257,9 @@ namespace TheHotel.Infrastructure.Migrations
                     b.Property<Guid>("ItemId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<Guid>("OrderId")
                         .HasColumnType("uniqueidentifier");
 
@@ -247,6 +271,9 @@ namespace TheHotel.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -274,6 +301,10 @@ namespace TheHotel.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -284,6 +315,9 @@ namespace TheHotel.Infrastructure.Migrations
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -307,12 +341,23 @@ namespace TheHotel.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PhoneNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Role")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("isDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
@@ -321,6 +366,10 @@ namespace TheHotel.Infrastructure.Migrations
 
             modelBuilder.Entity("TheHotel.Domain.Entities.BookingEntity", b =>
                 {
+                    b.HasOne("TheHotel.Domain.Entities.DeviceEntity", "Device")
+                        .WithMany()
+                        .HasForeignKey("DeviceId");
+
                     b.HasOne("TheHotel.Domain.Entities.RoomEntity", "Room")
                         .WithMany("Bookings")
                         .HasForeignKey("RoomId")
@@ -332,6 +381,8 @@ namespace TheHotel.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Device");
 
                     b.Navigation("Room");
 
@@ -349,45 +400,36 @@ namespace TheHotel.Infrastructure.Migrations
 
             modelBuilder.Entity("TheHotel.Domain.Entities.MessageEntity", b =>
                 {
-                    b.HasOne("TheHotel.Domain.Entities.BookingEntity", "Booking")
+                    b.HasOne("TheHotel.Domain.Entities.StaffEntity", "Staff")
                         .WithMany("Messages")
-                        .HasForeignKey("BookingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TheHotel.Domain.Entities.StaffEntity", "SenderStaff")
-                        .WithMany("Messages")
-                        .HasForeignKey("SenderStaffId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
-                    b.HasOne("TheHotel.Domain.Entities.UserEntity", "SenderUser")
-                        .WithMany("Messages")
-                        .HasForeignKey("SenderUserId")
+                        .HasForeignKey("StaffId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Booking");
+                    b.HasOne("TheHotel.Domain.Entities.UserEntity", "User")
+                        .WithMany("Messages")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.Navigation("SenderStaff");
+                    b.Navigation("Staff");
 
-                    b.Navigation("SenderUser");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TheHotel.Domain.Entities.RoomServiceOrderEntity", b =>
                 {
-                    b.HasOne("TheHotel.Domain.Entities.BookingEntity", "Booking")
+                    b.HasOne("TheHotel.Domain.Entities.BookingEntity", null)
                         .WithMany("Orders")
-                        .HasForeignKey("BookingId")
+                        .HasForeignKey("BookingEntityId");
+
+                    b.HasOne("TheHotel.Domain.Entities.UserEntity", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("TheHotel.Domain.Entities.DeviceEntity", "Device")
-                        .WithMany("Orders")
-                        .HasForeignKey("DeviceId");
-
-                    b.Navigation("Booking");
-
-                    b.Navigation("Device");
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("TheHotel.Domain.Entities.RoomServiceOrderItemEntity", b =>
@@ -410,13 +452,6 @@ namespace TheHotel.Infrastructure.Migrations
                 });
 
             modelBuilder.Entity("TheHotel.Domain.Entities.BookingEntity", b =>
-                {
-                    b.Navigation("Messages");
-
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("TheHotel.Domain.Entities.DeviceEntity", b =>
                 {
                     b.Navigation("Orders");
                 });

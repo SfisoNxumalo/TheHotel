@@ -1,54 +1,104 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# The Hotel – Frontend Application
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) ![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![React Query](https://img.shields.io/badge/-React%20Query-FF4154?style=for-the-badge&logo=react%20query&logoColor=white) ![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white) ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-Currently, two official plugins are available:
+The Hotel Frontend is a React with TypeScript web application built as part of my POE during my internship at 1Nebula. It provides a modern, user-friendly interface for both hotel guests and hotel staff, enabling digital room service ordering, real-time updates, and live messaging.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Architecture Overview
 
-## Expanding the ESLint configuration
+The frontend follows [Bulletproof Architecture](https://github.com/alan2207/bulletproof-react/blob/master/docs/project-structure.md), which promotes feature-based folder organisation. The architecture’s emphasis on separation of concerns makes it possible to configure ESLint rules that forbid cross-feature imports, helping to enforce clear boundaries between features.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+**Tech stack**
+| Category        | Technology / Library | Purpose |
+|-----------------|----------------------|---------|
+| Framework       | React                | Building the user interface |
+| Language        | TypeScript           | Type-safe JavaScript development |
+| Build Tool      | Vite                 | Fast development server and bundler |
+| UI Library      | Material UI          | Prebuilt, accessible UI components |
+| Data Fetching   | Axios                | HTTP client for API communication |
+| Data Caching    | TanStack Query       | Server-state management and caching |
+| Realtime        | SignalR              | Real-time messaging and live updates |
+| State Management| Zustand              | Client-side global state management |
+| Visualization  | Recharts             | Charts and data visualisation |
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+
+#### Folder Structure
+Below is a high-level overview of the project’s folder structure and responsibilities:
+```
+src
+├── app                             # Application entry structure (routing & pages)
+│   └── pages                       # Route-level pages
+│       ├── ActivitiesPage          # Explore activities around the hotel
+│       ├── DashboardPage           # Main dashboard (role-based)
+│       ├── LoginPage               # User login page
+│       ├── RoomServicePage         # Menu browsing & room service ordering
+│       ...
+│
+├── assets                          # Static assets (images, icons, fonts)
+├── components                      # Reusable UI components (buttons, modals, cards)
+├── config                          # Global configuration (API base URLs, constants)
+├── contexts                        # React context providers (auth, theme, etc.)
+├── endpoints                       # Centralised API endpoint definitions
+├── features                        # Feature-based modules (Bulletproof Architecture)
+│                                   # Each feature owns its logic, components, and hooks
+├── globalStyles                    # Global styling and theme overrides
+├── hooks                           # Reusable custom React hooks
+├── interfaces                      # Shared TypeScript interfaces
+├── lib                             # Shared libraries and setup code (Axios, SignalR)
+├── services                        # API service layers
+│   ├── analyseService              # Analytics-related API calls
+│   ├── SignalR                     # SignalR connection and hub logic
+│   ├── messageService.ts           # Messaging API calls
+│   ...
+│
+├── stores                          # Zustand state stores
+│   ├── authStore.ts                # Authentication and user session state
+│   ├── cartStore.ts                # Room service cart state
+│   └── messageStore.ts             # Chat and messaging state
+│
+├── testing                         # Frontend tests and test utilities
+├── types                           # Shared and global TypeScript types
+└── utils                           # Helper and utility functions
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Installation & Local Setup
+### Prerequisites
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Make sure you have the following installed:
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+- **Node.js** (LTS version recommended)
+- **npm** (comes with Node.js)
+- A running instance of **The Hotel Backend API**
+- A modern web browser (Chrome, Edge, or Firefox)
+
+---
+
+### Clone the Repository
+
+Open your terminal and run:
+
+```bash
+git clone https://github.com/SfisoNxumalo/TheHotel
+cd TheHotel
 ```
+
+#### Install Dependencies
+```
+npm install
+```
+
+
+#### Update Connection strings 
+The frontend communicates with the backend via REST APIs and SignalR for real-time updates. Update the following values to match your local backend setup:
+- Update the hubConnection string in `hubConnection.ts` to point to your SignalR hub.
+- Update the baseURL in `endpoint.ts` to your local backend URL (e.g. https://localhost:7114).
+
+#### Run the Frontend
+```
+npm run dev
+```
+
+By default, the frontend will run on:
+
+http://localhost:5173

@@ -197,7 +197,7 @@ publish/
 # checkin your Azure Web App publish settings, but sensitive information contained
 # in these scripts will be unencrypted
 PublishScripts/
-
+appsettings.*.json
 # NuGet Packages
 *.nupkg
 # NuGet Symbol Packages
@@ -482,3 +482,18 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+
+# Ignore NuGet packages
+*.nuget.props
+*.nuget.targets
+*.lock
+*/packages/*
+!**/packages/*.config
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore .NET Core files
+bin/
+obj/

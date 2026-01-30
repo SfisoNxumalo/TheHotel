@@ -28,7 +28,8 @@ namespace TheHotel.Infrastructure.Seeding
                     Id = Guid.NewGuid(),
                     FullName = _faker.Name.FullName(),
                     Email = _faker.Internet.Email(),
-                    PhoneNumber = _faker.Phone.PhoneNumber()
+                    PhoneNumber = _faker.Phone.PhoneNumber(),
+                    PasswordHash = ""
                 });
             }
             await _context.Users.AddRangeAsync(users);
@@ -43,7 +44,8 @@ namespace TheHotel.Infrastructure.Seeding
                     FullName = _faker.Name.FullName(),
                     Role = "Receptionist",
                     Email = _faker.Internet.Email(),
-                    PhoneNumber = _faker.Phone.PhoneNumber()
+                    PhoneNumber = _faker.Phone.PhoneNumber(),
+                    PasswordHash = ""
                 });
             }
             await _context.Staff.AddRangeAsync(staff);
@@ -82,11 +84,14 @@ namespace TheHotel.Infrastructure.Seeding
             foreach (var user in users)
             {
                 var room = _faker.PickRandom(rooms);
+                var device = _faker.PickRandom(devices);
                 var booking = new BookingEntity
                 {
                     Id = Guid.NewGuid(),
                     User = user,
                     UserId = user.Id,
+                    DeviceId = device.Id,
+                    Device = device,
                     Room = room,
                     RoomId = room.Id,
                     CheckInDate = DateTime.UtcNow.AddDays(-_faker.Random.Int(1, 5)),
@@ -106,7 +111,8 @@ namespace TheHotel.Infrastructure.Seeding
                     ItemName = _faker.Commerce.ProductName(),
                     Description = _faker.Lorem.Sentence(),
                     Price = _faker.Random.Decimal(10, 200),
-                    Available = true
+                    Available = true,
+                    image = "https://freshrecipes.net/wp-content/uploads/2024/11/10-Homemade-salad-Recipes.jpg"
                 });
             }
             await _context.RoomServiceMenu.AddRangeAsync(menuItems);
@@ -122,12 +128,13 @@ namespace TheHotel.Infrastructure.Seeding
                     var order = new RoomServiceOrderEntity
                     {
                         Id = Guid.NewGuid(),
-                        Booking = booking,
-                        BookingId = booking.Id,
-                        Device = booking.Room.Device!,
-                        DeviceId = booking.Room.Device!.Id,
+                        User = users[0],
+                        UserId = users[0].Id,
+                        Note = "This is a note",
                         //OrderTime = DateTime.UtcNow.AddHours(-_faker.Random.Int(1, 10)),
-                        Status = "Pending"
+                        Status = "Pending",
+                        Items = new List<RoomServiceOrderItemEntity>() { }
+                      
                     };
                     orders.Add(order);
 

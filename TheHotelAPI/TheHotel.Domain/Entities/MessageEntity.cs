@@ -1,21 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheHotel.Domain.Entities
 {
     public class MessageEntity : BaseEntity
     {
-        public Guid BookingId { get; set; }
-        public string SenderType { get; set; } = null!; // "User" or "Staff"
+        [Required]
+        public Guid UserId { get; set; }
+        public Guid StaffId { get; set; }
 
         [Required]
-        public Guid SenderUserId { get; set; }
-        public Guid? SenderStaffId { get; set; }
+        public Guid senderId { get; set; }
 
         [Required]
+        [StringLength(1000)]
         public string MessageText { get; set; } = null!;
 
-        public BookingEntity Booking { get; set; } = null!;
-        public UserEntity? SenderUser { get; set; }
-        public StaffEntity? SenderStaff { get; set; }
+        [ForeignKey(nameof(UserId))]
+        public UserEntity? User { get; set; }
+
+        [ForeignKey(nameof(StaffId))]
+        public StaffEntity? Staff { get; set; }
     }
 }

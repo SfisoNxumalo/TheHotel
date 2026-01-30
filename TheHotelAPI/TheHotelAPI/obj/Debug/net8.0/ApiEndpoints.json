@@ -1,5 +1,53 @@
 [
   {
+    "ContainingType": "TheHotelAPI.Program\u002B\u003C\u003Ec",
+    "Method": "\u003CMain\u003Eb__0_5",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginModel",
+        "Type": "TheHotel.Domain.DTOs.AuthDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "TheHotel.Domain.DTOs.UserDTO.AddUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "TheHotelAPI.Controllers.BookingController",
     "Method": "GetAllBookings",
     "RelativePath": "api/Booking",
@@ -88,23 +136,174 @@
     "Parameters": [
       {
         "Name": "message",
-        "Type": "TheHotel.Domain.Entities.MessageEntity",
+        "Type": "TheHotel.Domain.DTOs.NewFolder.SendMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.MessageController",
+    "Method": "GetUserMessages",
+    "RelativePath": "api/Message/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
+    "Method": "GetMenu",
+    "RelativePath": "api/RoomService/menu",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "TheHotel.Domain.DTOs.MenuItemDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
+    "Method": "AddMenuItem",
+    "RelativePath": "api/RoomService/menu",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "item",
+        "Type": "TheHotel.Domain.Entities.RoomServiceMenuEntity",
         "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "TheHotelAPI.Controllers.MessageController",
-    "Method": "GetMessagesForBooking",
-    "RelativePath": "api/Message/booking/{bookingId}",
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
+    "Method": "GetMenuItemById",
+    "RelativePath": "api/RoomService/menu/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookingId",
+        "Name": "id",
         "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "TheHotel.Domain.DTOs.MenuItemDTO",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceController",
+    "Method": "UpdateMenuItem",
+    "RelativePath": "api/RoomService/menu/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "item",
+        "Type": "TheHotel.Domain.Entities.RoomServiceMenuEntity",
         "IsRequired": true
       }
     ],
@@ -120,16 +319,72 @@
     "Parameters": [
       {
         "Name": "order",
-        "Type": "TheHotel.Domain.Entities.RoomServiceOrderEntity",
+        "Type": "TheHotel.Domain.DTOs.RoomServiceOrder.OrderRoomServiceDTO",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
+    "Method": "GetOrderById",
+    "RelativePath": "api/RoomServiceOrder/{orderId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "orderId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
     "Method": "UpdateOrderStatus",
-    "RelativePath": "api/RoomServiceOrder/{orderId}/status",
+    "RelativePath": "api/RoomServiceOrder/{orderId}/{status}",
     "HttpMethod": "PATCH",
     "IsController": true,
     "Order": 0,
@@ -142,26 +397,47 @@
       {
         "Name": "status",
         "Type": "System.String",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
-    "Method": "GetOrdersForBooking",
-    "RelativePath": "api/RoomServiceOrder/booking/{bookingId}",
+    "Method": "GetAllOrders",
+    "RelativePath": "api/RoomServiceOrder/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.RoomServiceOrderController",
+    "Method": "GetOrdersByUserId",
+    "RelativePath": "api/RoomServiceOrder/user/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "bookingId",
+        "Name": "userId",
         "Type": "System.Guid",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 500
+      }
+    ]
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.UserController",
@@ -183,7 +459,7 @@
     "Parameters": [
       {
         "Name": "user",
-        "Type": "TheHotel.Domain.Entities.UserEntity",
+        "Type": "TheHotel.Domain.DTOs.UserDTO.AddUserDTO",
         "IsRequired": true
       }
     ],
@@ -191,7 +467,7 @@
   },
   {
     "ContainingType": "TheHotelAPI.Controllers.UserController",
-    "Method": "GetUser",
+    "Method": "GetUserById",
     "RelativePath": "api/User/{id}",
     "HttpMethod": "GET",
     "IsController": true,
@@ -240,6 +516,26 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.UserController",
+    "Method": "GetStaff",
+    "RelativePath": "api/User/staff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TheHotelAPI.Controllers.UserController",
+    "Method": "GetUser",
+    "RelativePath": "api/User/user",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

@@ -5,6 +5,68 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddUserDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Booking": {
       "get": {
         "tags": [
@@ -130,14 +192,88 @@
         }
       }
     },
-    "/api/Message/booking/{bookingId}": {
+    "/api/Message": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Message/{userId}": {
       "get": {
         "tags": [
           "Message"
         ],
         "parameters": [
           {
-            "name": "bookingId",
+            "name": "userId",
             "in": "path",
             "required": true,
             "schema": {
@@ -149,30 +285,83 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/Message": {
+    "/api/RoomService/menu": {
+      "get": {
+        "tags": [
+          "RoomService"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
       "post": {
         "tags": [
-          "Message"
+          "RoomService"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/MessageEntity"
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
               }
             }
           }
@@ -184,14 +373,117 @@
         }
       }
     },
-    "/api/RoomServiceOrder/booking/{bookingId}": {
+    "/api/RoomService/menu/{id}": {
+      "get": {
+        "tags": [
+          "RoomService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MenuItemDTO"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "RoomService"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoomServiceMenuEntity"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/user/{userId}": {
       "get": {
         "tags": [
           "RoomServiceOrder"
         ],
         "parameters": [
           {
-            "name": "bookingId",
+            "name": "userId",
             "in": "path",
             "required": true,
             "schema": {
@@ -203,6 +495,55 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/{orderId}": {
+      "get": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -216,29 +557,52 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RoomServiceOrderEntity"
+                "$ref": "#/components/schemas/OrderRoomServiceDTO"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "201": {
+            "description": "Created"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/RoomServiceOrder/{orderId}/status": {
+    "/api/RoomServiceOrder/{orderId}/{status}": {
       "patch": {
         "tags": [
           "RoomServiceOrder"
@@ -255,11 +619,36 @@
           },
           {
             "name": "status",
-            "in": "query",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/RoomServiceOrder/all": {
+      "get": {
+        "tags": [
+          "RoomServiceOrder"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "TheHotelAPI"
         ],
         "responses": {
           "200": {
@@ -287,17 +676,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserEntity"
+                "$ref": "#/components/schemas/AddUserDTO"
               }
             }
           }
@@ -392,14 +781,85 @@
           }
         }
       }
+    },
+    "/api/User/user": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/User/staff": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": {
     "schemas": {
+      "AddUserDTO": {
+        "required": [
+          "email",
+          "fullName",
+          "password",
+          "phoneNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "fullName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "phoneNumber": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthDTO": {
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "email": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
       "BookingEntity": {
         "required": [
           "checkInDate",
           "checkOutDate",
+          "deviceId",
           "roomId",
           "userId"
         ],
@@ -417,9 +877,17 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "userId": {
             "type": "string",
             "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
           },
           "roomId": {
             "type": "string",
@@ -443,17 +911,13 @@
           "room": {
             "$ref": "#/components/schemas/RoomEntity"
           },
+          "device": {
+            "$ref": "#/components/schemas/DeviceEntity"
+          },
           "orders": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/RoomServiceOrderEntity"
-            },
-            "nullable": true
-          },
-          "messages": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/MessageEntity"
             },
             "nullable": true
           }
@@ -478,6 +942,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "deviceUUID": {
             "minLength": 1,
             "type": "string"
@@ -489,13 +956,43 @@
           },
           "room": {
             "$ref": "#/components/schemas/RoomEntity"
+          }
+        },
+        "additionalProperties": false
+      },
+      "MenuItemDTO": {
+        "required": [
+          "available",
+          "description",
+          "id",
+          "image",
+          "itemName",
+          "price"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
           },
-          "orders": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/RoomServiceOrderEntity"
-            },
+          "itemName": {
+            "type": "string",
             "nullable": true
+          },
+          "image": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "available": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -503,7 +1000,8 @@
       "MessageEntity": {
         "required": [
           "messageText",
-          "senderUserId"
+          "senderId",
+          "userId"
         ],
         "type": "object",
         "properties": {
@@ -519,38 +1017,144 @@
             "type": "string",
             "format": "date-time"
           },
-          "bookingId": {
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "userId": {
             "type": "string",
             "format": "uuid"
           },
-          "senderType": {
-            "type": "string",
-            "nullable": true
-          },
-          "senderUserId": {
+          "staffId": {
             "type": "string",
             "format": "uuid"
           },
-          "senderStaffId": {
+          "senderId": {
             "type": "string",
-            "format": "uuid",
-            "nullable": true
+            "format": "uuid"
           },
           "messageText": {
-            "minLength": 1,
+            "maxLength": 1000,
+            "minLength": 0,
             "type": "string"
           },
-          "booking": {
-            "$ref": "#/components/schemas/BookingEntity"
-          },
-          "senderUser": {
+          "user": {
             "$ref": "#/components/schemas/UserEntity"
           },
-          "senderStaff": {
+          "staff": {
             "$ref": "#/components/schemas/StaffEntity"
           }
         },
         "additionalProperties": false
+      },
+      "OrderItemDTO": {
+        "required": [
+          "id",
+          "itemName",
+          "note",
+          "price",
+          "quantity"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "itemName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "format": "double"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "note": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrderRoomServiceDTO": {
+        "required": [
+          "createdAt",
+          "items",
+          "note",
+          "orderId",
+          "status",
+          "userContact",
+          "userId",
+          "userName"
+        ],
+        "type": "object",
+        "properties": {
+          "orderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "items": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrderItemDTO"
+            }
+          },
+          "note": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "userName": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "userContact": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "status": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
       },
       "RoomEntity": {
         "required": [
@@ -571,6 +1175,9 @@
           "updatedDate": {
             "type": "string",
             "format": "date-time"
+          },
+          "isDeleted": {
+            "type": "boolean"
           },
           "roomNumber": {
             "minLength": 1,
@@ -600,7 +1207,6 @@
       "RoomServiceMenuEntity": {
         "required": [
           "available",
-          "description",
           "itemName",
           "price"
         ],
@@ -618,15 +1224,28 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "itemName": {
-            "minLength": 1,
+            "maxLength": 150,
+            "minLength": 0,
             "type": "string"
+          },
+          "image": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "description": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "price": {
+            "minimum": 0,01,
             "type": "number",
             "format": "double"
           },
@@ -645,9 +1264,9 @@
       },
       "RoomServiceOrderEntity": {
         "required": [
-          "bookingId",
-          "orderId",
-          "status"
+          "items",
+          "status",
+          "userId"
         ],
         "type": "object",
         "properties": {
@@ -663,28 +1282,26 @@
             "type": "string",
             "format": "date-time"
           },
-          "orderId": {
+          "isDeleted": {
+            "type": "boolean"
+          },
+          "userId": {
             "type": "string",
             "format": "uuid"
           },
-          "bookingId": {
+          "note": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string",
-            "format": "uuid"
-          },
-          "deviceId": {
-            "type": "string",
-            "format": "uuid",
             "nullable": true
           },
           "status": {
-            "minLength": 1,
+            "maxLength": 50,
+            "minLength": 0,
             "type": "string"
           },
-          "booking": {
-            "$ref": "#/components/schemas/BookingEntity"
-          },
-          "device": {
-            "$ref": "#/components/schemas/DeviceEntity"
+          "user": {
+            "$ref": "#/components/schemas/UserEntity"
           },
           "items": {
             "type": "array",
@@ -717,6 +1334,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "orderId": {
             "type": "string",
             "format": "uuid"
@@ -726,12 +1346,21 @@
             "format": "uuid"
           },
           "quantity": {
+            "maximum": 2147483647,
+            "minimum": 1,
             "type": "integer",
             "format": "int32"
           },
           "price": {
+            "minimum": 0,01,
             "type": "number",
             "format": "double"
+          },
+          "note": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "order": {
             "$ref": "#/components/schemas/RoomServiceOrderEntity"
@@ -742,10 +1371,39 @@
         },
         "additionalProperties": false
       },
+      "SendMessageDTO": {
+        "required": [
+          "messageText",
+          "senderId",
+          "staffId",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "senderId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "messageText": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "staffId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
       "StaffEntity": {
         "required": [
           "email",
           "fullName",
+          "passwordHash",
           "phoneNumber",
           "role"
         ],
@@ -763,20 +1421,35 @@
             "type": "string",
             "format": "date-time"
           },
-          "fullName": {
-            "minLength": 1,
-            "type": "string"
+          "isDeleted": {
+            "type": "boolean"
           },
-          "role": {
-            "minLength": 1,
-            "type": "string"
+          "fullName": {
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "minLength": 1,
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "minLength": 1,
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel"
+          },
+          "passwordHash": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string"
           },
           "messages": {
@@ -793,7 +1466,9 @@
         "required": [
           "email",
           "fullName",
-          "phoneNumber"
+          "passwordHash",
+          "phoneNumber",
+          "role"
         ],
         "type": "object",
         "properties": {
@@ -809,16 +1484,35 @@
             "type": "string",
             "format": "date-time"
           },
+          "isDeleted": {
+            "type": "boolean"
+          },
           "fullName": {
-            "minLength": 1,
-            "type": "string"
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "minLength": 1,
+            "maxLength": 150,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "role": {
+            "maxLength": 20,
+            "minLength": 0,
             "type": "string"
           },
           "phoneNumber": {
-            "minLength": 1,
+            "maxLength": 20,
+            "minLength": 0,
+            "type": "string",
+            "format": "tel"
+          },
+          "passwordHash": {
+            "maxLength": 500,
+            "minLength": 0,
             "type": "string"
           },
           "bookings": {
@@ -838,6 +1532,19 @@
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "http",
+        "description": "Enter your JWT access token",
+        "scheme": "Bearer",
+        "bearerFormat": "JWT"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

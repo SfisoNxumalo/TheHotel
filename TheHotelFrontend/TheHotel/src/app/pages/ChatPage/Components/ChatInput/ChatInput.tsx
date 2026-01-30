@@ -2,6 +2,13 @@ import { Fab, IconButton, styled, TextareaAutosize } from '@mui/material';
 import styles from './ChatInput.module.css'
 import { BsSend } from "react-icons/bs";
 import { ImAttachment } from "react-icons/im";
+import { useState } from 'react';
+import { sendMessage } from '../../../../../services/messageService';
+import { SendNewMessage } from '../../../../../Interfaces/sendMessage';
+import { useAuthStore } from '../../../../../stores/authStore';
+import { useMessageStore } from '../../../../../stores/messageStore';
+import { AuthUser } from '../../../../../Interfaces/AuthUser';
+
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -15,8 +22,40 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 });
 
+interface chatInputProps{
+    receiver:AuthUser
+    setIsSending:(sending:boolean) => void
+}
 
-export default function ChatInput(){
+export default function ChatInput({receiver, setIsSending}:chatInputProps){
+
+    const [typedMessage, setTypedMessage] = useState("");
+    const user = useAuthStore((s) => s.user);
+
+    const addMessage = useMessageStore(s => s.addMessage);
+
+    const handleSendMessage = async () => {
+        if (!typedMessage.trim()) return;
+
+        const newMessage:SendNewMessage = {
+            messageText:typedMessage,
+            userId: `${user?.id}`,
+            staffId: receiver.id,
+            senderId: `${user?.id}`
+        }
+
+        setIsSending(true)
+        
+        const response = await sendMessage(newMessage)
+        
+        if(response.status == 201){
+            addMessage(response.data)
+            setTypedMessage("")
+        }
+
+        setIsSending(false)
+    }
+
     return(
             <div className={styles.holder}>
                 <IconButton sx={{fontSize:18}} aria-label="delete" component="label"
@@ -36,10 +75,13 @@ export default function ChatInput(){
                     maxRows={3}
                     aria-label="maximum height"
                     placeholder="Message"
-                    defaultValue=""
+                    value={typedMessage}
+                     onChange={(event)=> {
+                        setTypedMessage(event.target.value);
+                    }}
                     style={{ width: 200 }}
                     />
-                    <Fab size="small" color="primary" aria-label="add">
+                    <Fab onClick={handleSendMessage} size="small" color="primary" aria-label="add">
                         <BsSend />
                     </Fab>
                 </div>

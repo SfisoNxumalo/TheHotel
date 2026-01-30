@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Emit;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using TheHotel.Domain.Entities;
 
 namespace TheHotel.Infrastructure.DatabaseContext
@@ -36,17 +29,21 @@ namespace TheHotel.Infrastructure.DatabaseContext
                 .HasIndex(d => d.RoomId)
                 .IsUnique();
 
+            modelBuilder.Entity<UserEntity>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
             // Relationships for Message
             modelBuilder.Entity<MessageEntity>()
-                .HasOne(m => m.SenderUser)
+                .HasOne(m => m.User)
                 .WithMany(u => u.Messages)
-                .HasForeignKey(m => m.SenderUserId)
+                .HasForeignKey(m => m.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<MessageEntity>()
-                .HasOne(m => m.SenderStaff)
+                .HasOne(m => m.Staff)
                 .WithMany(s => s.Messages)
-                .HasForeignKey(m => m.SenderStaffId)
+                .HasForeignKey(m => m.StaffId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(modelBuilder);

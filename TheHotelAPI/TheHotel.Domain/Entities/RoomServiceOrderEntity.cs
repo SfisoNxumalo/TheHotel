@@ -1,23 +1,23 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TheHotel.Domain.Entities
 {
     public class RoomServiceOrderEntity : BaseEntity
     {
         [Required]
-        public Guid OrderId { get; set; }
+        public required Guid UserId { get; set; }
+
+        [StringLength(500)]
+        public string? Note { get; set; } = "";
 
         [Required]
-        public Guid BookingId { get; set; }
-
-
-        public Guid? DeviceId { get; set; }
-
-        [Required]
+        [StringLength(50)]
         public string Status { get; set; } = "Pending";
 
-        public BookingEntity Booking { get; set; } = null!;
-        public DeviceEntity Device { get; set; } = null!;
-        public ICollection<RoomServiceOrderItemEntity> Items { get; set; } = new List<RoomServiceOrderItemEntity>();
+        [ForeignKey(nameof(UserId))]
+        public UserEntity? User { get; set; } = null!;
+
+        public required ICollection<RoomServiceOrderItemEntity> Items { get; set; } = new List<RoomServiceOrderItemEntity>();
     }
 }

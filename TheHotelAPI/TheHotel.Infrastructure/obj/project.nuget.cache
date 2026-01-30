@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oyEHTWV57Ho=",
+  "dgSpecHash": "Ecp0dzb0PYc=",
   "success": true,
   "projectFilePath": "C:\\Users\\Sifiso\\Final Project\\TheHotelAPI\\TheHotel.Infrastructure\\TheHotel.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -26,7 +26,6 @@
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.9\\microsoft.entityframeworkcore.design.9.0.9.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.9\\microsoft.entityframeworkcore.relational.9.0.9.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.9\\microsoft.entityframeworkcore.sqlserver.9.0.9.nupkg.sha512",
-    "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.9\\microsoft.entityframeworkcore.tools.9.0.9.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\9.0.9\\microsoft.extensions.caching.abstractions.9.0.9.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.extensions.caching.memory\\9.0.9\\microsoft.extensions.caching.memory.9.0.9.nupkg.sha512",
     "C:\\Users\\Sifiso\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.9\\microsoft.extensions.configuration.abstractions.9.0.9.nupkg.sha512",

@@ -1,11 +1,14 @@
-import { Person } from "@mui/icons-material";
+
 import { Badge, BadgeProps, BottomNavigation, BottomNavigationAction, styled } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoCartOutline, IoChatboxEllipsesOutline, IoFastFoodOutline, IoHomeOutline } from "react-icons/io5";
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import { useCartStore } from "../../stores/cartStore";
+import { useMessageStore } from "../../stores/messageStore";
 
 
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  const StyledBadge = styled(Badge)<BadgeProps>(() => ({
     '& .MuiBadge-badge': {
       right: 0,
       top: 0,
@@ -19,12 +22,12 @@ export default function BottomNav(){
 
   const navigate = useNavigate();
     const [value, setValue] = useState('/dashboard');
+    const itemCount = useCartStore((state) => state.itemCount());
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    const newMessageCount = useMessageStore((s) => s.newMessageCount);
+
+  const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
-    // if(window.location.pathname){
-    //   setValue(window.location.pathname)
-    // }
   };
 
   return (
@@ -48,7 +51,7 @@ export default function BottomNav(){
         value="Chat"
         onClick={()=>navigate("/chats")}
         icon={
-          <StyledBadge badgeContent={1} color="secondary">
+          <StyledBadge badgeContent={newMessageCount} color="secondary">
             <IoChatboxEllipsesOutline   fontSize={20}/>
           </StyledBadge>
         }
@@ -58,7 +61,7 @@ export default function BottomNav(){
         value="Cart"
         onClick={()=>navigate("/Cart")}
         icon={
-          <StyledBadge badgeContent={1} color="secondary">
+          <StyledBadge badgeContent={itemCount} color="secondary">
             <IoCartOutline fontSize={20}/>
           </StyledBadge>
         }
@@ -67,8 +70,8 @@ export default function BottomNav(){
       <BottomNavigationAction
         // label="Account"
         value="Account"
-        onClick={()=>navigate("/profile")}
-        icon={<Person fontSize="small"  />}
+        onClick={()=>navigate("/orders")}
+        icon={<ListAltIcon fontSize="small"/>}
       />
       
     </BottomNavigation>

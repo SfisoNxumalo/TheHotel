@@ -4,6 +4,8 @@
     gap: 10px;
     width: 100%;
     height: auto;
+    /* margin-bottom: 56px; */
+    padding-bottom: 60px;
   }
 
   .img{

@@ -1,14 +1,16 @@
-import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, TextareaAutosize, Avatar, ListItemAvatar } from "@mui/material";
+import { Typography, AppBar, Container, CssBaseline, Toolbar, useScrollTrigger, List, Avatar, ListItemAvatar } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import LeftChatItem from "./Components/LeftChatItem/LeftChatItem";
 import RightChatItem from "./Components/RightChatItem/RightChatItem";
 import styles from './ChatPageStyle.module.css'
 import ChatInput from "./Components/ChatInput/ChatInput";
 import { useNavigate } from "react-router-dom";
-import { Message } from "../../../Interfaces/message";
-import { getAllMessages } from "../../../services/messageService";
+import {  getStaffDetails, useFetchMessages } from "../../../services/messageService";
 import { GoArrowLeft } from "react-icons/go";
 import globalStyles from '../../../GlobalStyles/globalStyle.module.css'
+import { useMessageStore } from "../../../stores/messageStore";
+import { useAuthStore } from "../../../stores/authStore";
+import { AuthUser } from "../../../Interfaces/AuthUser";
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
@@ -38,10 +40,10 @@ function ElevationScroll(props: Props) {
 }
 
 export default function Chats(props: Props){
-
-const loggedInUser = 'user-001';
-
+   const [_isSending, setIsSending] = useState<boolean>(false);
     const navigate = useNavigate();
+
+    const [receiver, setReceiver] = useState<AuthUser>();
 
 const bottomRef = useRef<null | HTMLDivElement>(null);
 
@@ -49,20 +51,38 @@ const bottomRef = useRef<null | HTMLDivElement>(null);
     bottomRef.current?.scrollIntoView();
   };
 
-    const [messages, setMessage] = useState<Message[]>([]);
+  // const { messages, loading, error } = useMessageStore();
+  const setMessages = useMessageStore((state) => state.setMessages);
+  const resetNewMessagecount = useMessageStore((state) => state.resetNewMessageCount);
+  const user = useAuthStore((s) => s.user);
+  const {data, isSuccess} = useFetchMessages(`${user?.id}`)
   
-   useEffect(()=>{
-    getAllMessages().then((res) => {
-      setMessage(res.data);
-      console.log(res.data);
-      
-    });
-    },[]);
+  useEffect(()=>{
+    if(isSuccess){
+      setMessages(data);
+      resetNewMessagecount()
+    }
+  },[data]);
 
-useEffect(()=>{
+   useEffect(()=>{
+    const getReceiver = async() =>{
+      const res = await getStaffDetails();
+
+      if(res.status === 200){
+        setReceiver(res.data)
+      }
+    }
+
+    getReceiver()
+  },[data]);
+
+  useEffect(()=>{
   scrollToBottom();
-  
-},[])
+  },[])
+
+   const messages = useMessageStore((state) => state.messages).filter(
+    (msg, index, self) => index === self.findIndex(m => m.id === msg.id)
+);
 
     return (
       <div className={styles.hold}>
@@ -73,10 +93,10 @@ useEffect(()=>{
                   <Toolbar style={{display:'flex', gap:'10px', paddingLeft: '5px'}}>
                     <ListItemAvatar style={{display:'flex'}}>
                       <button className={globalStyles.backButton} onClick={()=>navigate(-1)}><GoArrowLeft /></button>
-                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                        <Avatar alt={`${receiver?.fullName.toUpperCase()}`} src="/static/images/avatar/1.jpg" />
                     </ListItemAvatar>
                     <Typography variant="h6" component="div">
-                    Assistant manager
+                    {receiver?.fullName}
                     </Typography>
                   </Toolbar>
                   </AppBar>
@@ -84,13 +104,11 @@ useEffect(()=>{
               <Toolbar />
               <Container style={{padding:"10px"}} >
                   <List sx={{ width: '100%', bgcolor: 'background.paper', gap:"10px", display:"flex", flexDirection:"column"  }}>
-                      { messages.map((message, index) => 
-                                <div key={message.id}> {message.guid == loggedInUser ? 
+                      { messages.map((message) => 
+                                <div key={message.id}> {message.senderId.toLowerCase() == user?.id.toLowerCase() ? 
                                   <RightChatItem  message={message} /> : 
                                   <LeftChatItem  message={message} />}
-                                </div>
-                               
-                                
+                                </div>  
                           )}
                           
                   </List>
@@ -98,11 +116,7 @@ useEffect(()=>{
               </Container>
               
         </React.Fragment>
-        <ChatInput/>
-
-
-      </div>
-   
-        
+        { receiver?.id && <ChatInput receiver={receiver} setIsSending={setIsSending}/>}
+      </div> 
     );
 }

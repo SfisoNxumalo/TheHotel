@@ -1,22 +1,57 @@
 import { List, ListSubheader } from "@mui/material";
 import styles from './ListHolder.module.css'
 import { useNavigate } from "react-router-dom";
-import { getAllProducts } from "../../../../../services/productService";
+import { useFetchProducts } from "../../../../../services/roomServiceService";
 import { useEffect, useState } from "react";
 import { Product } from "../../../../../Interfaces/products";
 import { MdAddShoppingCart } from "react-icons/md";
+import { useCartStore } from "../../../../../stores/cartStore";
+import { CartItem } from "../../../../../Interfaces/CartItem";
 
-export default function ListHolder(){
-const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg/250px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-055.jpg'
+interface ListHolderProps{
+  setLoading: (value:boolean) => void
+}
+
+export default function ListHolder({setLoading}:ListHolderProps){
+
   const [products, setProducts] = useState<Product[]>([]);
+const navigate = useNavigate();
+
+const {data:allProducts, isSuccess} = useFetchProducts();
+
+  useEffect(()=>{
+    setLoading(true)
+    if(isSuccess){
+      setLoading(false)
+    }
+  },[isSuccess]);
+
+const addToCart = useCartStore((state) => state.addItem)
+
+const handleAddToCart = (menuItem:Product) => {
+
+  if(!menuItem?.id) return
+
+  const item: CartItem = { 
+        id: menuItem.id,
+        itemName: menuItem.itemName,
+        price: menuItem.price,
+        quantity: 1, 
+        image: menuItem.image,
+        note:'' 
+  };
+
+  addToCart(item);
+};
 
  useEffect(()=>{
-  getAllProducts().then((res) => {
-    setProducts(res.data);
-  });
-  },[])
+  if(isSuccess){
+    setProducts(allProducts)
+    
+  }
+  },[isSuccess])
 
-    const navigate = useNavigate();
+    
     return (
         <List
       sx={{
@@ -26,7 +61,7 @@ const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Me
         position: 'relative',
         overflow: 'auto',
         // maxHeight: 900,
-        '& ul': { padding: 0 },
+        '& ul': { padding: 0, paddingBottom:5 },
       }}
       subheader={<li />}
     >
@@ -37,30 +72,30 @@ const img = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Lionel_Me
             <div className={styles.ItemHolder}>
               {products.map((product) => (
                 <div className={styles.listItem}  key={`${product.id}`}>
-                    <div onClick={()=>{navigate(`/view-one/${product.id}`)}} className={styles.menuItem4}>
-                      <label className={styles.promo}>Out of Stock</label>
+                    <div className={styles.menuItem4}>
+                      {!product.available && <label className={styles.promo}>Out of Stock</label>}
                       <div className={styles.menuItem2}>
 
-                          <div style={{backgroundImage:`url(${product.image}`}} className={styles.imgho}>
+                          <div onClick={()=>{navigate(`/view-one/${product.id}`)}} style={{backgroundImage:`url(${product.image}`}} className={styles.imgho}>
                               {/* <img className={styles.mainlogo2} src={restaurantBanner}/> */}
                           </div>
                           
                           <div className={styles.prodtext}>
-                              <label>{product.title}</label>
+                              <label onClick={()=>{navigate(`/view-one/${product.id}`)}}>{product.itemName}</label>
 
                               <div className={styles.pchold}>
-                                  <div className={styles.pr}>
+                                  <div onClick={()=>{navigate(`/view-one/${product.id}`)}} className={styles.pr}>
                                       <label className={styles.price}>R{product.price}</label>
                                       {/* <label className={styles.price}>R</label>
                                       <label  className={styles.price}>R</label> */}
                                   </div>
-                                  <button className={styles.actionbtn}  type="button">
+                                  <button onClick={()=>handleAddToCart(product)} className={styles.actionbtn}  type="button">
                                       <MdAddShoppingCart />
                                   </button>
                               </div>
                               
                           </div>
-                          <label className={styles.promoLabel}>Promotion!</label>
+                          {/* <label className={styles.promoLabel}>Promotion!</label> */}
                           
                       </div>
                       

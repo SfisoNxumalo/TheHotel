@@ -1,5 +1,5 @@
 import styles from './ListItemStyles.module.css'
-import { roomServiceImg, stayImg } from '../../../../../assets/imageStore';
+import { stayImg } from '../../../../../assets/imageStore';
 
 export default function ListItemBig()
 {
@@ -12,7 +12,7 @@ export default function ListItemBig()
             <div className={styles.Middle}>
 
                 <div className={styles.itemDetails}>
-                    <p>View full booking details</p>
+                    {/* <p>View full booking details</p> */}
                 </div>
 
                 <div className={styles.itemImage}>
@@ -23,7 +23,7 @@ export default function ListItemBig()
             <div className={styles.Bottom}>
                 <div className={styles.Checks}>
                     <label className={styles.lblChecks}>Check-in</label>
-                    <label className={styles.lblChecksDate}>Fri 11 Apr</label>
+                    <label className={styles.lblChecksDate}>Mon 24 Nov</label>
                     <label className={styles.lblChecksTime}>10:00</label>
                 </div>
                 <hr/>
@@ -32,7 +32,7 @@ export default function ListItemBig()
                 </div> */}
                 <div className={styles.Checks}>
                     <label className={styles.lblChecks}>Check-out</label>
-                    <label className={styles.lblChecksDate}>Sun 13 Apr</label>
+                    <label className={styles.lblChecksDate}>Thurs 27 Nov</label>
                     <label className={styles.lblChecksTime}>15:00</label>
                 </div>
 

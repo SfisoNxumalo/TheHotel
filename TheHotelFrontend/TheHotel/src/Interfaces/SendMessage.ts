@@ -1,5 +1,6 @@
-export interface SendMessage{
-  sender: string;
-  receiver: string,
-  message: string
+export interface SendNewMessage{
+  userId: string;
+  staffId: string,
+  messageText: string
+  senderId:string
 }

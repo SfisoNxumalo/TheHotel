@@ -1,0 +1,69 @@
+﻿using Microsoft.Extensions.Logging;
+using TheHotel.Application.Interfaces;
+using TheHotel.Application.ServiceCustomExceptions;
+using TheHotel.Domain.DTOs;
+using TheHotel.Domain.Entities;
+using TheHotel.Domain.Interfaces.Repositories;
+
+namespace TheHotel.Application.Services
+{
+    // Handles all business logic related to the Room Service menu.
+    // This service manages menu item creation, updates, retrieval of available
+    // items, and fetching individual menu details. It acts as the layer between
+    // controllers and the repository, ensuring validation and consistent data
+    // handling for menu operations.
+
+    public class RoomServiceMenuService : IRoomServiceMenuService
+    {
+        private readonly IRoomServiceMenuRepository _menuRepo;
+        private readonly ILogger<RoomServiceMenuService> _logger;
+
+        public RoomServiceMenuService(IRoomServiceMenuRepository menuRepo, ILogger<RoomServiceMenuService> logger)
+        {
+            _menuRepo = menuRepo;
+            _logger = logger;
+        }
+
+        public async Task<RoomServiceMenuEntity> AddMenuItemAsync(RoomServiceMenuEntity item)
+        {
+            await _menuRepo.AddAsync(item);
+            return item;
+        }
+
+        public async Task<RoomServiceMenuEntity?> UpdateMenuItemAsync(RoomServiceMenuEntity item)
+        {
+            var existing = await _menuRepo.GetByIdAsync(item.Id);
+
+            if (existing == null) return null;
+
+            existing.ItemName = item.ItemName;
+            existing.Description = item.Description;
+            existing.Price = item.Price;
+            existing.Available = item.Available;
+
+            await _menuRepo.UpdateAsync(existing);
+
+            return existing;
+        }
+
+        public async Task<IEnumerable<MenuItemDTO>> GetMenuAsync()
+        {
+            return await _menuRepo.GetAvailableItemsAsync();
+        }
+
+        public async Task<MenuItemDTO?> GetMenuItemByIdAsync(Guid id)
+        {
+            var product = await _menuRepo.GetProductById(id);
+
+            if (product == null)
+                throw new NotFoundException("The requested product was not found");
+
+            return  product;
+        }
+
+        public async Task<IEnumerable<MenuItemDTO>> GetMenuItemsByIdsAsync(IEnumerable<Guid> MenuItemIds)
+        {
+            return await _menuRepo.GetMenuItemsByIdsAsync(MenuItemIds);
+        }
+    }
+}

@@ -1,5 +1,36 @@
 
-// import jsonData from '../mock/products.json'
-export const baseURL = '../mock/'
-export const productsEndpoint = `products.json`
-export const MessageEndpoint = `messages.json`
+export const baseURL = 'https://thehotelapi.azurewebsites.net/api/'  //Hardcoded for demo purposes only.
+export const roomServiceMenuEndpoint = `RoomService/menu`
+export const placeOrderEndpoint = `RoomServiceOrder`
+export const messageEndpoint = `Message`
+
+export function getMenuItemByIdEndpoint(menuitemId:string){
+    return `RoomService/menu/${menuitemId}`;
+}
+
+export function getMessageEndpoint(userId:string) {
+    return `Message/${userId}`
+} 
+
+export function getOrderDetailsEndpoint(orderId:string) {
+    return `RoomServiceOrder/${orderId}`
+} 
+
+export function getOrdersEndpoint(userId:string) {
+    return `RoomServiceOrder/user/${userId}`
+} 
+
+//Authentication
+
+export const loginEndpoint = `auth/login`
+export const registerEndpoint = `auth/register`
+
+//Analyse
+export const ordersAnalyseEndpoint = `RoomServiceOrder/all`
+
+export const getUserEndpoint = `User/user`
+export const getStaffEndpoint = `User/staff`
+
+export function updateOrderStatusEndpoint(orderId:string, status:string){
+    return `RoomServiceOrder/${orderId}/${status}`
+}

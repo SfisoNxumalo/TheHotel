@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using TheHotel.Application.Interfaces;
 using TheHotel.Domain.Entities;
 
@@ -9,12 +10,15 @@ namespace TheHotelAPI.Controllers
     public class BookingController : ControllerBase
     {
         private readonly IBookingService _bookingService;
+        private readonly ILogger<BookingController> _logger;
 
-        public BookingController(IBookingService bookingService)
+        public BookingController(IBookingService bookingService, ILogger<BookingController> logger)
         {
             _bookingService = bookingService;
+            _logger = logger;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAllBookings()
         {
@@ -22,6 +26,7 @@ namespace TheHotelAPI.Controllers
             return Ok(bookings);
         }
 
+        [Authorize]
         [HttpGet("{id:guid}")]
         public async Task<IActionResult> GetBooking(Guid id)
         {
@@ -30,6 +35,7 @@ namespace TheHotelAPI.Controllers
             return Ok(booking);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddBooking([FromBody] BookingEntity booking)
         {
@@ -37,6 +43,7 @@ namespace TheHotelAPI.Controllers
             return CreatedAtAction(nameof(GetBooking), new { id = newBooking.Id }, newBooking);
         }
 
+        [Authorize]
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateBooking(Guid id, [FromBody] BookingEntity booking)
         {
@@ -45,6 +52,7 @@ namespace TheHotelAPI.Controllers
             return NoContent();
         }
 
+        [Authorize]
         [HttpDelete("{id:guid}")]
         public async Task<IActionResult> DeleteBooking(Guid id)
         {

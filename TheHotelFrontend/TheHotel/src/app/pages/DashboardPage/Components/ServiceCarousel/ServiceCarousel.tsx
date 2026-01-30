@@ -3,23 +3,12 @@ import classes from './CardsCarousel.module.css';
 
 export default function ServiceCarousel() {
   
-  const slides = data.map((data) => (
-    <img className={classes.img} src={data.image}/>
-  ));
+  
 
   return (
    <div className={classes.card}>
       {/* {slides} */}
-      <div className={classes.cardHolder} style={
-        {
-          // backgroundImage: 'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=400&q=80',
-          // background: 'red',
-          // backgroundSize: 'cover',
-          // backgroundPosition: 'center',
-          // height: '100px',
-          // width: '100%',
-        }
-      }>
+      <div className={classes.cardHolder}>
         <img  className={classes.img}  src={data[0].image}/> 
         <img  className={classes.img}  src={data[0].image}/>
         <img  className={classes.img}  src={data[0].image}/>

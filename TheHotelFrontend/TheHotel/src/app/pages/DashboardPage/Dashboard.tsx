@@ -5,7 +5,7 @@ import Slide from '@mui/material/Slide';
 import ListItemSmall from './Components/ListItemSmall/ListItemSmall';
 import ListItemBig from './Components/ListItemBig/ListItemBig';
 import ListItemXSmall from './Components/ListItemXSmall/ListItemXSmall';
-import { bellImg, dashIma, messageImg, rateImg } from '../../../assets/imageStore';
+import { activitiesImg, bellImg, dashIma, messageImg, rateImg } from '../../../assets/imageStore';
 import ServiceCarousel from './Components/ServiceCarousel/ServiceCarousel';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,15 +13,16 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepOrange } from '@mui/material/colors';
 import Badge, { BadgeProps } from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { Link, useNavigate } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from 'react-router-dom';
 import RateDialog from './Components/RateDialog/RateDialog';
 import { useState } from 'react';
+import { useAuthStore } from '../../../stores/authStore';
+import { roomServiceImg } from '../../../assets/imageStore'
 
 interface Props {
   /**
@@ -50,7 +51,7 @@ interface Props {
     );
   }
 
-  const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
+  const StyledBadge = styled(Badge)<BadgeProps>(() => ({
     '& .MuiBadge-badge': {
       right: 0,
       top: 0,
@@ -60,6 +61,9 @@ interface Props {
   }));
   
   function Compo(props: Props){
+    const user = useAuthStore((s) => s.user);
+    const logout = useAuthStore.getState().logout;
+    const navigate = useNavigate();
     return(
       <React.Fragment >
                       <CssBaseline />
@@ -72,17 +76,12 @@ interface Props {
                                 <div className={styles.holder} style={{height:'100px'}}>
                                   <div  className={styles.holderItems}>
                                     <div className={styles.holderItems} style={{width:'100%', display: 'flex'}}>
-                                    <Avatar sx={{ bgcolor: deepOrange[500] }}>N</Avatar>
-                                    <label> Hello Sfiso</label>
+                                    <Avatar sx={{ bgcolor: deepOrange[500]}}>{user?.fullName.charAt(0).toLocaleUpperCase()}</Avatar>
+                                    <label> Hello {`${user?.fullName.charAt(0).toLocaleUpperCase()}${user?.fullName.substring(1)}`}</label>
                                   </div>
-                                  <IconButton sx={{color:'white'}} aria-label="cart">
-                                    <StyledBadge badgeContent={1} color="error">
-                                      <NotificationsIcon sx={{ fontSize: 20 }} />
-                                    </StyledBadge>
-                                  </IconButton>
-                                  <IconButton  aria-label="cart">
-                                    <StyledBadge badgeContent={1} sx={{color:'white'}} color="secondary">
-                                      <ShoppingCartIcon sx={{ fontSize: 20 }} />
+                                  <IconButton onClick={()=>{logout(), navigate('/login') }} sx={{color:'white'}} aria-label="cart">
+                                    <StyledBadge color="error">
+                                      <LogoutIcon sx={{ fontSize: 20 }} />
                                     </StyledBadge>
                                   </IconButton>
                                   </div>
@@ -115,7 +114,7 @@ interface Props {
 export default function Dashboard(){
 
   const navigate = useNavigate();
-   const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
    const closeDialog = ()=> {
       setOpen(false)
@@ -129,24 +128,25 @@ export default function Dashboard(){
                     <div className={styles.mainContainerTop}>
                     <Compo/>
                     </div>
-                    <div className={styles.mainContainerBottom}> 
+                    <div className={`${styles.mainContainerBottom} slide-up`}> 
                       <h4>Booking</h4>
                         <ListItemBig/>
                         <h4>Room Service</h4>
-                        <ListItemSmall />
+                        <ListItemSmall image={roomServiceImg} title={"Let's find you something to eat."} holderClick={()=> {navigate('/room-service')}} />
                         <h4>Support</h4>
                         <div className={styles.SmallList}>
-                          <div  onClick={()=>navigate("/chats")} ><ListItemXSmall label={"Chat"} Img={messageImg}/></div>
-                          <div  onClick={()=>setOpen(true)}><ListItemXSmall label={"Rate"} Img={rateImg}/></div>
-
+                          <div onClick={()=>navigate("/chats")} ><ListItemXSmall label={"Chat"} Img={messageImg}/></div>
+                          <div onClick={()=>setOpen(true)}><ListItemXSmall label={"Rate"} Img={rateImg}/></div>
                           <div><ListItemXSmall label={"Request"} Img={bellImg}/></div>
                         </div>
                         <h4>{open}</h4>
+                        <ListItemSmall image={activitiesImg} title={"Cool activities you should try while you enjoy your stay with us"} holderClick={()=> {navigate('/activities')}}/>
                         <ServiceCarousel/>
-                        
                     </div>
                 </div>
+                
            </div>
+           
            <RateDialog open={open} handleCloseDialog={closeDialog}/>
         </section>
     )
